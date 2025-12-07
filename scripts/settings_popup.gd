@@ -101,8 +101,8 @@ func _force_black_on_all_labels(node: Node):
 		
 		label.label_settings = current_settings
 		
-		# 3. Forțează update
-		label.notification(NOTIFICATION_THEME_CHANGED)
+		# 3. Update-ul vizual se face automat, dar dacă vrei, poți lăsa doar queue_redraw
+		# label.notification(NOTIFICATION_THEME_CHANGED)  # SCOATE/COMENTEAZĂ LINIA ASTA
 		label.queue_redraw()
 		
 		print("✅ Applied BLACK font to:", label.name)
@@ -133,8 +133,9 @@ func _setup_buttons():
 		close_button.add_theme_font_size_override("font_size", 20)
 		close_button.add_theme_color_override("font_color", Color.WHITE)
 		
-		# Conectează semnalul
-		close_button.pressed.connect(_on_close_button_pressed)
+		# *** FIX: conectăm doar dacă nu e deja conectat ***
+		if not close_button.pressed.is_connected(_on_close_button_pressed):
+			close_button.pressed.connect(_on_close_button_pressed)
 	else:
 		print("❌ Close button not found!")
 	

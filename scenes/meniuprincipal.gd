@@ -13,7 +13,7 @@ const FINAL_CHEST_INDEX: int = 6
 # Variabila care stocheaza nivelul maxim deblocat de jucator (pentru test, incepem cu 1)
 # ATENTIE: In jocul final, aceasta variabila trebuie incarcata dintr-un sistem de salvare!
 var unlocked_level: int = 1 
-var DEBUG_UNLOCK_ALL = true
+
 
 # --- DIFICULTATE & SCENE NIVELURI ---
 
@@ -36,17 +36,17 @@ const LEVEL_SCENES := {
 	},
 	DIFF_MEDIUM: {
 		1: "res://scenes/UI/lvl_background/lvl_mediu/1_mediu.tscn",
-		2: "res://scenes/levels/medium/level2_medium.tscn",
-		3: "res://scenes/levels/medium/level3_medium.tscn",
-		4: "res://scenes/levels/medium/level4_medium.tscn",
-		5: "res://scenes/levels/medium/level5_medium.tscn",
+		2: "res://scenes/UI/lvl_background/lvl_mediu/2_mediu.tscn",
+		3: "res://scenes/UI/lvl_background/lvl_mediu/3_mediu.tscn",
+		4: "res://scenes/UI/lvl_background/lvl_mediu/4_mediu.tscn",
+		5: "res://scenes/UI/lvl_background/lvl_mediu/5_mediu.tscn",
 	},
 	DIFF_HARD: {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
-		2: "res://scenes/levels/hard/level2_hard.tscn",
-		3: "res://scenes/levels/hard/level3_hard.tscn",
-		4: "res://scenes/levels/hard/level4_hard.tscn",
-		5: "res://scenes/levels/hard/level5_hard.tscn",
+		2: "res://scenes/UI/lvl_background/lvl_hard/2_hard.tscn",
+		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
+		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
+		5: "res://scenes/UI/lvl_background/lvl_hard/5_hard.tscn",
 	},
 }
 
@@ -84,17 +84,40 @@ var settings_popup_scene = preload("res://scenes/SettingsPopup.tscn")
 	get_node("LevelMap/Path2D/lvl5/Level 5") as TextureButton,
 ]
 
-
-
-
+@onready var dino_text_box: Control = get_node("DinoTextBox")
+@onready var ok_button: TextureButton = null
 
 
 var customization_scene = preload("res://scenes/Customization.tscn")  # A
 # --- FUNCȚII DE BAZĂ ---
 
+func _on_ok_button_pressed() -> void:
+	print("OK apăsat — ascund overlay-ul!")
+
+	if dino_text_box:
+		dino_text_box.visible = false
+		dino_text_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
 func _ready():
+	
+	# Căutăm butonul IntelesButton din DinoTextBox
+	if dino_text_box:
+		ok_button = dino_text_box.find_child("IntelesButton", true, false)
+		if ok_button:
+			if not ok_button.pressed.is_connected(_on_ok_button_pressed):
+				ok_button.pressed.connect(_on_ok_button_pressed)
+				print("✅ IntelesButton găsit și conectat.")
+			else:
+				print("⚠️ Nu am găsit 'IntelesButton' în DinoTextBox.")
+			
 	# Asigura-te ca butoanele sunt blocate/deblocate corect la inceput
 	update_level_locks()
+	
+	
+	#print("=== DEBUG level_buttons ===")
+	#for i in range(level_buttons.size()):
+	#	print(" index ", i, " -> ", level_buttons[i])
 		# Conectăm ModeButton (easy/medium/hard)
 	if mode_button:
 		mode_button.item_selected.connect(_on_mode_selected)
@@ -103,7 +126,9 @@ func _ready():
 
 	if customize_button:
 		print("✅ Customize button found, connecting...")
-		customize_button.pressed.connect(_on_customize_button_pressed)
+		if not customize_button.pressed.is_connected(_on_customize_button_pressed):
+			customize_button.pressed.connect(_on_customize_button_pressed)
+		#customize_button.pressed.connect(_on_customize_button_pressed)
 	else:
 		print("⚠️ Customize button not found at specified path")
 	
@@ -180,25 +205,6 @@ func _open_customization_scene():
 	#     instance.force_setup()
 
 func _input(event):
-		# Aici ajung DOAR evenimentele care NU au fost consumate de UI (buton etc.)
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				dragging = true
-				last_mouse_pos = event.position
-			else:
-				dragging = false
-				
-	if dragging and event is InputEventMouseMotion:
-		var current_pos = event.position
-		var delta = current_pos - last_mouse_pos
-		
-		scroll_map(delta)
-		
-		last_mouse_pos = current_pos
-	
-func _input_test(event):
-
 	# Detecteaza inceputul si sfarsitul actiunii de tragere
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -216,7 +222,7 @@ func _input_test(event):
 		scroll_map(delta)
 		
 		last_mouse_pos = current_pos
-
+	
 
 func scroll_map(delta: Vector2):
 	# Butoanele se misca normal
@@ -232,7 +238,9 @@ func update_level_locks():
 		var level_button: TextureButton = level_buttons[i]
 		var current_index := i + 1  # 1..5
 		
-		if current_index <= unlocked_level or DEBUG_UNLOCK_ALL:
+		print("Config level", current_index, "->", level_button.name)
+		
+		if current_index <= unlocked_level:
 			level_button.disabled = false
 			level_button.modulate = Color.WHITE
 		else:
@@ -240,7 +248,10 @@ func update_level_locks():
 			level_button.modulate = Color(0.6, 0.6, 0.6, 1.0)
 		
 		if not level_button.pressed.is_connected(_on_level_button_pressed):
+			print("  conectez semnalul pressed pentru level ", current_index)
 			level_button.pressed.connect(_on_level_button_pressed.bind(current_index))
+		else:
+			print("  semnalul pressed e DEJA conectat pentru level ", current_index)
 
 
 func update_level_locks_test():
@@ -253,7 +264,7 @@ func update_level_locks_test():
 			var level_button = level_follower.get_child(0) as TextureButton 
 			var current_index = i + 1  # Indexul incepand cu 1
 			
-			if current_index <= unlocked_level or DEBUG_UNLOCK_ALL:
+			if current_index <= unlocked_level:
 				# Nivel/Cufar deblocat
 				level_button.disabled = false
 				level_button.modulate = Color.WHITE # Culoare normala
@@ -271,7 +282,13 @@ func update_level_locks_test():
 
 # Aceasta functie trebuie conectata la semnalul 'pressed()' al TUTUROR butoanelor de nivel
 func _on_level_button_pressed(level_index: int) -> void:
-
+	# 1) Dacă overlay-ul DinoTextBox este încă vizibil, ignorăm click-ul pe nivel
+	if dino_text_box and dino_text_box.visible:
+		print("ℹ️ Overlay-ul DinoTextBox e activ, ignor click pe level ", level_index)
+		return
+	# 2) De aici încolo este logica ta normală
+	print(">>> _on_level_button_pressed CALLED | level_index =", level_index, " | diff =", current_difficulty)
+	# restul codului...
 	
 	print("🔹 Nivel apăsat:", level_index, " | dificultate index:", current_difficulty)
 	
@@ -281,7 +298,7 @@ func _on_level_button_pressed(level_index: int) -> void:
 		return
 	
 	# Nu lăsăm să intre pe niveluri blocate
-	if level_index > unlocked_level and not DEBUG_UNLOCK_ALL:
+	if level_index > unlocked_level:
 		print("⛔ Nivelul ", level_index, " este blocat.")
 		return
 	
