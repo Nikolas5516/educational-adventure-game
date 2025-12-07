@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bah24whbd6515"
-path="res://.godot/imported/close_icon.png-0ac4f6ee1892fa76c3bd32a7e9e8ab9a.ctex"
+uid="uid://bkr6bfp0a4udn"
+path="res://.godot/imported/dino_base.png-95b3e2a2c2b9e30c2f82230b000bd5eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/close_icon.png"
-dest_files=["res://.godot/imported/close_icon.png-0ac4f6ee1892fa76c3bd32a7e9e8ab9a.ctex"]
+source_file="res://assets/clothes/dino_base.png"
+dest_files=["res://.godot/imported/dino_base.png-95b3e2a2c2b9e30c2f82230b000bd5eb.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3eacjgjm6nbg"]
+[gd_scene load_steps=18 format=3 uid="uid://c13ueo0g36oox"]
 
 [ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
 [ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
@@ -158,3 +158,5 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 texture_normal = ExtResource("15_mhfbr")
 metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="TopBar_HUD/CustomizeButton" to="." method="_on_customize_button_pressed"]

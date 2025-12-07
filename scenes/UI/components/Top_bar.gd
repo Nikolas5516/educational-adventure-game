@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	
 func _on_btn_settings_pressed() -> void:
 	# salvăm scena curentă ca să știm unde să ne întoarcem
-	GlobalState.previous_scene_path = get_tree().current_scene.scene_file_path
+#	GlobalState.previous_scene_path = get_tree().current_scene.scene_file_path
 
 	# mergem la scena de setări
 	get_tree().change_scene_to_file("res://scenes/UI/settings/Settings.tscn")
