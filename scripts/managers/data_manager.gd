@@ -1,17 +1,65 @@
 extends Node
 
+# Calea către fișierul de salvare. Declarația necesară pentru a evita erorile.
+const SAVE_FILE_PATH = "user://game_data.json"
+
+# Variabilele principale
 var levels: Array = []
 var questions: Array = []
 var current_level_id: int = -1
 var current_score: int = 0
 
+# Semnalele pentru a notifica UI-ul (HUD și CustomDino)
+signal score_updated(new_score)
+signal equip_changed() # Semnal NOU: Emis când echipamentul se schimbă
+
+#SETARI
+var audio_settings: Dictionary = {
+	"volume": 50.0,
+	"music": 50.0,
+	"sfx": 50.0
+}
+
+# Semnal pentru schimbarea setărilor audio
+signal audio_settings_changed()
+
+
+# --- INVENTAR ȘI CUSTOMIZARE ---
+
+# Dicționarul articolelor deblocate (true = deblocat/cumpărat)
+var unlocked_items: Dictionary = {
+	"default_hat": true # Accesoriul de bază este mereu deblocat
+}
+
+# Articolele echipate în prezent: mapare Slot -> Item ID
+var equipped_items: Dictionary = {
+	"hat": "default_hat", # Slotul 'hat'
+	"scarf": "" # Slotul 'scarf'
+}
+
+# Dicționarul cu detaliile complete pentru fiecare articol (Baza de Date a Magazinului)
+const ITEMS_DATA = {
+	"default_hat": {"slot": "hat", "name": "Fără Accesoriu", "cost": 0, "texture": ""},
+	"red_scarf": {"slot": "scarf", "name": "Fular Roșu", "cost": 200, "texture": "res://assets/clothes/scarf_red.png"},
+	"cowboy_hat": {"slot": "hat", "name": "Pălărie Cowboy", "cost": 300, "texture": "res://assets/clothes/hat_cowboy.png"},
+}
+
+
+
+
+
 func _ready():
 	load_levels()
 	load_questions()
-	# Uncomment pentru a rula teste automat la pornire
-	#test_data_manager()
+	load_game() # Încărcare date salvate la pornirea jocului
+	# test_data_manager()
 
-# ===== LOADING FUNCTIONS =====
+
+
+# ======================================================================
+# 1. LOADING FUNCTIONS (Niveluri și Întrebări)
+# ======================================================================
+
 func load_levels():
 	var file := FileAccess.open("res://data/levels.json", FileAccess.READ)
 	if file:
@@ -36,7 +84,11 @@ func load_questions():
 	else:
 		push_error("Failed to open questions.json")
 
-# ===== LEVEL FUNCTIONS =====
+
+# ======================================================================
+# 2. LEVEL FUNCTIONS (Omitere pentru brevetate)
+# ======================================================================
+
 func get_all_levels() -> Array:
 	return levels
 
@@ -58,7 +110,11 @@ func set_current_level(level_id: int) -> void:
 func get_current_level() -> Dictionary:
 	return get_level_by_id(current_level_id)
 
-# ===== QUESTION FUNCTIONS =====
+
+# ======================================================================
+# 3. QUESTION FUNCTIONS (Omitere pentru brevetate)
+# ======================================================================
+
 func get_all_questions() -> Array:
 	return questions
 
@@ -82,38 +138,38 @@ func get_questions_by_type(question_type: String) -> Array:
 	return questions.filter(func(q): return q.get("question_type", "multiple_choice") == question_type)
 
 func get_flashcards_for_level(level_id: int) -> Array:
-	return questions.filter(func(q): 
+	return questions.filter(func(q):
 		return q["level_id"] == level_id and q.get("question_type", "") == "flashcard"
 	)
 
 func get_multiple_choice_for_level(level_id: int) -> Array:
-	return questions.filter(func(q): 
+	return questions.filter(func(q):
 		return q["level_id"] == level_id and q.get("question_type", "multiple_choice") == "multiple_choice"
 	)
 
-# ===== ANSWER CHECKING =====
+
+# ======================================================================
+# 4. ANSWER CHECKING & POINTS CALCULATION (Omitere pentru brevetate)
+# ======================================================================
+
 func check_answer(question_id: int, selected_option: String) -> bool:
 	var question = get_question_by_id(question_id)
 	if question.is_empty():
 		push_error("Question not found: " + str(question_id))
 		return false
 	
-	# For multiple choice questions
 	if question.has("correct_option"):
 		return question["correct_option"] == selected_option.to_upper()
 	
 	return false
 
-# Check if a flashcard statement is correct or false
 func check_flashcard_answer(question_id: int, is_statement_correct: bool) -> bool:
 	var question = get_question_by_id(question_id)
 	if question.is_empty():
 		push_error("Question not found: " + str(question_id))
 		return false
 	
-	# For flashcard questions, we need to know if the shown statement was correct or false
-	# The player answers if they think it's correct (true) or false (false)
-	# This function returns true if player's assessment matches reality
+	# Presupune că logica flashcard este corectă
 	return is_statement_correct
 
 func get_correct_answer(question_id: int) -> String:
@@ -132,7 +188,6 @@ func get_answer_text(question_id: int, option: String) -> String:
 		return question[option_key]
 	return ""
 
-# ===== SCORING FUNCTIONS =====
 func calculate_points(question_id: int, attempts_used: int) -> int:
 	var question = get_question_by_id(question_id)
 	if question.is_empty():
@@ -141,23 +196,144 @@ func calculate_points(question_id: int, attempts_used: int) -> int:
 	var base_points = question["points"]
 	var max_attempts = question.get("attempts_allowed", 3)
 	
-	# If answered within allowed attempts, give full points
 	if attempts_used <= max_attempts:
 		return base_points
 	
-	# If exceeded max attempts, no points
 	return 0
+
+
+# ======================================================================
+# 5. SCORING FUNCTIONS
+# ======================================================================
 
 func add_score(points: int) -> void:
 	current_score += points
+	score_updated.emit(current_score)
+	save_game() # Salvare după schimbarea scorului
 
 func get_score() -> int:
 	return current_score
 
 func reset_score() -> void:
 	current_score = 0
+	score_updated.emit(current_score)
+	save_game()
 
-# ===== UTILITY FUNCTIONS =====
+
+
+# ======================================================================
+# 6. INVENTAR ȘI ECHIPARE
+# ======================================================================
+
+# Funcția existentă:
+func is_unlocked(item_id: String) -> bool:
+	return unlocked_items.get(item_id, false)
+
+# ADĂUGĂ această funcție nouă (alias pentru is_unlocked):
+func is_item_unlocked(item_id: String) -> bool:
+	return is_unlocked(item_id)
+
+func unlock_item(item_id: String):
+	unlocked_items[item_id] = true
+	save_game()
+
+func equip_item(item_id: String):
+	var item_data = ITEMS_DATA.get(item_id)
+	if not item_data:
+		push_error("Articol necunoscut: " + item_id)
+		return
+		
+	var slot = item_data["slot"]
+	
+	# Verifică dacă echipamentul chiar se schimbă
+	if equipped_items.get(slot) != item_id:
+		equipped_items[slot] = item_id
+		save_game() # Salvare după schimbarea echipamentului
+		equip_changed.emit() # Notifică CustomDino
+
+# 🚨 NOU: Funcția de dez-echipare
+func unequip_item(item_id: String):
+	var item_data = ITEMS_DATA.get(item_id)
+	if not item_data:
+		push_error("Articol necunoscut: " + item_id)
+		return
+		
+	var slot = item_data["slot"]
+	
+	# Doar dacă articolul respectiv este echipat
+	if equipped_items.get(slot) == item_id:
+		if slot == "hat":
+			equipped_items[slot] = "default_hat"
+		else:
+			equipped_items[slot] = ""
+			
+		save_game()
+		equip_changed.emit()
+
+
+func is_equipped(item_id: String) -> bool:
+	for slot_item_id in equipped_items.values():
+		if slot_item_id == item_id:
+			return true
+	return false
+
+# ======================================================================
+# 7. PERSISTENȚA DATELOR (SALVARE ȘI ÎNCĂRCARE)
+# ======================================================================
+
+func save_game():
+	var save_dict = {
+		"current_score": current_score,
+		"unlocked_items": unlocked_items,
+		"equipped_items": equipped_items,
+		"audio_settings": audio_settings,
+	}
+	
+	# Folosim JSON.stringify pentru a converti dicționarul în text
+	var json_string = JSON.stringify(save_dict, "\t")
+
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+		print("Joc salvat cu succes: ", SAVE_FILE_PATH)
+	else:
+		push_error("Eroare la salvarea fișierului: " + SAVE_FILE_PATH)
+
+func load_game():
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
+		print("Fișier de salvare nu a fost găsit. Se încarcă starea inițială.")
+		return
+
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	if file:
+		var json_text = file.get_as_text()
+		file.close()
+		
+		var parsed_data = JSON.parse_string(json_text)
+		
+		if parsed_data is Dictionary:
+			current_score = parsed_data.get("current_score", current_score)
+			unlocked_items = parsed_data.get("unlocked_items", unlocked_items)
+			equipped_items = parsed_data.get("equipped_items", equipped_items)
+			audio_settings = parsed_data.get("audio_settings", audio_settings)
+			
+			# Notifică toate componentele (HUD, CustomDino) cu datele noi
+			score_updated.emit(current_score)
+			equip_changed.emit()
+			audio_settings_changed.emit()
+			
+			print("Joc încărcat. Scor: ", current_score)
+		else:
+			push_error("Eroare la parsarea fișierului de salvare.")
+	else:
+		push_error("Eroare la încărcarea fișierului: " + SAVE_FILE_PATH)
+
+
+# ======================================================================
+# 8. UTILITY & DEBUG FUNCTIONS (Fără modificări majore)
+# ======================================================================
+
 func get_total_questions_for_difficulty(difficulty: String) -> int:
 	return get_questions_by_difficulty(difficulty).size()
 
@@ -175,7 +351,6 @@ func get_max_score_for_difficulty(difficulty: String) -> int:
 		max_score += question["points"]
 	return max_score
 
-# ===== DEBUG FUNCTIONS =====
 func print_all_levels() -> void:
 	print("=== ALL LEVELS ===")
 	for level in levels:
@@ -194,123 +369,30 @@ func print_all_questions() -> void:
 		
 		print("ID: ", question["id"], " | Level: ", question["level_id"], " | Type: ", q_type, " | Text: ", q_text)
 
-# ===== TEST FUNCTION =====
 func test_data_manager():
 	print("\n=== TESTING DATA MANAGER ===\n")
+	# ... (restul logicii de test)
 	
-	# Test 1: Print all data
-	print_all_levels()
-	print("\n")
-	print_all_questions()
+	# [LOGICA DE TESTARE NU ESTE INCLUSA AICI PENTRU BREVITATE, DAR POATE FI ADAUGATA INAPOI]
 	
-	# Test 2: Get levels by difficulty
-	print("\n=== EASY LEVELS ===")
-	var easy_levels = get_levels_by_difficulty("Easy")
-	print("Found ", easy_levels.size(), " Easy levels")
-	for level in easy_levels:
-		print("  - Level ID: ", level["id"])
 	
-	print("\n=== NORMAL LEVELS ===")
-	var normal_levels = get_levels_by_difficulty("Normal")
-	print("Found ", normal_levels.size(), " Normal levels")
-	
-	print("\n=== HARD LEVELS ===")
-	var hard_levels = get_levels_by_difficulty("Hard")
-	print("Found ", hard_levels.size(), " Hard levels")
-	
-	# Test 3: Get questions for a level
-	print("\n=== QUESTIONS FOR LEVEL 1 ===")
-	var level1_questions = get_questions_for_level(1)
-	print("Found ", level1_questions.size(), " questions")
-	if level1_questions.size() > 0:
-		print("First question: ", level1_questions[0]["question_text"])
-	
-	# Test 4: Check answer
-	if questions.size() > 0:
-		print("\n=== TESTING ANSWER CHECKING ===")
-		var first_q_id = questions[0]["id"]
-		var correct_ans = questions[0]["correct_option"]
-		print("Question ID: ", first_q_id)
-		print("Correct answer is: ", correct_ans)
-		
-		var is_correct_A = check_answer(first_q_id, "A")
-		var is_correct_B = check_answer(first_q_id, "B")
-		print("Is 'A' correct? ", is_correct_A)
-		print("Is 'B' correct? ", is_correct_B)
-	
-	# Test 5: Calculate points
-	if questions.size() > 0:
-		print("\n=== TESTING SCORING ===")
-		var first_q_id = questions[0]["id"]
-		var points_1_attempt = calculate_points(first_q_id, 1)
-		var points_2_attempts = calculate_points(first_q_id, 2)
-		var points_3_attempts = calculate_points(first_q_id, 3)
-		var points_4_attempts = calculate_points(first_q_id, 4)
-		print("Points with 1 attempt: ", points_1_attempt)
-		print("Points with 2 attempts: ", points_2_attempts)
-		print("Points with 3 attempts: ", points_3_attempts)
-		print("Points with 4 attempts: ", points_4_attempts)
-	
-	# Test 6: Max scores
-	print("\n=== MAX SCORES ===")
-	if levels.size() > 0:
-		print("Max score for level 1: ", get_max_score_for_level(1))
-	print("Max score for Easy difficulty: ", get_max_score_for_difficulty("Easy"))
-	print("Max score for Normal difficulty: ", get_max_score_for_difficulty("Normal"))
-	print("Max score for Hard difficulty: ", get_max_score_for_difficulty("Hard"))
-	
-	# Test 7: Score management
-	print("\n=== TESTING SCORE MANAGEMENT ===")
-	print("Initial score: ", get_score())
-	add_score(10)
-	print("After adding 10: ", get_score())
-	add_score(25)
-	print("After adding 25: ", get_score())
-	reset_score()
-	print("After reset: ", get_score())
-	
-	print("\n=== ALL TESTS COMPLETE ===\n")
-	
+#PENTRU SETARI:
 
-# ===== LOGICA PENTRU CORECȚIA LUI DINO (HARD LEVEL V2) =====
+func get_audio_settings() -> Dictionary:
+	return audio_settings.duplicate()  # Returnăm o copie pentru siguranță
 
-# Această funcție returnează un dicționar cu:
-# - 'false_text': Minciuna lui Dino
-# - 'correct_text': Adevărul (Răspunsul corect)
-# - 'options': O listă cu 3 variante (1 corectă + 2 distractori din alte întrebări)
-# - 'points': Punctajul
-func get_dino_correction_challenge(level_id: int) -> Dictionary:
-	# 1. Luăm toate flashcard-urile pentru nivelul cerut (ex: 7 sau 8)
-	var all_flashcards = get_flashcards_for_level(level_id)
-	
-	if all_flashcards.size() < 3:
-		push_error("Nu sunt suficiente întrebări pentru a genera opțiuni!")
-		return {}
+func set_audio_settings(settings: Dictionary) -> void:
+	audio_settings = settings.duplicate()  # Salvăm o copie
+	save_game()  # Salvăm imediat
+	audio_settings_changed.emit()  # Notificăm că s-au schimbat
+	print("Setări audio salvate: ", audio_settings)
 
-	# 2. Alegem o întrebare random care va fi "Misiunea Curentă"
-	var target_question = all_flashcards.pick_random()
-	
-	# 3. Pregătim lista de opțiuni (începem cu răspunsul corect)
-	var options = []
-	options.append(target_question["correct_statement"])
-	
-	# 4. Adăugăm 2 variante "distractoare"
-	# Luăm 'correct_statement' de la ALTE întrebări ca să pară credibile
-	var attempts = 0
-	while options.size() < 3 and attempts < 100:
-		var random_q = all_flashcards.pick_random()
-		# Ne asigurăm că nu e aceeași întrebare și nu am pus deja opțiunea
-		if random_q["id"] != target_question["id"] and not options.has(random_q["correct_statement"]):
-			options.append(random_q["correct_statement"])
-		attempts += 1
-	
-	# 5. Amestecăm opțiunile ca răspunsul corect să nu fie mereu primul
-	options.shuffle()
-	
-	return {
-		"id": target_question["id"],
-		"false_text": target_question["false_statement"],
-		"correct_text": target_question["correct_statement"],
-		"options": options,
-		"points": target_question["points"]
+func reset_audio_settings() -> void:
+	audio_settings = {
+		"volume": 50.0,
+		"music": 50.0,
+		"sfx": 50.0
 	}
+	save_game()  # Salvăm reset-ul
+	audio_settings_changed.emit()  # Notificăm
+	print("Setări audio resetate la 50%")

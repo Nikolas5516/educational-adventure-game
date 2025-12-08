@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy5bgdh70qm2a"]
+
+[ext_resource type="PackedScene" uid="uid://d1nan8gno2brf" path="res://scenes/UI/backgrounds/Bg_lvl_usor.tscn" id="1_5gcoo"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg_Lvl_usor" parent="." instance=ExtResource("1_5gcoo")]
+layout_mode = 1
