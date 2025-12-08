@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var feedback_label = $TextureRect/Feedback_Label 
+const WIN_SCORE_THRESHOLD: int = 100 
+const MAIN_MENU_SCENE_PATH = "res://scenes/meniuprincipal.tscn"
 
 var current_selection = "" 
 const CORRECT_ANSWERS = {
@@ -10,7 +12,11 @@ const CORRECT_ANSWERS = {
 	"D": "Timisoara",
 	"E": "Podisul Dobrogei",
 	"F": "Podisul Moldovei",
-	"H": "Muntii Maramuresului"
+	"G": "Timis",
+	"H": "Muntii Maramuresului",
+	"I": "Mures",
+	"J": "Jiu",
+	"K": "Olt"
 }
 
 func _on_map_area_clicked(viewport, event, shape_idx, area_id):
@@ -29,6 +35,8 @@ func _on_answer_button_pressed(selected_answer_text: String):
 	var correct_answer = CORRECT_ANSWERS.get(current_selection)
 	if cleaned_answer_text == correct_answer: 
 		display_feedback(" Correct! " + correct_answer, Color.GREEN)
+		DataManager.add_score(10) 
+		check_win_condition()
 	else:
 		display_feedback(" Wrong answer. The correct answer was: " + correct_answer, Color.RED)
 	
@@ -54,62 +62,7 @@ func display_feedback(message, color):
 	add_child(timer)
 	timer.start()
 	
-
-func _on_area_a_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_b_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_c_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_e_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_f_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_h_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_button_a_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_b_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_c_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_d_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_e_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_f_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_h_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_w_1_pressed() -> void:
-	pass # Replace with function body.
+func check_win_condition():
+	if DataManager.get_score() >= WIN_SCORE_THRESHOLD:
+		LevelHard.goto_scene(MAIN_MENU_SCENE_PATH)
+		

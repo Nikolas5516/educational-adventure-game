@@ -6,37 +6,20 @@ var current_text = ""
 var is_true_statement = true
 
 func _ready():
-	load_questions_from_json()
+	load_questions_from_data_manager()
 	show_new_card()
 	
-func load_questions_from_json():
-	var file = FileAccess.open("res://data/questions.json", FileAccess.READ)
-	if file == null:
-		push_error("Cannot open res://data/questions.json")
-		return
+func load_questions_from_data_manager():
 	
-	var content = file.get_as_text()
-	var result = JSON.parse_string(content)
+	var raw_questions = DataManager.get_all_questions() 
 
-	if result == null:
-		push_error("Invalid JSON inside flashcards_data.json")
+	if raw_questions.is_empty():
+		push_error("DataManager returned no questions!")
 		return
-	
-	if not result is Array:
-		push_error("JSON is not an array!")
-		return
+	questions = raw_questions.filter(
+		func(q): return q.get("question_type", "") == "flashcard"
+	)
 		
-	var transformed_questions = []
-	
-	for question_data in result:
-		var new_format = {}
-	   
-		new_format["correct"] = question_data.get("correct_statement")
-		new_format["false"] = question_data.get("false_statement")
-		new_format["score"] = question_data.get("points")
-		transformed_questions.append(new_format)
-	questions = transformed_questions
-	
 func show_new_card():
 	if questions.is_empty():
 		$CenterCard/CardMargin/MarginContainer/VBoxContainer/CardLabel.text = "No questions loaded!"
@@ -49,9 +32,9 @@ func show_new_card():
 	is_true_statement = randf() < 0.5
 
 	if is_true_statement:
-		current_text = q["correct"]
+		current_text = q["correct_statement"]
 	else:
-		current_text = q["false"]
+		current_text = q["false_statement"]
 	
 	$CenterCard/CardMargin/MarginContainer/VBoxContainer/CardLabel.text = current_text
 	
@@ -63,10 +46,9 @@ func check_answer(choice: bool):
 		$CenterCard/CardMargin/MarginContainer/VBoxContainer/Feedback.text = "Corect!"
 		$CorrectSound.play()
 		
-		var points_to_add = current_question.get("score", 10) 
-		LevelHard.add_points(points_to_add) 
-		
-		if LevelHard.current_score >= LevelHard.MAP_UNLOCK_THRESHOLD:
+		var points_to_add = current_question.get("points", 10)
+		DataManager.add_score(points_to_add)
+		if DataManager.get_score() >= LevelHard.MAP_UNLOCK_THRESHOLD:
 			LevelHard.goto_scene(MAP_SCENE_PATH)
 			return
 		

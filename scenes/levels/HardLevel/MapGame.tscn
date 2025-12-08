@@ -88,45 +88,61 @@ offset_bottom = 396.0
 [node name="Button_A" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button A - Cluj Napoca "
+text = "Cluj Napoca "
 autowrap_mode = 2
 icon_alignment = 1
 
 [node name="Button_B" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button B - Bucuresti"
+text = "Bucuresti"
 
 [node name="Button_C" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button C - Iasi"
+text = "Iasi"
 
 [node name="Button_D" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button D - Timisoara"
+text = "Timisoara"
 
 [node name="Button_E" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button E - Podisul Dobrogei "
+text = "Podisul Dobrogei "
 
 [node name="Button_F" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button F - Podisul Moldovei "
+text = "Podisul Moldovei "
 
 [node name="Button_H" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button H - Muntii Maramuresului "
+text = "Muntii Maramuresului "
 autowrap_mode = 2
 
 [node name="Button_W1" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button W1 - wrong option no. 1 "
+text = "Muntii Carpati - wrong option"
+
+[node name="Button_Timis" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Timis"
+
+[node name="Button_Mures" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Mures"
+
+[node name="Button_Jiu" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Jiu"
+
+[node name="Button_Olt" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Olt"
 
 [node name="Feedback_Label" type="Label" parent="TextureRect"]
 visible = false
@@ -137,6 +153,32 @@ offset_right = 224.0
 offset_bottom = 680.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "\" \""
+
+[node name="Area_G" type="Area2D" parent="TextureRect"]
+position = Vector2(260, 414)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/Area_G"]
+position = Vector2(13.999985, 22.999994)
+polygon = PackedVector2Array(-25.463364, -36.675713, 23.536636, -20.675713, 41.536636, 55.324287, 10.536636, 57.324287, -46.463364, -19.675713)
+
+[node name="Area_I" type="Area2D" parent="TextureRect"]
+position = Vector2(249, 355)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/Area_I"]
+polygon = PackedVector2Array(-94, 3, -86, -14, -32, -21, 100, 11, 171, -19, 280, -120, 359, -120, 377, -67, 341, -12, 136, 46)
+
+[node name="Area_J" type="Area2D" parent="TextureRect"]
+position = Vector2(432, 618)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/Area_J"]
+position = Vector2(2, -11)
+polygon = PackedVector2Array(-82, -134, -25, -159, 43, 82, -32, 76)
+
+[node name="Area_K" type="Area2D" parent="TextureRect"]
+position = Vector2(485, 435)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/Area_K"]
+polygon = PackedVector2Array(129, -88, 168, -99, 150, -24, 106, -9, 49, -18, 18, -4, 13, 61, 69, 262, 17, 276, -42, -34)
 
 [connection signal="input_event" from="TextureRect/Area_A" to="." method="_on_map_area_clicked" binds= ["A"]]
 [connection signal="input_event" from="TextureRect/Area_B" to="." method="_on_map_area_clicked" binds= ["B"]]
@@ -152,4 +194,12 @@ text = "\" \""
 [connection signal="pressed" from="TextureRect/Answer_List/Button_E" to="." method="_on_answer_button_pressed" binds= ["Podisul Dobrogei"]]
 [connection signal="pressed" from="TextureRect/Answer_List/Button_F" to="." method="_on_answer_button_pressed" binds= ["Podisul Moldovei"]]
 [connection signal="pressed" from="TextureRect/Answer_List/Button_H" to="." method="_on_answer_button_pressed" binds= ["Muntii Maramuresului"]]
-[connection signal="pressed" from="TextureRect/Answer_List/Button_W1" to="." method="_on_answer_button_pressed"]
+[connection signal="pressed" from="TextureRect/Answer_List/Button_W1" to="." method="_on_answer_button_pressed" binds= ["wrong"]]
+[connection signal="pressed" from="TextureRect/Answer_List/Button_Timis" to="." method="_on_answer_button_pressed" binds= ["Timis"]]
+[connection signal="pressed" from="TextureRect/Answer_List/Button_Mures" to="." method="_on_answer_button_pressed" binds= ["Mures"]]
+[connection signal="pressed" from="TextureRect/Answer_List/Button_Jiu" to="." method="_on_answer_button_pressed" binds= ["Jiu"]]
+[connection signal="pressed" from="TextureRect/Answer_List/Button_Olt" to="." method="_on_answer_button_pressed" binds= ["Olt"]]
+[connection signal="input_event" from="TextureRect/Area_G" to="." method="_on_map_area_clicked" binds= ["G"]]
+[connection signal="input_event" from="TextureRect/Area_I" to="." method="_on_map_area_clicked" binds= ["I"]]
+[connection signal="input_event" from="TextureRect/Area_J" to="." method="_on_map_area_clicked" binds= ["J"]]
+[connection signal="input_event" from="TextureRect/Area_K" to="." method="_on_map_area_clicked" binds= ["K"]]

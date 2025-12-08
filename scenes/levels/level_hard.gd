@@ -1,19 +1,14 @@
 # level_hard.gd
 extends Node2D
 
-var current_score: int = 0
-const MAP_UNLOCK_THRESHOLD: int = 50  # Example score to unlock the map
+const MAP_UNLOCK_THRESHOLD: int = 50  
 
-# Add points to the score
 func add_points(amount: int):
-	current_score += amount
-	print("Score updated: ", current_score)
-	# Check if the map should be unlocked
-	if current_score >= MAP_UNLOCK_THRESHOLD:
-		# You could emit a signal here or just print a message
+	DataManager.add_score(amount)
+	print("Score updated: ", DataManager.get_score())
+	if DataManager.get_score() >= MAP_UNLOCK_THRESHOLD:
 		print("Map Quiz Unlocked!")
 
-# Function to switch scenes
 func goto_scene(path: String):
 	var error = get_tree().change_scene_to_file(path)
 	if error != OK:
