@@ -23,7 +23,7 @@ const DIFF_EASY := 0
 const DIFF_MEDIUM := 1
 const DIFF_HARD := 2
 
-var current_difficulty: int = DIFF_EASY
+var current_difficulty: int = DIFF_HARD # Default pe Hard
 
 # Harta: dificultate (index) -> (număr nivel -> scenă)
 const LEVEL_SCENES := {
@@ -44,7 +44,10 @@ const LEVEL_SCENES := {
 	DIFF_HARD: {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_hard/2_hard.tscn",
-		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
+		
+		# --- MODIFICAREA TA AICI (Nivelul 3 Hard) ---
+		3: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",
+		
 		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_hard/5_hard.tscn",
 	},
@@ -117,7 +120,7 @@ func _ready():
 	
 	#print("=== DEBUG level_buttons ===")
 	#for i in range(level_buttons.size()):
-	#	print(" index ", i, " -> ", level_buttons[i])
+	#    print(" index ", i, " -> ", level_buttons[i])
 		# Conectăm ModeButton (easy/medium/hard)
 	if mode_button:
 		mode_button.item_selected.connect(_on_mode_selected)
@@ -254,34 +257,16 @@ func update_level_locks():
 			print("  semnalul pressed e DEJA conectat pentru level ", current_index)
 
 
-func update_level_locks_test():
-	for i in range(path_node.get_child_count()):
-		var level_follower = path_node.get_child(i)
-		
-		# Ne asiguram ca nodul PathFollow2D contine un copil (butonul/cufarul)
-		if level_follower is PathFollow2D and level_follower.get_child_count() > 0:
-			# Obtine referinta la butonul/cufarul real (primul copil)
-			var level_button = level_follower.get_child(0) as TextureButton 
-			var current_index = i + 1  # Indexul incepand cu 1
-			
-			if current_index <= unlocked_level:
-				# Nivel/Cufar deblocat
-				level_button.disabled = false
-				level_button.modulate = Color.WHITE # Culoare normala
-			else:
-				# Nivel blocat
-				level_button.disabled = true
-				level_button.modulate = Color(0.6, 0.6, 0.6, 1.0) # Gri semitransparent
-			
-			
-			# 🔗 Conectăm semnalul 'pressed' o singură dată
-			if not level_button.pressed.is_connected(_on_level_button_pressed):
-				level_button.pressed.connect(_on_level_button_pressed.bind(current_index))
-
 # --- FUNCTII BUTOANE DE NIVEL ---
 
 # Aceasta functie trebuie conectata la semnalul 'pressed()' al TUTUROR butoanelor de nivel
 func _on_level_button_pressed(level_index: int) -> void:
+	
+	# --- FIX: SIGURANȚĂ PENTRU EROAREA 'null value' ---
+	if not is_inside_tree():
+		return
+	# -------------------------------------------------
+
 	# 1) Dacă overlay-ul DinoTextBox este încă vizibil, ignorăm click-ul pe nivel
 	if dino_text_box and dino_text_box.visible:
 		print("ℹ️ Overlay-ul DinoTextBox e activ, ignor click pe level ", level_index)
@@ -366,10 +351,3 @@ const MAX_X_POS: float = 0
 const MIN_Y_POS: float = 30
 # MAX_Y_POS: Cea mai mare valoare (miscarea maxima in jos)
 const MAX_Y_POS: float = 300
-
-
-const SCENA_MENIU = "res://scenes/levels/HardLevel/LevelHard.tscn"
-
-func _play_button_pressed(): 
-	get_tree().change_scene_to_file(SCENA_MENIU)
-	
