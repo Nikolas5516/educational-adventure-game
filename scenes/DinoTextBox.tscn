@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4qa5upc5qico"]
 
-[ext_resource type="Script" uid="uid://dcqkixxc3i8mu" path="res://scenes/dino_text_box.gd" id="1_s2qwd"]
+[ext_resource type="Script" path="res://scenes/dino_text_box.gd" id="1_s2qwd"]
 [ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="2_q1yo7"]
 [ext_resource type="Texture2D" uid="uid://buvg0f4lxg1v" path="res://assets/sprites/Gemini_Generated_Image_3y6qq3y6qq3y6qq3-removebg-preview.png" id="3_q1yo7"]
 [ext_resource type="Texture2D" uid="uid://ctv7ysu4ennxb" path="res://assets/sprites/Gemini_Generated_Image_7r74mn7r74mn7r74-removebg-preview.png" id="4_u33dn"]
@@ -35,6 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_right = 500.0
 offset_bottom = 600.0

@@ -45,7 +45,7 @@ const LEVEL_SCENES := {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_hard/2_hard.tscn",
 		
-		# --- MODIFICAREA TA AICI (Nivelul 3 Hard) ---
+		# --- MODIFICAREA TA AICI (Nivelul 3 Hard - Scena ta nouă) ---
 		3: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",
 		
 		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
@@ -90,6 +90,11 @@ var settings_popup_scene = preload("res://scenes/SettingsPopup.tscn")
 @onready var dino_text_box: Control = get_node("DinoTextBox")
 @onready var ok_button: TextureButton = null
 
+# --- REFERINȚE COSMETICE (Folosim Unique Names pentru siguranță) ---
+# Asigură-te că în scenă ai dat Click Dreapta -> "Access as Unique Name" pe aceste noduri!
+@onready var hat_visual = %Hat_Slot
+@onready var scarf_visual = %Scarf_Slot
+
 
 var customization_scene = preload("res://scenes/Customization.tscn")  # A
 # --- FUNCȚII DE BAZĂ ---
@@ -103,6 +108,16 @@ func _on_ok_button_pressed() -> void:
 
 
 func _ready():
+	
+	# --- 1. COSMETICE: Conectăm semnalul și actualizăm ---
+	if DataManager:
+		# Verificăm dacă nu e deja conectat ca să evităm erori
+		if not DataManager.equip_changed.is_connected(_update_character_appearance):
+			DataManager.equip_changed.connect(_update_character_appearance)
+		
+		# Actualizăm imediat ce intrăm în meniu
+		_update_character_appearance()
+	
 	
 	# Căutăm butonul IntelesButton din DinoTextBox
 	if dino_text_box:
@@ -140,6 +155,45 @@ func _ready():
 		settings_button.pressed.connect(_on_settings_button_pressed)
 	else:
 		print("⚠️ Settings button not found - check the path!")
+
+
+# --- FUNCȚIA DE UPDATE COSMETICE (Adaptată din Customization) ---
+func _update_character_appearance():
+	print("👗 Actualizare cosmetice...")
+	var equipped = DataManager.equipped_items
+	# print("   Echipat curent: ", equipped)
+
+	# 1. Actualizare Pălărie
+	if hat_visual:
+		var hat_id = equipped.get("hat", "")
+		if hat_id and hat_id != "default_hat" and DataManager.ITEMS_DATA.has(hat_id):
+			var data = DataManager.ITEMS_DATA[hat_id]
+			var path = data.get("texture", "")
+			if path and ResourceLoader.exists(path):
+				hat_visual.texture = load(path)
+				hat_visual.show()
+				# print("   -> Pălărie afișată: ", hat_id)
+			else:
+				hat_visual.hide()
+		else:
+			hat_visual.hide()
+			# print("   -> Pălărie ascunsă (default sau gol)")
+	
+	# 2. Actualizare Fular
+	if scarf_visual:
+		var scarf_id = equipped.get("scarf", "")
+		if scarf_id and DataManager.ITEMS_DATA.has(scarf_id):
+			var data = DataManager.ITEMS_DATA[scarf_id]
+			var path = data.get("texture", "")
+			if path and ResourceLoader.exists(path):
+				scarf_visual.texture = load(path)
+				scarf_visual.show()
+				# print("   -> Fular afișat: ", scarf_id)
+			else:
+				scarf_visual.hide()
+		else:
+			scarf_visual.hide()
+			# print("   -> Fular ascuns")
 
 
 #Functia pentru schimbarea dificultatii:
@@ -297,10 +351,14 @@ func _on_level_button_pressed(level_index: int) -> void:
 		return
 	
 	var scene_path: String = diff_map[level_index]
-	var err := get_tree().change_scene_to_file(scene_path)
 	
-	if err != OK:
-		push_error("Eroare la încărcarea scenei: %s" % scene_path)
+	# Verificăm dacă fișierul există înainte să încercăm să-l încărcăm
+	if ResourceLoader.exists(scene_path):
+		var err := get_tree().change_scene_to_file(scene_path)
+		if err != OK:
+			push_error("Eroare la încărcarea scenei: %s" % scene_path)
+	else:
+		push_error("⚠️ SCENA NU EXISTĂ LA CALEA: %s" % scene_path)
 	
 	
 	
