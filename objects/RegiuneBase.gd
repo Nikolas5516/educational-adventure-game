@@ -16,6 +16,7 @@ var este_mouse_over: bool = false
 # Culoarea de bază (Alb-Negru, setată prin shader)
 const COLOR_ALB_NEGRU = Color(0.3, 0.3, 0.3, 1.0) 
 # Efect de hover (o mică nuanță de galben-alb sau chenar)
+const COLOR_HOVER = Color(0.9, 0.9, 0.9, 1.0)
 # Culoarea finală (Alb-pur), care revine la textura originală
 const COLOR_FINAL = Color.WHITE 
 
@@ -47,6 +48,15 @@ func _ready():
 func _on_mouse_entered():
 	if not este_rezolvata:
 		este_mouse_over = true
+		
+		if sprite_regiune:
+			# 1. Aplică culoarea
+			sprite_regiune.modulate = COLOR_HOVER
+			
+			# 2. **NOU: FORȚEAZĂ Z INDEX LOCAL.**
+			# Asta mută regiunea ta deasupra oricărui Sprite vecin din LevelEasy.
+			sprite_regiune.z_index = 100 
+			print("Z Index forțat la 100.")
 
 func _on_mouse_exited():
 	if not este_rezolvata:

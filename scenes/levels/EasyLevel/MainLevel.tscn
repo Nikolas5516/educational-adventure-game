@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://clbcwphmildl2"]
+[gd_scene load_steps=3 format=3 uid="uid://dr2dmyd0a7was"]
 
 [ext_resource type="PackedScene" uid="uid://d1nan8gno2brf" path="res://scenes/UI/backgrounds/Bg_lvl_usor.tscn" id="1_87gkv"]
 [ext_resource type="PackedScene" uid="uid://dyv8kinim5k01" path="res://scenes/levels/EasyLevel/LevelEasy.tscn" id="2_0id7q"]
 
-[node name="EasyLevel" type="Node2D"]
+[node name="EasyLevel2" type="Node2D"]
 
 [node name="Bg_Lvl_usor" parent="." instance=ExtResource("1_87gkv")]
 offset_left = -21.0
