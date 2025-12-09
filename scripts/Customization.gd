@@ -1164,6 +1164,3 @@ func _on_close_confirmation_message():
 		var tween = create_tween()
 		tween.tween_property(container, "modulate", Color(1, 1, 1, 0), 0.3)
 		tween.tween_callback(func(): container.visible = false)
-		
-		
-		

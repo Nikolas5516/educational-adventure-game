@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c13ueo0g36oox"]
+[gd_scene load_steps=18 format=3 uid="uid://c13ueo0g36oox"]
 
 [ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
 [ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
@@ -10,11 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dt1nmdotxqseh" path="res://assets/sprites/Gemini_Generated_Image_9h0b0m9h0b0m9h0b-removebg-preview (1).png" id="8_orh1u"]
 [ext_resource type="PackedScene" uid="uid://b4qa5upc5qico" path="res://scenes/DinoTextBox.tscn" id="9_6kjbh"]
 [ext_resource type="Texture2D" uid="uid://b7fklcwnh7ia2" path="res://assets/sprites/Gemini_Generated_Image_jztwxtjztwxtjztw-removebg-preview.png" id="10_jmxhm"]
-[ext_resource type="Texture2D" uid="uid://bcbjux6wkpn3s" path="res://assets/clothes/hat_cowboy.png" id="10_swdcf"]
 [ext_resource type="Texture2D" uid="uid://caxsayni05c0c" path="res://assets/sprites/Gemini_Generated_Image_puhdmjpuhdmjpuhd-removebg-preview.png" id="11_i36jf"]
-[ext_resource type="Texture2D" uid="uid://bkr6bfp0a4udn" path="res://assets/clothes/dino_base.png" id="11_l6dl7"]
 [ext_resource type="Texture2D" uid="uid://dn47nfripasdx" path="res://assets/sprites/Gemini_Generated_Image_i4suzii4suzii4su-removebg-preview.png" id="12_a61ng"]
-[ext_resource type="Texture2D" uid="uid://5j788jgnwmtn" path="res://assets/clothes/scarf_red.png" id="12_mhfbr"]
 [ext_resource type="Texture2D" uid="uid://dtt5bs7w17hdm" path="res://assets/sprites/Gemini_Generated_Image_wblzccwblzccwblz-removebg-preview.png" id="13_swdcf"]
 [ext_resource type="Texture2D" uid="uid://dfcq3f2e4u2pd" path="res://assets/sprites/Gemini_Generated_Image_kj6l0ikj6l0ikj6l-removebg-preview.png" id="14_l6dl7"]
 [ext_resource type="Texture2D" uid="uid://dvykr522nj7ih" path="res://assets/sprites/Gemini_Generated_Image_my27zvmy27zvmy27-removebg-preview.png" id="15_mhfbr"]
@@ -121,38 +118,6 @@ layout_mode = 0
 offset_top = 130.0
 offset_bottom = 130.0
 scale = Vector2(1.1262268, 0.9885769)
-
-[node name="DinoPanel" type="Control" parent="DinoTextBox"]
-custom_minimum_size = Vector2(700, 0)
-anchors_preset = 0
-offset_right = 700.0
-
-[node name="Hat_Slot" type="TextureRect" parent="DinoTextBox/DinoPanel"]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 164.26532
-offset_top = 56.647087
-offset_right = 411.62067
-offset_bottom = 234.4169
-rotation = 0.3926991
-scale = Vector2(0.7102564, 0.6607143)
-texture = ExtResource("10_swdcf")
-expand_mode = 1
-
-[node name="Base_Sprite" type="Sprite2D" parent="DinoTextBox/DinoPanel"]
-position = Vector2(228.68993, 315.09247)
-scale = Vector2(1, 1.0000001)
-texture = ExtResource("11_l6dl7")
-
-[node name="Scarf_Slot" type="TextureRect" parent="DinoTextBox/DinoPanel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 124.30891
-offset_top = 267.05054
-offset_right = 574.30896
-offset_bottom = 717.05054
-scale = Vector2(0.44888893, 0.4977778)
-texture = ExtResource("12_mhfbr")
 
 [node name="TopBar_HUD" type="HBoxContainer" parent="."]
 layout_mode = 1

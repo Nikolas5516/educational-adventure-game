@@ -12,7 +12,7 @@ const FINAL_CHEST_INDEX: int = 6
 
 # Variabila care stocheaza nivelul maxim deblocat de jucator (pentru test, incepem cu 1)
 # ATENTIE: In jocul final, aceasta variabila trebuie incarcata dintr-un sistem de salvare!
-var unlocked_level: int = 3 
+var unlocked_level: int = 5 
 
 
 # --- DIFICULTATE & SCENE NIVELURI ---
@@ -23,12 +23,12 @@ const DIFF_EASY := 0
 const DIFF_MEDIUM := 1
 const DIFF_HARD := 2
 
-var current_difficulty: int = DIFF_HARD # Default pe Hard
+var current_difficulty: int = DIFF_EASY
 
 # Harta: dificultate (index) -> (număr nivel -> scenă)
 const LEVEL_SCENES := {
 	DIFF_EASY: {
-		1: "res://scenes/UI/lvl_background/lvl_easy/1_easy.tscn",
+		1: "res://scenes/levels/EasyLevel/MainLevel.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",
@@ -43,9 +43,9 @@ const LEVEL_SCENES := {
 	},
 	DIFF_HARD: {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
-		2: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",  
+		2: "res://scenes/UI/lvl_background/lvl_hard/2_hard.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
-		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn", 
+		4: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_hard/5_hard.tscn",
 	},
 }
@@ -87,11 +87,6 @@ var settings_popup_scene = preload("res://scenes/SettingsPopup.tscn")
 @onready var dino_text_box: Control = get_node("DinoTextBox")
 @onready var ok_button: TextureButton = null
 
-# --- REFERINȚE COSMETICE (Folosim Unique Names pentru siguranță) ---
-# Asigură-te că în scenă ai dat Click Dreapta -> "Access as Unique Name" pe aceste noduri!
-@onready var hat_visual = %Hat_Slot
-@onready var scarf_visual = %Scarf_Slot
-
 
 var customization_scene = preload("res://scenes/Customization.tscn")  # A
 # --- FUNCȚII DE BAZĂ ---
@@ -108,21 +103,16 @@ func _on_ok_button_pressed() -> void:
 
 func _ready():
 	
-	# --- 1. COSMETICE: Conectăm semnalul și actualizăm ---
-	if DataManager:
-		# Verificăm dacă nu e deja conectat ca să evităm erori
-		if not DataManager.equip_changed.is_connected(_update_character_appearance):
-			DataManager.equip_changed.connect(_update_character_appearance)
-		
-		# Actualizăm imediat ce intrăm în meniu
-		_update_character_appearance()
-	
-	
-	# Căutăm butonul IntelesButton din DinoTextBox
-	if dino_text_box:
-		ok_button = dino_text_box.find_child("IntelesButton", true, false)
-		if ok_button:
-			if not ok_button.pressed.is_connected(_on_ok_button_pressed):
+	# 🦖 Dacă jucătorul a mai apăsat OK vreodată, nu mai afișăm deloc dino + text + buton
+	if GlobalState_dino.has_seen_intro:
+		if dino_text_box:
+			dino_text_box.visible = false
+			dino_text_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else:
+		# ⚙️ Conectăm OK doar prima dată
+		if dino_text_box:
+			ok_button = dino_text_box.find_child("IntelesButton", true, false)
+			if ok_button and not ok_button.pressed.is_connected(_on_ok_button_pressed):
 				ok_button.pressed.connect(_on_ok_button_pressed)
 				print("✅ IntelesButton găsit și conectat.")
 			elif not ok_button:
@@ -134,7 +124,7 @@ func _ready():
 	
 	#print("=== DEBUG level_buttons ===")
 	#for i in range(level_buttons.size()):
-	#    print(" index ", i, " -> ", level_buttons[i])
+	#	print(" index ", i, " -> ", level_buttons[i])
 		# Conectăm ModeButton (easy/medium/hard)
 	if mode_button:
 		mode_button.item_selected.connect(_on_mode_selected)
@@ -154,45 +144,6 @@ func _ready():
 		settings_button.pressed.connect(_on_settings_button_pressed)
 	else:
 		print("⚠️ Settings button not found - check the path!")
-
-
-# --- FUNCȚIA DE UPDATE COSMETICE (Adaptată din Customization) ---
-func _update_character_appearance():
-	print("👗 Actualizare cosmetice...")
-	var equipped = DataManager.equipped_items
-	# print("   Echipat curent: ", equipped)
-
-	# 1. Actualizare Pălărie
-	if hat_visual:
-		var hat_id = equipped.get("hat", "")
-		if hat_id and hat_id != "default_hat" and DataManager.ITEMS_DATA.has(hat_id):
-			var data = DataManager.ITEMS_DATA[hat_id]
-			var path = data.get("texture", "")
-			if path and ResourceLoader.exists(path):
-				hat_visual.texture = load(path)
-				hat_visual.show()
-				# print("   -> Pălărie afișată: ", hat_id)
-			else:
-				hat_visual.hide()
-		else:
-			hat_visual.hide()
-			# print("   -> Pălărie ascunsă (default sau gol)")
-	
-	# 2. Actualizare Fular
-	if scarf_visual:
-		var scarf_id = equipped.get("scarf", "")
-		if scarf_id and DataManager.ITEMS_DATA.has(scarf_id):
-			var data = DataManager.ITEMS_DATA[scarf_id]
-			var path = data.get("texture", "")
-			if path and ResourceLoader.exists(path):
-				scarf_visual.texture = load(path)
-				scarf_visual.show()
-				# print("   -> Fular afișat: ", scarf_id)
-			else:
-				scarf_visual.hide()
-		else:
-			scarf_visual.hide()
-			# print("   -> Fular ascuns")
 
 
 #Functia pentru schimbarea dificultatii:
@@ -260,32 +211,11 @@ func _open_customization_scene():
 	# if instance.has_method("force_setup"):
 	#     instance.force_setup()
 
-func _input(event):
-	# Detecteaza inceputul si sfarsitul actiunii de tragere
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				dragging = true
-				last_mouse_pos = event.position
-			else:
-				dragging = false
-				
-	# Detecteaza miscarea mouse-ului in timp ce tragi
-	if dragging and event is InputEventMouseMotion:
-		var current_pos = event.position
-		var delta = current_pos - last_mouse_pos
-		
-		scroll_map(delta)
-		
-		last_mouse_pos = current_pos
+
+	
 	
 
-func scroll_map(delta: Vector2):
-	# Butoanele se misca normal
-	level_map_node.position += delta*0.955
-	
-	# Fundalul se misca ACELASI lucru, in directie opusa
-	parallax_bg.scroll_offset += delta # Acum factorul este 1.0
+
 
 # --- LOGICA DEBLOCARE NIVELURI ---
 
@@ -310,16 +240,34 @@ func update_level_locks():
 			print("  semnalul pressed e DEJA conectat pentru level ", current_index)
 
 
+func update_level_locks_test():
+	for i in range(path_node.get_child_count()):
+		var level_follower = path_node.get_child(i)
+		
+		# Ne asiguram ca nodul PathFollow2D contine un copil (butonul/cufarul)
+		if level_follower is PathFollow2D and level_follower.get_child_count() > 0:
+			# Obtine referinta la butonul/cufarul real (primul copil)
+			var level_button = level_follower.get_child(0) as TextureButton 
+			var current_index = i + 1  # Indexul incepand cu 1
+			
+			if current_index <= unlocked_level:
+				# Nivel/Cufar deblocat
+				level_button.disabled = false
+				level_button.modulate = Color.WHITE # Culoare normala
+			else:
+				# Nivel blocat
+				level_button.disabled = true
+				level_button.modulate = Color(0.6, 0.6, 0.6, 1.0) # Gri semitransparent
+			
+			
+			# 🔗 Conectăm semnalul 'pressed' o singură dată
+			if not level_button.pressed.is_connected(_on_level_button_pressed):
+				level_button.pressed.connect(_on_level_button_pressed.bind(current_index))
+
 # --- FUNCTII BUTOANE DE NIVEL ---
 
 # Aceasta functie trebuie conectata la semnalul 'pressed()' al TUTUROR butoanelor de nivel
 func _on_level_button_pressed(level_index: int) -> void:
-	
-	# --- FIX: SIGURANȚĂ PENTRU EROAREA 'null value' ---
-	if not is_inside_tree():
-		return
-	# -------------------------------------------------
-
 	# 1) Dacă overlay-ul DinoTextBox este încă vizibil, ignorăm click-ul pe nivel
 	if dino_text_box and dino_text_box.visible:
 		print("ℹ️ Overlay-ul DinoTextBox e activ, ignor click pe level ", level_index)
@@ -350,14 +298,10 @@ func _on_level_button_pressed(level_index: int) -> void:
 		return
 	
 	var scene_path: String = diff_map[level_index]
+	var err := get_tree().change_scene_to_file(scene_path)
 	
-	# Verificăm dacă fișierul există înainte să încercăm să-l încărcăm
-	if ResourceLoader.exists(scene_path):
-		var err := get_tree().change_scene_to_file(scene_path)
-		if err != OK:
-			push_error("Eroare la încărcarea scenei: %s" % scene_path)
-	else:
-		push_error("⚠️ SCENA NU EXISTĂ LA CALEA: %s" % scene_path)
+	if err != OK:
+		push_error("Eroare la încărcarea scenei: %s" % scene_path)
 	
 	
 	
@@ -392,19 +336,9 @@ func handle_final_chest():
 	else:
 		print("⚠️ Termina toate cele 5 nivele de joc inainte de a deschide cufarul!")
 		
-		# --- LIMITE SCROLLING (Ajusteaza aceste valori!) ---
-# Aceste limite definesc cat de mult poate fi miscat LevelMap
-# (in pixeli, fata de pozitia sa initiala/default)
-# Presupunem ca pozitia initiala este (0, 0) sau centrata pe harta.
 
-# Limite pe Orizontala (X)
-# MIN_X_POS: Cea mai mica valoare (miscarea maxima spre dreapta)
-const MIN_X_POS: float = -1500  
-# MAX_X_POS: Cea mai mare valoare (miscarea maxima spre stanga)
-const MAX_X_POS: float = 0      
+const SCENA_MENIU = "res://scenes/levels/HardLevel/LevelHard.tscn"
 
-# Limite pe Verticala (Y)
-# MIN_Y_POS: Cea mai mica valoare (miscarea maxima in sus)
-const MIN_Y_POS: float = 30
-# MAX_Y_POS: Cea mai mare valoare (miscarea maxima in jos)
-const MAX_Y_POS: float = 300
+func _play_button_pressed(): 
+	get_tree().change_scene_to_file(SCENA_MENIU)
+	
