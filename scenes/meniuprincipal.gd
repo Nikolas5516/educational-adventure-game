@@ -35,8 +35,8 @@ const LEVEL_SCENES := {
 		5: "res://scenes/UI/lvl_background/lvl_easy/5_easy.tscn",
 	},
 	DIFF_MEDIUM: {
-		1: "res://scenes/UI/lvl_background/lvl_mediu/1_mediu.tscn",
-		2: "res://scenes/levels/MediumLevel/MainLevel.tscn",
+		1: "res://scenes/levels/LevelNormalR/LevelNormalR.tscn",
+		2: "res://scenes/UI/lvl_background/lvl_mediu/2_mediu.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_mediu/3_mediu.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_mediu/4_mediu.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_mediu/5_mediu.tscn",
