@@ -11,13 +11,13 @@ shader_parameter/grosime = 1.0
 
 [node name="Normal Level" type="Node2D"]
 
-[node name="Bg_lvl_mediu" parent="." instance=ExtResource("1_k2pcy")]
-offset_left = -637.0
-offset_top = -368.0
-offset_right = 663.0
-offset_bottom = 352.0
+[node name="Camera2D2" type="Camera2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Bg_lvl_mediu" parent="." instance=ExtResource("1_k2pcy")]
+offset_left = -716.0
+offset_top = -307.0
+offset_right = -716.0
+offset_bottom = -307.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fi62q")

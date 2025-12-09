@@ -15,7 +15,7 @@ var scara_normala = Vector2.ONE
 var scara_mica = Vector2.ONE 
 
 # Setări joc
-const DISTANTA_MAGNET = 200.0
+const DISTANTA_MAGNET = 50.0
 # Le lăsăm să iasă puțin în afară (-15) ca să stea cât mai departe de hartă
 const MARGINE_MINIMA = -140.0 
 
@@ -154,17 +154,17 @@ func verifica_pozitia():
 		rotation_degrees = 0
 		var parts = get_node_or_null("CPUParticles2D")
 		if parts: parts.emitting = true
-		if get_parent().has_node("CorrectSound"):
-			get_parent().get_node("CorrectSound").play()
-		elif has_node("CorrectSound"):
-			$CorrectSound.play()
+		var sunet = get_tree().get_first_node_in_group("sunet_corect")
+		if sunet:
+			sunet.play()
+		else:
+			print("EROARE: Nu am găsit niciun nod în grupul 'sunet_corect'")
 	else:
 		var tween = create_tween()
 		tween.set_parallel(true)
 		tween.tween_property(self, "global_position", pozitie_start_globala, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "scale", scara_mica, 0.5)
 		tween.tween_property(self, "rotation_degrees", randf_range(-15, 15), 0.5)
-		if get_parent().has_node("IncorrectSound"):
-			get_parent().get_node("IncorrectSound").play()
-		elif has_node("IncorrectSound"):
-			$IncorrectSound.play()
+		var sunet = get_tree().get_first_node_in_group("sunet_incorect")
+		if sunet:
+			sunet.play()

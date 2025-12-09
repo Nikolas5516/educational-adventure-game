@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://qm2yqa8mcd5y"]
 
 [ext_resource type="Texture2D" uid="uid://b1cje48fkpqin" path="res://assets/sprites/lvl_greu.png" id="1_ss8dx"]
-[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/components/TopBar.tscn" id="2_qtp1w"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="2_qtp1w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtp1w"]
 bg_color = Color(0, 0, 0, 0.7607843)

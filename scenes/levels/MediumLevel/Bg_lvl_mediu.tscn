@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vt0c0rj410eo"]
 
 [ext_resource type="Texture2D" uid="uid://8u36mc5y0tp5" path="res://assets/sprites/lvl_mediu.png" id="1_b8j3w"]
-[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/components/TopBar.tscn" id="2_686ev"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="2_686ev"]
 
 [node name="Bg_lvl_mediu" type="Control"]
 layout_mode = 3

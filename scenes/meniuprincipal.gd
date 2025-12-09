@@ -29,21 +29,21 @@ var current_difficulty: int = DIFF_EASY
 const LEVEL_SCENES := {
 	DIFF_EASY: {
 		1: "res://scenes/UI/lvl_background/lvl_easy/1_easy.tscn",
-		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
+		2: "res://scenes/levels/MediumLevel/MainLevel.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_easy/5_easy.tscn",
 	},
 	DIFF_MEDIUM: {
 		1: "res://scenes/UI/lvl_background/lvl_mediu/1_mediu.tscn",
-		2: "res://scenes/UI/lvl_background/lvl_mediu/2_mediu.tscn",
+		2: "res://scenes/levels/MediumLevel/MainLevel.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_mediu/3_mediu.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_mediu/4_mediu.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_mediu/5_mediu.tscn",
 	},
 	DIFF_HARD: {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
-		2: "res://scenes/UI/lvl_background/lvl_hard/2_hard.tscn",
+		2: "res://scenes/levels/MediumLevel/MainLevel.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_hard/5_hard.tscn",
