@@ -48,10 +48,18 @@ func show_new_card():
 
 	is_true_statement = randf() < 0.5
 
+		# Luăm textele cu fallback pe string gol (nu lăsăm niciodată null)
+	var correct_text = q.get("correct", "")
+	var false_text = q.get("false", "")
+	
 	if is_true_statement:
 		current_text = q["correct"]
 	else:
 		current_text = q["false"]
+		
+	# Protecție finală – dacă tot e null sau gol, punem un mesaj default
+	if current_text == null or current_text == "":
+		current_text = "No text for this question."
 	
 	$CenterCard/CardMargin/MarginContainer/VBoxContainer/CardLabel.text = current_text
 	
