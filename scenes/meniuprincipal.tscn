@@ -129,12 +129,11 @@ offset_right = 700.0
 
 [node name="Hat_Slot" type="TextureRect" parent="DinoTextBox/DinoPanel"]
 unique_name_in_owner = true
-z_index = 2
 layout_mode = 1
-offset_left = 171.50465
-offset_top = 70.31268
-offset_right = 418.86
-offset_bottom = 248.08249
+offset_left = 164.26532
+offset_top = 56.647087
+offset_right = 411.62067
+offset_bottom = 234.4169
 rotation = 0.3926991
 scale = Vector2(0.7102564, 0.6607143)
 texture = ExtResource("10_swdcf")

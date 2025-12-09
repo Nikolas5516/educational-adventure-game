@@ -46,7 +46,6 @@ custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 
 [node name="Hat_Slot" type="TextureRect" parent="MarginContainer/MainHBox/DinoPanel"]
-visible = false
 z_index = 2
 layout_mode = 1
 offset_left = 197.00003
