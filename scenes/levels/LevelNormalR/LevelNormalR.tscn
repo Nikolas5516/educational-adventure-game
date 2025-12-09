@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dh450dawqg14p"]
+[gd_scene load_steps=29 format=3 uid="uid://dh450dawqg14p"]
 
 [ext_resource type="Script" uid="uid://7y2ph7f4qclo" path="res://scenes/levels/LevelNormalR/LevelNormalR.gd" id="1_8r7tv"]
 [ext_resource type="Texture2D" uid="uid://daibdetp1ahgm" path="res://assets/sprites/harta_relief_cerculete.png" id="1_ejg6g"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ccvxnf01gtrbp" path="res://assets/sprites/podisul_moldovei.png" id="15_0khnx"]
 [ext_resource type="Texture2D" uid="uid://cwsta2gdphipy" path="res://assets/sprites/podisul_dobrogei.png" id="16_eotyu"]
 [ext_resource type="Texture2D" uid="uid://c8v3agm8u81ob" path="res://assets/sprites/delta_dunarii.png" id="17_wwken"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/components/TopBar.tscn" id="18_rj1bf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fhqj"]
 size = Vector2(302, 189)
@@ -57,11 +58,18 @@ scale = Vector2(0.83268225, 0.70703125)
 texture = ExtResource("2_axuc8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(643, 363)
+position = Vector2(643, 409)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ejg6g")
 
+[node name="TopBar" parent="." instance=ExtResource("18_rj1bf")]
+offset_left = -1.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = -3.0
+
 [node name="SlotsContainer" type="Node2D" parent="."]
+position = Vector2(0, 46)
 
 [node name="Slot1" parent="SlotsContainer" instance=ExtResource("2_4fayb")]
 position = Vector2(800, 457)
@@ -130,7 +138,7 @@ correct_id = "delta_dunarii"
 [node name="PiecesContainer" type="Node2D" parent="."]
 
 [node name="Piece1" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(92, 184)
+position = Vector2(74, 183)
 scale = Vector2(0.45, 0.45)
 piece_id = "subcarpatii"
 
@@ -175,7 +183,7 @@ texture = ExtResource("8_hbo8i")
 position = Vector2(-98, 80)
 
 [node name="Piece5" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(78, 611)
+position = Vector2(1190, 563)
 scale = Vector2(0.45, 0.45)
 piece_id = "depresiune_transilvania"
 
@@ -201,7 +209,7 @@ position = Vector2(21, -79.75)
 shape = SubResource("RectangleShape2D_0khnx")
 
 [node name="Piece7" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(1222, 401)
+position = Vector2(98, 601)
 scale = Vector2(0.45, 0.45)
 piece_id = "carpatii_orientali"
 
@@ -240,7 +248,7 @@ position = Vector2(18.611107, 75.27778)
 shape = SubResource("RectangleShape2D_rj1bf")
 
 [node name="Piece10" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(966, 88)
+position = Vector2(1125, 330)
 scale = Vector2(0.45, 0.45)
 piece_id = "campia_romana"
 
@@ -253,12 +261,12 @@ position = Vector2(111.111115, -73.333336)
 shape = SubResource("RectangleShape2D_kvjjg")
 
 [node name="Piece11" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(567, -13)
+position = Vector2(48.000015, 634)
 scale = Vector2(0.45, 0.45)
 piece_id = "podisul_moldovei"
 
 [node name="Sprite2D" parent="PiecesContainer/Piece11" index="0"]
-position = Vector2(73.33333, 88.888855)
+position = Vector2(73.33333, 86.666565)
 texture = ExtResource("15_0khnx")
 
 [node name="CollisionShape2D" parent="PiecesContainer/Piece11" index="1"]
@@ -266,7 +274,7 @@ position = Vector2(75.583336, 74.44446)
 shape = SubResource("RectangleShape2D_deptc")
 
 [node name="Piece12" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(399, 84)
+position = Vector2(142, 306.00003)
 scale = Vector2(0.45, 0.45)
 piece_id = "podisul_dobrogei"
 
@@ -279,7 +287,7 @@ position = Vector2(-130.83336, -74.72224)
 shape = SubResource("RectangleShape2D_w70kt")
 
 [node name="Piece13" parent="PiecesContainer" instance=ExtResource("3_8r7tv")]
-position = Vector2(733, 704)
+position = Vector2(330, 152.00006)
 scale = Vector2(0.45, 0.45)
 piece_id = "delta_dunarii"
 
