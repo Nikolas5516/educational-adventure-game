@@ -27,4 +27,4 @@ texture = ExtResource("2_rlx2o")
 metadata/_edit_lock_ = true
 
 [node name="Judete" parent="." instance=ExtResource("3_ri6rb")]
-position = Vector2(8, 16)
+position = Vector2(5, 17)
