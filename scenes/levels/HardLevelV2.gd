@@ -1,50 +1,92 @@
 extends Control
 
-# --- REFERINȚE (Verifică numele din scenă!) ---
-@onready var lbl_minciuna = $SpeechBubble/LabelMinciuna
-@onready var options_container = $OptionsContainer
-# Aici am pus calea din codul tău. Dacă în scenă se numesc altfel (ex: Button2, Button3), modifică aici!
-@onready var btn_option1 = $OptionsContainer/Button
-@onready var btn_option2 = $OptionsContainer/Button2  # Verifică dacă e Button1 sau Button2 în scenă
-@onready var btn_option3 = $OptionsContainer/Button3  # Verifică dacă e Button2 sau Button3 în scenă
-@onready var feedback_lbl = $FeedbackLabel
+# --- REFERINȚE VIZUALE (Leagă codul de nodurile din poză) ---
+@onready var setup_panel = $SetupPanel
+@onready var btn_start_5 = $SetupPanel/Btn5
+@onready var btn_start_10 = $SetupPanel/Btn10
 
-# --- VARIABILE DE STARE ---
+@onready var speech_bubble = $SpeechBubble
+@onready var lbl_minciuna = $SpeechBubble/LabelMinciuna
+
+@onready var options_container = $OptionsContainer
+# ATENȚIE: Aici am pus numele exacte din poza ta (Button, Button1, Button2)
+@onready var btn_option1 = $OptionsContainer/Button
+@onready var btn_option2 = $OptionsContainer/Button1
+@onready var btn_option3 = $OptionsContainer/Button2
+
+@onready var feedback_lbl = $FeedbackLabel
+@onready var btn_back_to_menu = $BtnBackToMenu
+
+# --- VARIABILE DE JOC ---
 var current_challenge = {}
-var questions_solved = 0       # Câte întrebări a rezolvat utilizatorul
-const QUESTIONS_TO_WIN = 5     # Câte întrebări trebuie să rezolve ca să termine nivelul
-var can_interact = true        # Previne click-urile multiple
+var questions_solved = 0
+var questions_to_win = 5   # Se va schimba când apeși pe buton
+var can_interact = true
 
 func _ready():
-	feedback_lbl.hide()
+	# === STAREA INIȚIALĂ (Când intri în nivel) ===
 	
-	# Conectăm butoanele folosind o funcție care știe ȘI ce buton a fost apăsat
+	# 1. Ascundem elementele de joc
+	speech_bubble.visible = false
+	options_container.visible = false
+	feedback_lbl.visible = false
+	btn_back_to_menu.visible = false
+	
+	# 2. Arătăm DOAR panoul de setări
+	setup_panel.visible = true
+	
+	# --- CONECTĂM BUTOANELE ---
+	
+	# Butoanele de start (5 sau 10)
+	if not btn_start_5.pressed.is_connected(start_game):
+		btn_start_5.pressed.connect(start_game.bind(5))
+	
+	if not btn_start_10.pressed.is_connected(start_game):
+		btn_start_10.pressed.connect(start_game.bind(10))
+		
+	# Butoanele de răspuns
 	btn_option1.pressed.connect(func(): _on_answer_selected(btn_option1))
 	btn_option2.pressed.connect(func(): _on_answer_selected(btn_option2))
 	btn_option3.pressed.connect(func(): _on_answer_selected(btn_option3))
 	
-	# Începem jocul
-	load_new_challenge(7) # ID-ul nivelului Hard (Flashcards)
+	# Butonul de ieșire
+	btn_back_to_menu.pressed.connect(_on_back_to_menu_pressed)
+
+# Funcția care pornește jocul după ce ai ales numărul
+func start_game(count: int):
+	print("Jocul începe cu ", count, " întrebări.")
+	questions_to_win = count
+	questions_solved = 0
+	
+	# Ascundem setările și arătăm jocul
+	setup_panel.visible = false
+	
+	speech_bubble.visible = true
+	options_container.visible = true
+	
+	# Începem prima întrebare
+	load_new_challenge(7) # 7 este ID-ul nivelului Hard
 
 func load_new_challenge(level_id: int):
-	# 1. Resetăm starea pentru runda nouă
+	# Resetăm starea
 	can_interact = true
-	feedback_lbl.hide()
-	reset_button_styles() # Facem butoanele albe din nou
+	feedback_lbl.visible = false
+	reset_button_styles()
 	
-	# 2. Verificăm dacă am terminat nivelul
-	if questions_solved >= QUESTIONS_TO_WIN:
+	# Verificăm dacă am terminat
+	if questions_solved >= questions_to_win:
 		level_completed()
 		return
 
-	# 3. Încărcăm datele
+	# Luăm o întrebare nouă din DataManager
 	current_challenge = DataManager.get_dino_correction_challenge(level_id)
 	
 	if current_challenge.is_empty():
-		print("Eroare: Nu am putut încărca provocarea.")
+		print("Nu mai sunt întrebări!")
+		level_completed() 
 		return
 
-	# 4. Actualizăm UI-ul
+	# Punem textele pe ecran
 	lbl_minciuna.text = '"' + current_challenge["false_text"] + '"'
 	
 	btn_option1.text = current_challenge["options"][0]
@@ -52,7 +94,6 @@ func load_new_challenge(level_id: int):
 	btn_option3.text = current_challenge["options"][2]
 
 func _on_answer_selected(clicked_button: Button):
-	# Dacă interacțiunea e blocată (deja a răspuns), nu facem nimic
 	if not can_interact:
 		return
 		
@@ -60,46 +101,44 @@ func _on_answer_selected(clicked_button: Button):
 	
 	if selected_text == current_challenge["correct_text"]:
 		# --- RĂSPUNS CORECT ---
-		can_interact = false # Blocăm alte click-uri
-		
-		# Feedback Vizual
-		clicked_button.modulate = Color.GREEN # Butonul devine verde
+		can_interact = false
+		clicked_button.modulate = Color.GREEN
 		feedback_lbl.text = "Corect! Ai restabilit adevărul!"
 		feedback_lbl.modulate = Color.GREEN
-		feedback_lbl.show()
+		feedback_lbl.visible = true
 		
-		# Feedback Audio (Dacă ai adăugat sunet)
-		# $SFX_Correct.play() 
-		
-		# Logică de Joc
-		DataManager.add_score(current_challenge["points"]) # Dăm puncte
+		# Dăm puncte și avansăm
+		DataManager.add_score(current_challenge["points"])
 		questions_solved += 1
 		
-		# Așteptăm 2 secunde și trecem mai departe
+		# Așteptăm 1.5 secunde
 		await get_tree().create_timer(1.5).timeout
 		load_new_challenge(7)
 		
 	else:
 		# --- RĂSPUNS GREȘIT ---
-		clicked_button.modulate = Color.RED # Butonul devine roșu
+		clicked_button.modulate = Color.RED
 		feedback_lbl.text = "Nu e chiar așa... Mai încearcă!"
 		feedback_lbl.modulate = Color.RED
-		feedback_lbl.show()
-		# Nu blocăm 'can_interact', lăsăm jucătorul să încerce alt buton
+		feedback_lbl.visible = true
 
 func reset_button_styles():
-	# Resetăm culoarea tuturor butoanelor la alb
 	btn_option1.modulate = Color.WHITE
 	btn_option2.modulate = Color.WHITE
 	btn_option3.modulate = Color.WHITE
 
 func level_completed():
-	# Ce se întâmplă la finalul nivelului
-	lbl_minciuna.text = "Felicitări! Ai terminat toate corecțiile!"
-	options_container.hide() # Ascundem butoanele
-	feedback_lbl.text = "Scor salvat! Întoarcere la meniu..."
-	feedback_lbl.show()
+	# Ascundem întrebările
+	lbl_minciuna.text = "Felicitări! Ai terminat seria de " + str(questions_to_win) + " întrebări!"
+	options_container.visible = false 
 	
-	# Așteptăm puțin și ieșim în meniu
-	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file("res://scenes/meniuprincipal.tscn")
+	feedback_lbl.text = "Scor total salvat."
+	feedback_lbl.modulate = Color.WHITE
+	feedback_lbl.visible = true
+	
+	# Arătăm butonul de ieșire
+	btn_back_to_menu.visible = true
+
+func _on_back_to_menu_pressed():
+	DataManager.save_game()
+	get_tree().change_scene_to_file("res://meniuprincipal.tscn")

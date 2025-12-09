@@ -26,6 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_grui2")
 expand_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Dino Character" type="TextureRect" parent="."]
 layout_mode = 0
@@ -35,13 +36,43 @@ offset_right = 364.0
 offset_bottom = 770.0
 texture = ExtResource("2_ms8ou")
 flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="SetupPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 315.0
+offset_right = 930.0
+offset_bottom = 387.0
+
+[node name="Label" type="Label" parent="SetupPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cate intrebari vrei?"
+
+[node name="Btn10" type="Button" parent="SetupPanel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 152.0
+offset_right = 172.0
+offset_bottom = 199.0
+text = "10 Întrebări"
+
+[node name="Btn5" type="Button" parent="SetupPanel"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 153.0
+offset_right = 436.0
+offset_bottom = 200.0
+text = "5 Întrebări"
 
 [node name="SpeechBubble" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 170.0
-offset_top = 179.0
-offset_right = 627.0
-offset_bottom = 345.0
+offset_left = 135.0
+offset_top = 158.0
+offset_right = 592.0
+offset_bottom = 324.0
 
 [node name="LabelMinciuna" type="Label" parent="SpeechBubble"]
 layout_mode = 0
@@ -57,10 +88,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.059000004
 anchor_bottom = 0.093
-offset_left = 495.0
-offset_top = 391.0
-offset_right = 812.48
-offset_bottom = 515.761
+offset_left = 323.0
+offset_top = 441.0
+offset_right = 640.48
+offset_bottom = 565.761
 
 [node name="Button" type="Button" parent="OptionsContainer"]
 layout_mode = 2
@@ -73,16 +104,26 @@ layout_mode = 2
 
 [node name="FeedbackLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 507.0
-offset_right = 679.0
-offset_bottom = 586.0
+offset_left = 444.0
+offset_top = 549.0
+offset_right = 602.0
+offset_bottom = 628.0
 text = "Bravo!"
 label_settings = SubResource("LabelSettings_sldr6")
 
 [node name="TopBar" parent="." instance=ExtResource("4_sldr6")]
 layout_mode = 1
-offset_left = -2.0
-offset_top = 4.0
-offset_right = -2.0
-offset_bottom = 4.0
+offset_left = 0.0
+offset_top = -1.0
+offset_right = 0.0
+offset_bottom = -1.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="BtnBackToMenu" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 905.0
+offset_top = 451.0
+offset_right = 1048.0
+offset_bottom = 520.0
