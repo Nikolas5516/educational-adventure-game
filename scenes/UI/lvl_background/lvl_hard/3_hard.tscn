@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bacvfrejev3nj"]
+[gd_scene load_steps=3 format=3 uid="uid://bacvfrejev3nj"]
 
 [ext_resource type="PackedScene" uid="uid://qm2yqa8mcd5y" path="res://scenes/UI/backgrounds/Bg_lvl_greu.tscn" id="1_2oddp"]
+[ext_resource type="PackedScene" uid="uid://cwg3ofku5y2hh" path="res://scenes/levels/HardLevel/LevelHard.tscn" id="2_uidml"]
 
 [node name="3Hard" type="Control"]
 layout_mode = 3
@@ -12,3 +13,7 @@ grow_vertical = 2
 
 [node name="Bg_lvl_greu" parent="." instance=ExtResource("1_2oddp")]
 layout_mode = 1
+
+[node name="LevelHard" parent="." instance=ExtResource("2_uidml")]
+position = Vector2(-108, 124.99999)
+scale = Vector2(1.3093628, 0.8799997)

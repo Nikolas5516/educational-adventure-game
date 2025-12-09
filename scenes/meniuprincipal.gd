@@ -268,6 +268,18 @@ func update_level_locks_test():
 
 # Aceasta functie trebuie conectata la semnalul 'pressed()' al TUTUROR butoanelor de nivel
 func _on_level_button_pressed(level_index: int) -> void:
+	print(">>> _on_level_button_pressed CALLED | level_index =", level_index, " | diff =", current_difficulty)
+
+	# 0) Dacă suntem în editor (click în viewport-ul editorului), NU schimbăm scena
+	if Engine.is_editor_hint():
+		print("⚠️ Apel din editor, ignor _on_level_button_pressed.")
+		return
+
+	# 0.5) Dacă node-ul nici măcar nu e în SceneTree, nu facem nimic
+	if not is_inside_tree():
+		print("⚠️ Node-ul meniuprincipal NU e în SceneTree, ignor apelul.")
+		return
+		
 	# 1) Dacă overlay-ul DinoTextBox este încă vizibil, ignorăm click-ul pe nivel
 	if dino_text_box and dino_text_box.visible:
 		print("ℹ️ Overlay-ul DinoTextBox e activ, ignor click pe level ", level_index)
@@ -337,8 +349,8 @@ func handle_final_chest():
 		print("⚠️ Termina toate cele 5 nivele de joc inainte de a deschide cufarul!")
 		
 
-const SCENA_MENIU = "res://scenes/levels/HardLevel/LevelHard.tscn"
+#const SCENA_MENIU = "res://scenes/levels/HardLevel/LevelHard.tscn"
 
-func _play_button_pressed(): 
-	get_tree().change_scene_to_file(SCENA_MENIU)
+#func _play_button_pressed(): 
+#	get_tree().change_scene_to_file(SCENA_MENIU)
 	
