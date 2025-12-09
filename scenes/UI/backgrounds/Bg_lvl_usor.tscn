@@ -11,6 +11,7 @@ corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
 
 [node name="Bg_Lvl_usor" type="Control"]
+visibility_layer = 513
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,10 +41,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -574.0
-offset_top = -226.5
-offset_right = 575.0
-offset_bottom = 330.5
+offset_left = -565.0
+offset_top = -220.5
+offset_right = 584.0
+offset_bottom = 336.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6hj5s")

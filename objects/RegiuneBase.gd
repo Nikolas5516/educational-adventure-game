@@ -16,7 +16,6 @@ var este_mouse_over: bool = false
 # Culoarea de bază (Alb-Negru, setată prin shader)
 const COLOR_ALB_NEGRU = Color(0.3, 0.3, 0.3, 1.0) 
 # Efect de hover (o mică nuanță de galben-alb sau chenar)
-const COLOR_HOVER = Color(0.9, 0.9, 0.9, 1.0) 
 # Culoarea finală (Alb-pur), care revine la textura originală
 const COLOR_FINAL = Color.WHITE 
 
@@ -48,17 +47,15 @@ func _ready():
 func _on_mouse_entered():
 	if not este_rezolvata:
 		este_mouse_over = true
-		# Aplică efectul de hover
-		# Pentru chenar: poți folosi un 'AnimationPlayer' sau un 'CanvasModulate'
-		# Cea mai simplă metodă: modifici culoarea Sprite-ului (ca efect de strălucire)
-		sprite_regiune.modulate = COLOR_HOVER
 
 func _on_mouse_exited():
 	if not este_rezolvata:
 		este_mouse_over = false
-		# Revine la starea alb-negru
-		sprite_regiune.modulate = COLOR_ALB_NEGRU
 		
+		if sprite_regiune:
+			# Revine la starea inițială și Z Index-ul normal (0)
+			sprite_regiune.modulate = COLOR_ALB_NEGRU
+			sprite_regiune.z_index = 0
 
 # --------------------
 # 3. INTERACȚIUNE CLICK

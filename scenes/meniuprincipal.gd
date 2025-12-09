@@ -12,7 +12,7 @@ const FINAL_CHEST_INDEX: int = 6
 
 # Variabila care stocheaza nivelul maxim deblocat de jucator (pentru test, incepem cu 1)
 # ATENTIE: In jocul final, aceasta variabila trebuie incarcata dintr-un sistem de salvare!
-var unlocked_level: int = 3 
+var unlocked_level: int = 5 
 
 
 # --- DIFICULTATE & SCENE NIVELURI ---
@@ -28,7 +28,7 @@ var current_difficulty: int = DIFF_EASY
 # Harta: dificultate (index) -> (număr nivel -> scenă)
 const LEVEL_SCENES := {
 	DIFF_EASY: {
-		1: "res://scenes/UI/lvl_background/lvl_easy/1_easy.tscn",
+		1: "res://scenes/levels/EasyLevel/MainLEvel.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",

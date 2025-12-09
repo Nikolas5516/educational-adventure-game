@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://clbcwphmildl2"]
+
+[ext_resource type="PackedScene" uid="uid://d1nan8gno2brf" path="res://scenes/UI/backgrounds/Bg_lvl_usor.tscn" id="1_87gkv"]
+[ext_resource type="PackedScene" uid="uid://dyv8kinim5k01" path="res://scenes/levels/EasyLevel/LevelEasy.tscn" id="2_0id7q"]
+
+[node name="EasyLevel" type="Node2D"]
+
+[node name="Bg_Lvl_usor" parent="." instance=ExtResource("1_87gkv")]
+offset_left = -21.0
+offset_top = -8.0
+offset_right = -21.0
+offset_bottom = -8.0
+
+[node name="TextureRect" parent="Bg_Lvl_usor" index="0"]
+visibility_layer = 1048575
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 777.0
+offset_top = 668.0
+offset_right = 2313.0
+offset_bottom = 1692.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 3.1415927
+expand_mode = 0
+stretch_mode = 4
+flip_h = true
+flip_v = true
+
+[node name="TopBar" parent="Bg_Lvl_usor" index="1"]
+offset_left = -636.0
+offset_top = -319.0
+offset_right = -636.0
+offset_bottom = -319.0
+mouse_filter = 2
+
+[node name="Panel" parent="Bg_Lvl_usor" index="2"]
+offset_left = -564.0
+offset_top = -196.0
+offset_right = 585.0
+offset_bottom = 361.0
+
+[node name="LevelEasy" parent="." instance=ExtResource("2_0id7q")]
+position = Vector2(10, 16)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[editable path="Bg_Lvl_usor"]
