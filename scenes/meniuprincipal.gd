@@ -43,8 +43,8 @@ const LEVEL_SCENES := {
 	},
 	DIFF_HARD: {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
-		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",	
 		2: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",
+		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",	
 		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_hard/5_hard.tscn",
 	},
