@@ -204,32 +204,11 @@ func _open_customization_scene():
 	# if instance.has_method("force_setup"):
 	#     instance.force_setup()
 
-func _input(event):
-	# Detecteaza inceputul si sfarsitul actiunii de tragere
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				dragging = true
-				last_mouse_pos = event.position
-			else:
-				dragging = false
-				
-	# Detecteaza miscarea mouse-ului in timp ce tragi
-	if dragging and event is InputEventMouseMotion:
-		var current_pos = event.position
-		var delta = current_pos - last_mouse_pos
-		
-		scroll_map(delta)
-		
-		last_mouse_pos = current_pos
+
+	
 	
 
-func scroll_map(delta: Vector2):
-	# Butoanele se misca normal
-	level_map_node.position += delta*0.955
-	
-	# Fundalul se misca ACELASI lucru, in directie opusa
-	parallax_bg.scroll_offset += delta # Acum factorul este 1.0
+
 
 # --- LOGICA DEBLOCARE NIVELURI ---
 
@@ -350,23 +329,6 @@ func handle_final_chest():
 	else:
 		print("⚠️ Termina toate cele 5 nivele de joc inainte de a deschide cufarul!")
 		
-		# --- LIMITE SCROLLING (Ajusteaza aceste valori!) ---
-# Aceste limite definesc cat de mult poate fi miscat LevelMap
-# (in pixeli, fata de pozitia sa initiala/default)
-# Presupunem ca pozitia initiala este (0, 0) sau centrata pe harta.
-
-# Limite pe Orizontala (X)
-# MIN_X_POS: Cea mai mica valoare (miscarea maxima spre dreapta)
-const MIN_X_POS: float = -1500  
-# MAX_X_POS: Cea mai mare valoare (miscarea maxima spre stanga)
-const MAX_X_POS: float = 0      
-
-# Limite pe Verticala (Y)
-# MIN_Y_POS: Cea mai mica valoare (miscarea maxima in sus)
-const MIN_Y_POS: float = 30
-# MAX_Y_POS: Cea mai mare valoare (miscarea maxima in jos)
-const MAX_Y_POS: float = 300
-
 
 const SCENA_MENIU = "res://scenes/levels/HardLevel/LevelHard.tscn"
 
