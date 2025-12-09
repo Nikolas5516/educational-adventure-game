@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://y568rjt3p4ub"]
+[gd_scene load_steps=45 format=3 uid="uid://y568rjt3p4ub"]
 
 [ext_resource type="Script" uid="uid://dm7d7qh01iuq0" path="res://objects/piesa_puzzle.gd" id="1_r48ki"]
 [ext_resource type="Texture2D" uid="uid://dy10dhpreldhg" path="res://assets/sprites/Arges.png" id="3_ptx1g"]
@@ -42,10 +42,18 @@
 [ext_resource type="Texture2D" uid="uid://cwsdf252a5j8q" path="res://assets/sprites/Mures.png" id="41_fo1jv"]
 [ext_resource type="Texture2D" uid="uid://cdvg7n7gem5wf" path="res://assets/sprites/BistritaNasaud.png" id="42_0um3x"]
 [ext_resource type="Texture2D" uid="uid://cl1v3as4gm20c" path="res://assets/sprites/Arad.png" id="42_r48ki"]
+[ext_resource type="AudioStream" uid="uid://cv0h67ye517gc" path="res://assets/audio/607926__robinhood76__10661-bonus-correct-answer.wav" id="43_0h7vb"]
+[ext_resource type="AudioStream" uid="uid://d20dpsq65jlkh" path="res://assets/audio/483598__raclure__wrong.mp3" id="44_bmdc1"]
 
 [node name="Judete" type="Node2D"]
 position = Vector2(32, 16)
 scale = Vector2(0.52, 0.515)
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="." groups=["sunet_incorect"]]
+stream = ExtResource("44_bmdc1")
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="." groups=["sunet_corect"]]
+stream = ExtResource("43_0h7vb")
 
 [node name="Bihor" type="Area2D" parent="."]
 script = ExtResource("1_r48ki")

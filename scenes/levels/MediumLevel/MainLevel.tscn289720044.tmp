@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://nk2ko4xcjk0v"]
+[gd_scene load_steps=5 format=3 uid="uid://nk2ko4xcjk0v"]
 
-[ext_resource type="PackedScene" uid="uid://c6lcawntq0fpp" path="res://scenes/UI/backgrounds/Bg_lvl_mediu.tscn" id="1_k2pcy"]
 [ext_resource type="Shader" uid="uid://bpdhsf1nlym06" path="res://scenes/levels/MediumLevel/MainLevel.gdshader" id="2_ri6rb"]
 [ext_resource type="Texture2D" uid="uid://cmy1lvcwx8rjw" path="res://assets/sprites/harta_baza.png" id="2_rlx2o"]
 [ext_resource type="PackedScene" uid="uid://y568rjt3p4ub" path="res://scenes/levels/MediumLevel/Judete.tscn" id="3_ri6rb"]
@@ -11,13 +10,7 @@ shader_parameter/grosime = 1.0
 
 [node name="Normal Level" type="Node2D"]
 
-[node name="Camera2D2" type="Camera2D" parent="."]
-
-[node name="Bg_lvl_mediu" parent="." instance=ExtResource("1_k2pcy")]
-offset_left = -716.0
-offset_top = -307.0
-offset_right = -716.0
-offset_bottom = -307.0
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fi62q")
@@ -27,4 +20,4 @@ texture = ExtResource("2_rlx2o")
 metadata/_edit_lock_ = true
 
 [node name="Judete" parent="." instance=ExtResource("3_ri6rb")]
-position = Vector2(5, 17)
+position = Vector2(8, 16)
