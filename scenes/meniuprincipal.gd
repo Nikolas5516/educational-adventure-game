@@ -45,7 +45,7 @@ const LEVEL_SCENES := {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_hard/2_hard.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
-		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
+		4: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
 		5: "res://scenes/UI/lvl_background/lvl_hard/5_hard.tscn",
 	},
 }
@@ -94,6 +94,8 @@ var customization_scene = preload("res://scenes/Customization.tscn")  # A
 func _on_ok_button_pressed() -> void:
 	print("OK apăsat — ascund overlay-ul!")
 
+	GlobalState_dino.has_seen_intro = true
+	
 	if dino_text_box:
 		dino_text_box.visible = false
 		dino_text_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -101,17 +103,22 @@ func _on_ok_button_pressed() -> void:
 
 func _ready():
 	
-	# Căutăm butonul IntelesButton din DinoTextBox
-	if dino_text_box:
-		ok_button = dino_text_box.find_child("IntelesButton", true, false)
-		if ok_button:
-			if not ok_button.pressed.is_connected(_on_ok_button_pressed):
+	# 🦖 Dacă jucătorul a mai apăsat OK vreodată, nu mai afișăm deloc dino + text + buton
+	if GlobalState_dino.has_seen_intro:
+		if dino_text_box:
+			dino_text_box.visible = false
+			dino_text_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else:
+		# ⚙️ Conectăm OK doar prima dată
+		if dino_text_box:
+			ok_button = dino_text_box.find_child("IntelesButton", true, false)
+			if ok_button and not ok_button.pressed.is_connected(_on_ok_button_pressed):
 				ok_button.pressed.connect(_on_ok_button_pressed)
 				print("✅ IntelesButton găsit și conectat.")
-			else:
+			elif not ok_button:
 				print("⚠️ Nu am găsit 'IntelesButton' în DinoTextBox.")
-			
-	# Asigura-te ca butoanele sunt blocate/deblocate corect la inceput
+
+	# 🔒 Actualizăm starea butoanelor de nivel
 	update_level_locks()
 	
 	

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DataManager="*res://scripts/managers/data_manager.gd"
 LevelHard="*res://scenes/levels/level_hard.gd"
+GlobalState_dino="*res://scripts/GlobalState_dino.gd"
 
 [display]
 
