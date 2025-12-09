@@ -28,7 +28,7 @@ var current_difficulty: int = DIFF_EASY
 # Harta: dificultate (index) -> (număr nivel -> scenă)
 const LEVEL_SCENES := {
 	DIFF_EASY: {
-		1: "res://scenes/levels/EasyLevel/MainLEvel.tscn",
+		1: "res://scenes/levels/EasyLevel/MainLevel.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",
