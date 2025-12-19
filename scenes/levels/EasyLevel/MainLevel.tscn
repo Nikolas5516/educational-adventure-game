@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr2dmyd0a7was"]
+[gd_scene load_steps=6 format=3 uid="uid://dr2dmyd0a7was"]
 
+[ext_resource type="Script" uid="uid://ciyjc38dqexg5" path="res://scenes/levels/EasyLevel/LevelEasy.gd" id="1_0id7q"]
 [ext_resource type="PackedScene" uid="uid://d1nan8gno2brf" path="res://scenes/UI/backgrounds/Bg_lvl_usor.tscn" id="1_87gkv"]
 [ext_resource type="PackedScene" uid="uid://dyv8kinim5k01" path="res://scenes/levels/EasyLevel/LevelEasy.tscn" id="2_0id7q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hj5s"]
+bg_color = Color(0, 0, 0, 0.7372549)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="SystemFont" id="SystemFont_0id7q"]
 
 [node name="EasyLevel2" type="Node2D"]
 
@@ -44,7 +54,69 @@ offset_bottom = 361.0
 
 [node name="LevelEasy" parent="." instance=ExtResource("2_0id7q")]
 position = Vector2(10, 16)
+script = ExtResource("1_0id7q")
+
+[node name="bucovina" parent="LevelEasy/Regiuni" index="0"]
+z_index = 1
+
+[node name="SpriteRegiune" parent="LevelEasy/Regiuni/bucovina" index="0"]
+z_index = 1
+
+[node name="EcranFinal" type="CanvasLayer" parent="LevelEasy"]
+visible = false
+
+[node name="Panel" type="Panel" parent="LevelEasy/EcranFinal"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -574.5
+offset_top = -278.5
+offset_right = 574.5
+offset_bottom = 278.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6hj5s")
+
+[node name="Label" type="Label" parent="LevelEasy/EcranFinal"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.5
+offset_top = -121.0
+offset_right = 319.5
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.039215688, 0.8666667, 0.22352941, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.9019608, 1)
+theme_override_constants/line_spacing = 19
+theme_override_fonts/font = SubResource("SystemFont_0id7q")
+theme_override_font_sizes/font_size = 49
+text = "felicitări! 
+ai completat nivelul
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [editable path="Bg_Lvl_usor"]
+[editable path="LevelEasy"]
+[editable path="LevelEasy/Regiuni/bucovina"]
+[editable path="LevelEasy/Regiuni/moldova"]
+[editable path="LevelEasy/Regiuni/transilvania"]
+[editable path="LevelEasy/Regiuni/maramures"]
+[editable path="LevelEasy/Regiuni/crisana"]
+[editable path="LevelEasy/Regiuni/oltenia"]
+[editable path="LevelEasy/Regiuni/banat"]
+[editable path="LevelEasy/Regiuni/muntenia"]
+[editable path="LevelEasy/Regiuni/munteMare"]
+[editable path="LevelEasy/Regiuni/munteMediu"]
+[editable path="LevelEasy/Regiuni/munteMic"]
+[editable path="LevelEasy/Regiuni/dobrogea"]
