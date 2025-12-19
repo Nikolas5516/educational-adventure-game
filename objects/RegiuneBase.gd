@@ -1,18 +1,19 @@
 extends Area2D
 
 # --------------------
-# EXPORTURI ȘI CONSTANTE
+# EXPORTURI ȘI SEMNALE
 # --------------------
 
+# ID-ul unic al regiunii (ex: "moldova", "banat") - îl scrii în Inspector
 @export var id_regiune: String = "regiune_necunoscuta" 
 
+# Referință la Sprite-ul pe care îl colorăm la hover
 @onready var sprite_regiune: Sprite2D = $SpriteRegiune 
 
 # Semnalul care anunță Harta că s-a dat click aici
 signal regiune_activata(regiune_id: String) 
 
 var este_rezolvata: bool = false
-var este_mouse_over: bool = false
 
 # Culori pentru feedback vizual
 const COLOR_ALB_NEGRU = Color(0.3, 0.3, 0.3, 1.0) 
