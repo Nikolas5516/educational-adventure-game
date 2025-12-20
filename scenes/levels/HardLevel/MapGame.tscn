@@ -126,7 +126,7 @@ autowrap_mode = 2
 [node name="Button_W1" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Muntii Carpati - wrong option"
+text = "Muntii Carpati "
 
 [node name="Button_Timis" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2

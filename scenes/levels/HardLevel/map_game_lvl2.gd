@@ -1,23 +1,26 @@
 extends Node2D
 
 @onready var feedback_label = $TextureRect/Feedback_Label 
-const WIN_SCORE_THRESHOLD: int = 100 
+const WIN_SCORE_THRESHOLD: int = 130
 const MAIN_MENU_SCENE_PATH = "res://scenes/meniuprincipal.tscn"
 var points_this_level: int = 0 
 
 var current_selection = "" 
 const CORRECT_ANSWERS = {
-	"A": "Cluj-Napoca",
-	"B": "Bucuresti",
-	"C" : "Iasi",
-	"D": "Timisoara",
-	"E": "Podisul Dobrogei",
-	"F": "Podisul Moldovei",
-	"G": "Timis",
-	"H": "Muntii Maramuresului",
-	"I": "Mures",
-	"J": "Jiu",
-	"K": "Olt"
+	"A": "Siret",
+	"B": "Buzau",
+	"C": "Dunare",
+	"D": "Ialomita",
+	"E": "Somes",
+	"F": "Crisul Repede",
+	"G": "Crisul Negru",
+	"H": "Crisul Alb",
+	
+	"I": "Olt-Arges",
+	"J": "Tarnavelor",
+	"K": "Parang-Retezat",
+	"L": "Muntii Banatului",
+	"M": "Subcarpatii Getici"
 }
 
 func _on_map_area_clicked(viewport, event, shape_idx, area_id):

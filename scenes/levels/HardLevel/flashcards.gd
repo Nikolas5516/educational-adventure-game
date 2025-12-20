@@ -1,9 +1,11 @@
-extends LevelHard
+extends Node2D
 
 var questions: Array = []
 var current_question: Dictionary = {} 
 var current_text = ""
 var is_true_statement = true
+var points_this_level: int = 0 
+const GOAL_POINTS: int = 70
 
 func _ready():
 	load_questions_from_data_manager()
@@ -20,6 +22,15 @@ func load_questions_from_data_manager():
 		func(q): return q.get("question_type", "") == "flashcard"
 	)
 		
+func add_points_and_check_progress(amount: int):
+	points_this_level += amount
+	
+	# Check if we should unlock the map
+	if points_this_level >= GOAL_POINTS:
+		print("Level Finished succesfully!")
+		DataManager.add_score(amount)
+
+
 func show_new_card():
 	if questions.is_empty():
 		$CenterCard/CardMargin/MarginContainer/VBoxContainer/CardLabel.text = "No questions loaded!"
@@ -39,17 +50,23 @@ func show_new_card():
 	$CenterCard/CardMargin/MarginContainer/VBoxContainer/CardLabel.text = current_text
 	
 
-const MAP_SCENE_PATH = "res://scenes/levels/HardLevel/MapGame.tscn"
+const BACK_TO_MAIN = "res://scenes/meniuprincipal.tscn"
+
+func goto_scene(path: String):
+	var error = get_tree().change_scene_to_file(path)
+	if error != OK:
+		push_error("Failed to load scene: " + path)
 
 func check_answer(choice: bool):
+	
 	if choice == is_true_statement:
 		$CenterCard/CardMargin/MarginContainer/VBoxContainer/Feedback.text = "Corect!"
 		$CorrectSound.play()
-		
 		var points_to_add = current_question.get("points", 10)
-		DataManager.add_score(points_to_add)
-		if DataManager.get_score() >= LevelHard.MAP_UNLOCK_THRESHOLD:
-			LevelHard.goto_scene(MAP_SCENE_PATH)
+		add_points_and_check_progress(points_to_add)
+		
+		if points_this_level >= GOAL_POINTS:
+			goto_scene(BACK_TO_MAIN)
 			return
 		
 	else:

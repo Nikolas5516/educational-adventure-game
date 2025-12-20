@@ -336,9 +336,3 @@ func handle_final_chest():
 	else:
 		print("⚠️ Termina toate cele 5 nivele de joc inainte de a deschide cufarul!")
 		
-
-const SCENA_MENIU = "res://scenes/levels/HardLevel/LevelHard.tscn"
-
-func _play_button_pressed(): 
-	get_tree().change_scene_to_file(SCENA_MENIU)
-	
