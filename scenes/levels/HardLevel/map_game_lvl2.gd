@@ -1,20 +1,26 @@
 extends Node2D
 
 @onready var feedback_label = $TextureRect/Feedback_Label 
-
-const WIN_SCORE_THRESHOLD: int = 100 
+const WIN_SCORE_THRESHOLD: int = 130
 const MAIN_MENU_SCENE_PATH = "res://scenes/meniuprincipal.tscn"
 var points_this_level: int = 0 
 
 var current_selection = "" 
 const CORRECT_ANSWERS = {
-	"A": "Cluj-Napoca",
-	"B": "Bucuresti",
-	"C" : "Iasi",
-	"D": "Timisoara",
-	"E": "Podisul Dobrogei",
-	"F": "Podisul Moldovei",
-	"H": "Muntii Maramuresului"
+	"A": "Siret",
+	"B": "Buzau",
+	"C": "Dunare",
+	"D": "Ialomita",
+	"E": "Somes",
+	"F": "Crisul Repede",
+	"G": "Crisul Negru",
+	"H": "Crisul Alb",
+	
+	"I": "Olt-Arges",
+	"J": "Tarnavelor",
+	"K": "Parang-Retezat",
+	"L": "Muntii Banatului",
+	"M": "Subcarpatii Getici"
 }
 
 func _on_map_area_clicked(viewport, event, shape_idx, area_id):
@@ -35,7 +41,6 @@ func _on_answer_button_pressed(selected_answer_text: String):
 		display_feedback(" Correct! " + correct_answer, Color.GREEN)	
 		points_this_level += 10
 		check_win_condition()
-
 	else:
 		display_feedback(" Raspuns gresit! Raspunsul corect este: " + correct_answer, Color.RED)
 	
@@ -61,7 +66,6 @@ func display_feedback(message, color):
 	add_child(timer)
 	timer.start()
 	
-
 func goto_scene(path: String):
 	var error = get_tree().change_scene_to_file(path)
 	if error != OK:

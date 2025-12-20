@@ -126,7 +126,25 @@ autowrap_mode = 2
 [node name="Button_W1" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button W1 - wrong option no. 1 "
+
+text = "Muntii Carpati "
+
+[node name="Button_Timis" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Timis"
+
+[node name="Button_Mures" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Mures"
+
+[node name="Button_Jiu" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Jiu"
+
+[node name="Button_Olt" type="Button" parent="TextureRect/Answer_List"]
+layout_mode = 2
+text = "Raul Olt"
+
 
 [node name="Feedback_Label" type="Label" parent="TextureRect"]
 visible = false

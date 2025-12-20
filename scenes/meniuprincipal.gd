@@ -180,6 +180,7 @@ func handle_final_chest():
 		print("🎉 Felicitări! Ai deschis Cufărul Final!")
 		# Aici poți adăuga animația de deschidere sau un popup de victorie
 		
+
 		# Luăm dicționarul de scene pentru dificultatea curentă
 		#Am adaugat pentru a putea sa imi leg jocul de cufar la level Easy (Diana)
 		var diff_map = LEVEL_SCENES.get(current_difficulty, null)
@@ -223,3 +224,4 @@ func _on_hard_mode_button_pressed() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/intro.tscn")
+
