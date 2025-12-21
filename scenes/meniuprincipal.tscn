@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://c13ueo0g36oox"]
+[gd_scene load_steps=17 format=3 uid="uid://c13ueo0g36oox"]
 
 [ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
 [ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
 [ext_resource type="Texture2D" uid="uid://bh4pxu8qysu2d" path="res://assets/sprites/lvl1.png" id="3_ru4ck"]
 [ext_resource type="Texture2D" uid="uid://yh85ehma7sg1" path="res://assets/sprites/lvl2.png" id="4_r21ka"]
 [ext_resource type="Texture2D" uid="uid://b3kjv746ymob0" path="res://assets/sprites/lvl3.png" id="5_gdhvy"]
-[ext_resource type="Texture2D" uid="uid://cwdydukso0ggr" path="res://assets/sprites/cufar.png" id="6_r21ka"]
+[ext_resource type="Texture2D" uid="uid://brb6cagjmrlvy" path="res://assets/sprites/cufar.png" id="6_r21ka"]
 [ext_resource type="PackedScene" uid="uid://b4qa5upc5qico" path="res://scenes/DinoTextBox.tscn" id="9_6kjbh"]
 [ext_resource type="Texture2D" uid="uid://b7fklcwnh7ia2" path="res://assets/sprites/Gemini_Generated_Image_jztwxtjztwxtjztw-removebg-preview.png" id="10_jmxhm"]
 [ext_resource type="Texture2D" uid="uid://caxsayni05c0c" path="res://assets/sprites/Gemini_Generated_Image_puhdmjpuhdmjpuhd-removebg-preview.png" id="11_i36jf"]
@@ -20,6 +20,13 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 35.351624, 371.8108, 0, 0, 0, 0, -19.885254, 371.8108, 0, 0, 0, 0, -69.59845, 363.32202, 0, 0, 0, 0, -131.46368, 351.43762, 0, 0, 0, 0, -202.16687, 339.55328, 0, 0, 0, 0, -259.61322, 339.55328, 0, 0, 0, 0, -317.0595, 339.55328, 0, 0, 0, 0, -366.77264, 300.50464, 0, 0, 0, 0, -410.96216, 288.6203, 0, 0, 0, 0, -457.36108, 271.64264, 0, 0, 0, 0, -517.0169, 259.75824, 0, 0, 0, 0, -626.38586, 244.4784, 0, 0, 0, 0, -535.7974, 183.35876, 0, 0, 0, 0, -478.35107, 132.42578, 0, 0, 0, 0, -294.96478, -16.977661)
 }
 point_count = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdhvy"]
+bg_color = Color(0.8235294, 0.89411765, 0.5294118, 0.7058824)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Meniuprincipal" type="Control"]
 layout_mode = 3
@@ -159,4 +166,21 @@ offset_right = 417.0
 offset_bottom = 717.0
 texture = ExtResource("14_gdhvy")
 
+[node name="ModSelectat" type="Label" parent="."]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 296.0
+offset_right = 1170.0
+offset_bottom = 331.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_gdhvy")
+text = "MOD SELECTAT: EASY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TopBar_HUD/EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/MediumModeButton" to="." method="_on_medium_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/HardModeButton" to="." method="_on_hard_mode_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/CustomizeButton" to="." method="_on_customize_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/SettingsButton" to="." method="_on_settings_button_pressed"]
