@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtt5bs7w17hdm" path="res://assets/sprites/Gemini_Generated_Image_wblzccwblzccwblz-removebg-preview.png" id="13_swdcf"]
 [ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="14_gdhvy"]
 [ext_resource type="Texture2D" uid="uid://dfcq3f2e4u2pd" path="res://assets/sprites/Gemini_Generated_Image_kj6l0ikj6l0ikj6l-removebg-preview.png" id="14_l6dl7"]
+[ext_resource type="Texture2D" uid="uid://bpf58cqscqbfo" path="res://assets/sprites/chenarTextMod.png" id="15_jmxhm"]
 [ext_resource type="Texture2D" uid="uid://dvykr522nj7ih" path="res://assets/sprites/Gemini_Generated_Image_my27zvmy27zvmy27-removebg-preview.png" id="15_mhfbr"]
 
 [sub_resource type="Curve2D" id="Curve2D_a62jb"]
@@ -20,13 +21,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 35.351624, 371.8108, 0, 0, 0, 0, -19.885254, 371.8108, 0, 0, 0, 0, -69.59845, 363.32202, 0, 0, 0, 0, -131.46368, 351.43762, 0, 0, 0, 0, -202.16687, 339.55328, 0, 0, 0, 0, -259.61322, 339.55328, 0, 0, 0, 0, -317.0595, 339.55328, 0, 0, 0, 0, -366.77264, 300.50464, 0, 0, 0, 0, -410.96216, 288.6203, 0, 0, 0, 0, -457.36108, 271.64264, 0, 0, 0, 0, -517.0169, 259.75824, 0, 0, 0, 0, -626.38586, 244.4784, 0, 0, 0, 0, -535.7974, 183.35876, 0, 0, 0, 0, -478.35107, 132.42578, 0, 0, 0, 0, -294.96478, -16.977661)
 }
 point_count = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdhvy"]
-bg_color = Color(0.8235294, 0.89411765, 0.5294118, 0.7058824)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="Meniuprincipal" type="Control"]
 layout_mode = 3
@@ -165,19 +159,29 @@ offset_top = 217.0
 offset_right = 417.0
 offset_bottom = 717.0
 texture = ExtResource("14_gdhvy")
+metadata/_edit_lock_ = true
+
+[node name="chenarMod" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 170.0
+offset_right = 1402.6262
+offset_bottom = 670.0
+scale = Vector2(0.68092936, 0.45813337)
+texture = ExtResource("15_jmxhm")
+metadata/_edit_lock_ = true
 
 [node name="ModSelectat" type="Label" parent="."]
 layout_mode = 0
-offset_left = 941.0
-offset_top = 296.0
-offset_right = 1170.0
-offset_bottom = 331.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_gdhvy")
+offset_left = 928.0
+offset_top = 276.0
+offset_right = 1184.0
+offset_bottom = 311.0
+theme_override_font_sizes/font_size = 20
 text = "MOD SELECTAT: EASY"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="TopBar_HUD/EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/MediumModeButton" to="." method="_on_medium_mode_button_pressed"]
