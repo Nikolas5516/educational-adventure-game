@@ -20,22 +20,26 @@ const DIFF_HARD := 2
 
 var current_difficulty: int = DIFF_EASY
 
+
 # Harta actualizată la 3 niveluri per dificultate
 const LEVEL_SCENES := {
 	DIFF_EASY: {
 		1: "res://scenes/levels/EasyLevel/MainLevel.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
+		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",
 	},
 	DIFF_MEDIUM: {
 		1: "res://scenes/levels/LevelNormalR/LevelNormalR.tscn",
 		2: "res://scenes/levels/MediumLevel/MainLevel.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_mediu/3_mediu.tscn",
+		4: "res://scenes/UI/lvl_background/lvl_mediu/4_mediu.tscn",
 	},
 	DIFF_HARD: {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
 		2: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
+		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
 	},
 }
 
@@ -48,7 +52,7 @@ var settings_popup_scene = preload("res://scenes/SettingsPopup.tscn")
 @onready var parallax_bg = get_node("ParallaxBackground")
 @onready var path_node = get_node("LevelMap/Path2D")
 @onready var customize_button = get_node("TopBar_HUD/CustomizeButton")
-
+@onready var label_mod = $ModSelectat
 
 # AICI: Am redus array-ul la 4 butoane (3 Lvl + 1 Cufăr)
 # Asigură-te că numele nodurilor din Godot corespund (lvl1, lvl2, lvl3, lvl4)
@@ -65,25 +69,27 @@ var ok_button: TextureButton = null
 # --- FUNCȚII DE BAZĂ ---
 
 func _ready():
-	# Initializare Dino Dialog
+	
+	# 🦖 Dacă jucătorul a mai apăsat OK vreodată, nu mai afișăm deloc dino + text + buton
 	if GlobalState_dino.has_seen_intro:
 		if dino_text_box:
 			dino_text_box.visible = false
 			dino_text_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
+		# ⚙ Conectăm OK doar prima dată
 		if dino_text_box:
-			ok_button = dino_text_box.find_child("IntelesButton", true, false)
+			ok_button = dino_text_box.find_child("okButton", true, false)
 			if ok_button and not ok_button.pressed.is_connected(_on_ok_button_pressed):
 				ok_button.pressed.connect(_on_ok_button_pressed)
-
-	# Conectare butoane interfață
+				print("✅ IntelesButton găsit și conectat.")
+			elif not ok_button:
+				print("⚠ Nu am găsit 'IntelesButton' în DinoTextBox.")
 	
-	if customize_button:
-		customize_button.pressed.connect(_on_customize_button_pressed)
-	if settings_button:
-		settings_button.pressed.connect(_on_settings_button_pressed)
-
-	# Actualizăm lacătele
+	
+		
+	
+	
+	# 🔒 Actualizăm starea butoanelor de nivel
 	update_level_locks()
 
 func _on_ok_button_pressed() -> void:
@@ -91,6 +97,7 @@ func _on_ok_button_pressed() -> void:
 	if dino_text_box:
 		dino_text_box.visible = false
 		dino_text_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		
 
 func _on_mode_selected(index: int) -> void:
 	current_difficulty = index
@@ -153,3 +160,18 @@ func _on_customize_button_pressed():
 	var customization_scene = preload("res://scenes/Customization.tscn")
 	var instance = customization_scene.instantiate()
 	get_tree().current_scene.add_child(instance)
+
+
+func _on_easy_mode_button_pressed() -> void:
+	current_difficulty=0
+	label_mod.text="MOD SELECTAT: EASY"
+
+func _on_medium_mode_button_pressed() -> void:
+	current_difficulty=1
+	label_mod.text="MOD SELECTAT: MEDIUM"
+
+
+func _on_hard_mode_button_pressed() -> void:
+	current_difficulty=2
+	label_mod.text="MOD SELECTAT: HARD"
+	

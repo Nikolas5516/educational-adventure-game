@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://c13ueo0g36oox"]
+[gd_scene load_steps=17 format=3 uid="uid://c13ueo0g36oox"]
 
 [ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
 [ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
 [ext_resource type="Texture2D" uid="uid://bh4pxu8qysu2d" path="res://assets/sprites/lvl1.png" id="3_ru4ck"]
 [ext_resource type="Texture2D" uid="uid://yh85ehma7sg1" path="res://assets/sprites/lvl2.png" id="4_r21ka"]
 [ext_resource type="Texture2D" uid="uid://b3kjv746ymob0" path="res://assets/sprites/lvl3.png" id="5_gdhvy"]
-[ext_resource type="Texture2D" uid="uid://cwdydukso0ggr" path="res://assets/sprites/cufar.png" id="6_r21ka"]
+[ext_resource type="Texture2D" uid="uid://brb6cagjmrlvy" path="res://assets/sprites/cufar.png" id="6_r21ka"]
 [ext_resource type="PackedScene" uid="uid://b4qa5upc5qico" path="res://scenes/DinoTextBox.tscn" id="9_6kjbh"]
 [ext_resource type="Texture2D" uid="uid://b7fklcwnh7ia2" path="res://assets/sprites/Gemini_Generated_Image_jztwxtjztwxtjztw-removebg-preview.png" id="10_jmxhm"]
 [ext_resource type="Texture2D" uid="uid://caxsayni05c0c" path="res://assets/sprites/Gemini_Generated_Image_puhdmjpuhdmjpuhd-removebg-preview.png" id="11_i36jf"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtt5bs7w17hdm" path="res://assets/sprites/Gemini_Generated_Image_wblzccwblzccwblz-removebg-preview.png" id="13_swdcf"]
 [ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="14_gdhvy"]
 [ext_resource type="Texture2D" uid="uid://dfcq3f2e4u2pd" path="res://assets/sprites/Gemini_Generated_Image_kj6l0ikj6l0ikj6l-removebg-preview.png" id="14_l6dl7"]
+[ext_resource type="Texture2D" uid="uid://bpf58cqscqbfo" path="res://assets/sprites/chenarTextMod.png" id="15_jmxhm"]
 [ext_resource type="Texture2D" uid="uid://dvykr522nj7ih" path="res://assets/sprites/Gemini_Generated_Image_my27zvmy27zvmy27-removebg-preview.png" id="15_mhfbr"]
 
 [sub_resource type="Curve2D" id="Curve2D_a62jb"]
@@ -158,5 +159,32 @@ offset_top = 217.0
 offset_right = 417.0
 offset_bottom = 717.0
 texture = ExtResource("14_gdhvy")
+metadata/_edit_lock_ = true
 
+[node name="chenarMod" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 170.0
+offset_right = 1402.6262
+offset_bottom = 670.0
+scale = Vector2(0.68092936, 0.45813337)
+texture = ExtResource("15_jmxhm")
+metadata/_edit_lock_ = true
+
+[node name="ModSelectat" type="Label" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 276.0
+offset_right = 1184.0
+offset_bottom = 311.0
+theme_override_font_sizes/font_size = 20
+text = "MOD SELECTAT: EASY"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="TopBar_HUD/EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/MediumModeButton" to="." method="_on_medium_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/HardModeButton" to="." method="_on_hard_mode_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/CustomizeButton" to="." method="_on_customize_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/SettingsButton" to="." method="_on_settings_button_pressed"]
