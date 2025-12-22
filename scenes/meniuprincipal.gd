@@ -25,9 +25,9 @@ var current_difficulty: int = DIFF_EASY
 const LEVEL_SCENES := {
 	DIFF_EASY: {
 		1: "res://scenes/levels/EasyLevel/MainLevel.tscn",
-		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
+		2: "res://scenes/levels/lvl_background/lvl_easy/2_easy.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
-		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",
+		4: "res://scenes/levels/EasyLevel/SortingImagesGame.tscn",
 	},
 	DIFF_MEDIUM: {
 		1: "res://scenes/levels/LevelNormalR/LevelNormalR.tscn",
@@ -144,7 +144,11 @@ func handle_final_chest():
 	# Cufărul se deschide doar dacă ai terminat nivelul 3 (adică unlocked_level >= 4)
 	if unlocked_level >= FINAL_CHEST_INDEX:
 		print("🎉 Felicitări! Ai deschis Cufărul Final!")
-		# Aici poți adăuga animația de deschidere sau un popup de victorie
+		var diff_map = LEVEL_SCENES.get(current_difficulty, null)
+		if diff_map and diff_map.has(FINAL_CHEST_INDEX):
+			var scene_path: String = diff_map[FINAL_CHEST_INDEX]
+			get_tree().change_scene_to_file(scene_path)
+			# Aici poți adăuga animația de deschidere sau un popup de victorie
 	else:
 		print("⚠️ Trebuie să termini cele 3 nivele pentru cufăr!")
 

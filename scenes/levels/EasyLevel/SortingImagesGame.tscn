@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dytggrgp421of"]
+[gd_scene load_steps=15 format=3 uid="uid://dytggrgp421of"]
 
 [ext_resource type="Texture2D" uid="uid://cerugd04lp7ln" path="res://assets/sprites/lvl_usor.png" id="1_af4w0"]
 [ext_resource type="Script" uid="uid://bgxaid1x4hvk1" path="res://scenes/levels/EasyLevel/SortingImagesGame.gd" id="1_g7vwg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="7_0if1b"]
 [ext_resource type="Texture2D" uid="uid://b2f0r7chkkmjq" path="res://scenes/objects/48a66322-a92a-41b9-acf1-d76ed1ef1244_removalai_preview.png" id="7_e3ec0"]
 [ext_resource type="Texture2D" uid="uid://bw8kwlhhhnjrf" path="res://assets/sprites/home_.png" id="8_0if1b"]
+[ext_resource type="Texture2D" uid="uid://2ppjljsat3nf" path="res://scenes/objects/70d7a549-4a34-48ef-bdc3-f2df39e24f06_removalai_preview.png" id="9_e3ec0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7vwg"]
 bg_color = Color(0, 0, 0, 0.7607843)
@@ -92,6 +93,7 @@ offset_right = -1.0
 offset_bottom = -3.0
 
 [node name="Munte" type="TextureButton" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -119,6 +121,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xbupf")
 text = "MUNTE"
 
 [node name="Campie" type="TextureButton" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -194,6 +197,51 @@ texture_pressed = ExtResource("8_0if1b")
 texture_hover = ExtResource("8_0if1b")
 stretch_mode = 0
 
+[node name="InstructionsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
+layout_mode = 0
+offset_left = -137.0
+offset_top = -101.5
+offset_right = 255.0
+offset_bottom = 77.5
+text = "Salut! Ajută-l pe Dino să sorteze imaginile. 
+Dacă vezi ceva specific muntelui,
+ apasă butonul MUNTE. Dacă vezi ceva ce aparține 
+câmpiei, apasă CÂMPIE.
+ Ai nevoie de 5 răspunsuri corecte pentru 
+a câștiga! 
+Spor micule explorator!"
+horizontal_alignment = 1
+
+[node name="StartButton" type="TextureButton" parent="InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -18.5
+offset_right = 159.0
+offset_bottom = 181.5
+grow_vertical = 0
+texture_normal = ExtResource("9_e3ec0")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_khxln")
+
 [connection signal="pressed" from="Munte" to="." method="_on_munte_pressed"]
 [connection signal="pressed" from="Campie" to="." method="_on_campie_pressed"]
 [connection signal="pressed" from="VictoryPanel/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="InstructionsPanel/StartButton" to="." method="_on_start_button_pressed"]

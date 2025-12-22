@@ -31,12 +31,28 @@ var game_data = [
 	{"path": "res://assets/comparingImages/porumb(1).jpeg", "category": "CAMPIE"}
 ]
 
+@onready var instructions_panel = $InstructionsPanel # Referință nouă
+
 func _ready():
-	game_data.shuffle() # Amestecă imaginile la fiecare pornire
+	# Oprim logica de început până la apăsarea butonului
+	instructions_panel.visible = true
+	central_image.visible = false # Nu arătăm prima imagine încă
+	left_button.disabled = true  # Dezactivăm butoanele de joc
+	right_button.disabled = true
+
+# Funcția care va porni efectiv jocul
+func _on_start_button_pressed():
+	instructions_panel.visible = false
+	left_button.visible = true
+	right_button.visible = true
+	central_image.visible = true
+	left_button.disabled = false
+	right_button.disabled = false
+	game_data.shuffle() 
 	show_next_image()
-#func load_random_item():
-	#current_item = items.pick_random()
-	#center_image.texture = current_item.texture
+	game_data.shuffle()
+	show_next_image()
+	
 func show_next_image():
 	if current_index < game_data.size():
 		var current_item = game_data[current_index]
