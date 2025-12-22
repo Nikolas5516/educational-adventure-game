@@ -1,0 +1,199 @@
+[gd_scene load_steps=14 format=3 uid="uid://dytggrgp421of"]
+
+[ext_resource type="Texture2D" uid="uid://cerugd04lp7ln" path="res://assets/sprites/lvl_usor.png" id="1_af4w0"]
+[ext_resource type="Script" uid="uid://bgxaid1x4hvk1" path="res://scenes/levels/EasyLevel/SortingImagesGame.gd" id="1_g7vwg"]
+[ext_resource type="Script" uid="uid://deq6a81j34lrr" path="res://scenes/UI/backgrounds/components/Top_bar.gd" id="1_khxln"]
+[ext_resource type="Texture2D" uid="uid://bghqy7ovog7rt" path="res://scenes/objects/7931853b-3117-44e2-af86-d9292e09bbaa_removalai_preview.png" id="3_g7vwg"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="5_7i0fy"]
+[ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="7_0if1b"]
+[ext_resource type="Texture2D" uid="uid://b2f0r7chkkmjq" path="res://scenes/objects/48a66322-a92a-41b9-acf1-d76ed1ef1244_removalai_preview.png" id="7_e3ec0"]
+[ext_resource type="Texture2D" uid="uid://bw8kwlhhhnjrf" path="res://assets/sprites/home_.png" id="8_0if1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7vwg"]
+bg_color = Color(0, 0, 0, 0.7607843)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g7vwg"]
+light_mode = 1
+
+[sub_resource type="FontVariation" id="FontVariation_mf2he"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbupf"]
+bg_color = Color(0.35830566, 0.654214, 0.69309294, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7vwg"]
+font_size = 60
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SortingImagesGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g7vwg")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_af4w0")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -551.0
+offset_top = -241.5
+offset_right = 575.0
+offset_bottom = 329.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g7vwg")
+
+[node name="CentralImage" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_g7vwg")
+layout_mode = 0
+offset_left = 461.0
+offset_top = 141.0
+offset_right = 861.0
+offset_bottom = 541.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dino Character" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -136.0
+offset_top = 270.0
+offset_right = 364.0
+offset_bottom = 770.0
+texture = ExtResource("7_0if1b")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="TopBar" parent="." instance=ExtResource("5_7i0fy")]
+layout_mode = 1
+offset_left = -1.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = -3.0
+
+[node name="Munte" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 302.0
+offset_top = -257.0
+offset_right = 502.0
+offset_bottom = -57.0
+grow_vertical = 0
+texture_normal = ExtResource("3_g7vwg")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_khxln")
+
+[node name="MUNTE" type="Label" parent="Munte"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 66.0
+offset_top = 186.0
+offset_right = 145.0
+offset_bottom = 217.0
+theme_override_fonts/font = SubResource("FontVariation_mf2he")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbupf")
+text = "MUNTE"
+
+[node name="Campie" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 820.0
+offset_top = -258.0
+offset_right = 1020.0
+offset_bottom = -58.0
+grow_vertical = 0
+texture_normal = ExtResource("7_e3ec0")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_khxln")
+
+[node name="CAMPIE" type="Label" parent="Campie"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 66.0
+offset_top = 186.0
+offset_right = 145.0
+offset_bottom = 217.0
+theme_override_fonts/font = SubResource("FontVariation_mf2he")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbupf")
+text = "CÂMPIE"
+
+[node name="FeedbackLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.016
+anchor_bottom = 0.016
+offset_left = 567.0
+offset_top = 550.0
+offset_right = 700.52
+offset_bottom = 599.432
+label_settings = SubResource("LabelSettings_g7vwg")
+
+[node name="VictoryPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 442.0
+offset_top = 220.0
+offset_right = 814.0
+offset_bottom = 471.0
+
+[node name="VictoryLabel" type="Label" parent="VictoryPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 34.0
+offset_right = 348.0
+offset_bottom = 165.0
+text = "Felicitări! 
+Ai reușit să potrivești 5 imagini corecte! 
+Mergi la pagina principală pentru a continua
+ aventura!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HomeButton" type="TextureButton" parent="VictoryPanel"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -239.0
+offset_top = 149.0
+offset_right = 785.0
+offset_bottom = 1173.0
+grow_horizontal = 0
+scale = Vector2(0.100612596, 0.104000434)
+texture_normal = ExtResource("8_0if1b")
+texture_pressed = ExtResource("8_0if1b")
+texture_hover = ExtResource("8_0if1b")
+stretch_mode = 0
+
+[connection signal="pressed" from="Munte" to="." method="_on_munte_pressed"]
+[connection signal="pressed" from="Campie" to="." method="_on_campie_pressed"]
+[connection signal="pressed" from="VictoryPanel/HomeButton" to="." method="_on_home_button_pressed"]
