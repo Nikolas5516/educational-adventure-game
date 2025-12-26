@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c13ueo0g36oox"]
+[gd_scene load_steps=18 format=3 uid="uid://c13ueo0g36oox"]
 
 [ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
 [ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dfcq3f2e4u2pd" path="res://assets/sprites/Gemini_Generated_Image_kj6l0ikj6l0ikj6l-removebg-preview.png" id="14_l6dl7"]
 [ext_resource type="Texture2D" uid="uid://bpf58cqscqbfo" path="res://assets/sprites/chenarTextMod.png" id="15_jmxhm"]
 [ext_resource type="Texture2D" uid="uid://dvykr522nj7ih" path="res://assets/sprites/Gemini_Generated_Image_my27zvmy27zvmy27-removebg-preview.png" id="15_mhfbr"]
+[ext_resource type="Texture2D" uid="uid://qc2w7ruexdsv" path="res://assets/sprites/Evil_Dino/dino_la_inchisoare.png" id="16_i36jf"]
 
 [sub_resource type="Curve2D" id="Curve2D_a62jb"]
 _data = {
@@ -182,6 +183,16 @@ text = "MOD SELECTAT: EASY"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
+
+[node name="Dino_inchis" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 127.0
+offset_right = 1030.0
+offset_bottom = 1151.0
+scale = Vector2(0.13756554, 0.13155861)
+texture = ExtResource("16_i36jf")
 
 [connection signal="pressed" from="TopBar_HUD/EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/MediumModeButton" to="." method="_on_medium_mode_button_pressed"]

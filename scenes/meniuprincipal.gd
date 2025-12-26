@@ -39,7 +39,7 @@ const LEVEL_SCENES := {
 		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
 		2: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
-		4: "res://scenes/UI/lvl_background/lvl_hard/4_hard.tscn",
+		4: "res://scenes/UI/Evil_Dino/Start_menu.tscn",
 	},
 }
 
@@ -53,6 +53,7 @@ const LEVEL_SCENES := {
 # Poti obtine calea (path) dand click dreapta pe nod in panoul Scena -> Copy Node Path.
 
 
+@onready var trophy_icon: TextureRect = $Dino_inchis  # ajustează path-ul dacă e altul
 
 @onready var settings_button = get_node("TopBar_HUD/SettingsButton")  
 
@@ -75,6 +76,15 @@ var settings_popup_scene = preload("res://scenes/SettingsPopup.tscn")
 
 @onready var dino_text_box: Control = get_node("DinoTextBox")
 var ok_button: TextureButton = null
+
+#Debug pentru trofeu evil_dino (apasa pe tasta Q)
+func _input(event):
+	if event.is_action_pressed("ui_debug_reset"):
+		GlobalState_dino.reset_trophy()
+		update_trophy_icon()
+		print("🔄 Trofeu resetat prin debug!")
+
+
 
 # --- FUNCȚII DE BAZĂ ---
 
@@ -101,6 +111,16 @@ func _ready():
 	
 	# 🔒 Actualizăm starea butoanelor de nivel
 	update_level_locks()
+	update_trophy_icon() 
+	
+func update_trophy_icon() -> void:
+	if GlobalState_dino.trophy_unlocked:
+		trophy_icon.visible = true
+		print("🏆 Trofeul este deblocat, afisez iconul.")
+	else:
+		trophy_icon.visible = false
+		print("❌ Trofeul NU e deblocat, ascund iconul.")
+
 
 func _on_ok_button_pressed() -> void:
 	GlobalState_dino.has_seen_intro = true
@@ -155,6 +175,14 @@ func handle_final_chest():
 	if unlocked_level >= FINAL_CHEST_INDEX:
 		print("🎉 Felicitări! Ai deschis Cufărul Final!")
 		# Aici poți adăuga animația de deschidere sau un popup de victorie
+			# Luăm dicționarul de scene pentru dificultatea curentă
+		var diff_map = LEVEL_SCENES.get(current_difficulty, null)
+		if diff_map and diff_map.has(FINAL_CHEST_INDEX):
+			var chest_scene_path: String = diff_map[FINAL_CHEST_INDEX]
+			print("🔁 Incarc scena de cufar pentru dificultatea curenta:", chest_scene_path)
+			get_tree().change_scene_to_file(chest_scene_path)
+		else:
+			print("⚠️ Nu am găsit scena pentru cufăr în LEVEL_SCENES pentru dificultatea curentă!")
 	else:
 		print("⚠️ Trebuie să termini cele 3 nivele pentru cufăr!")
 

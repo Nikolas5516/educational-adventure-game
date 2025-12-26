@@ -113,6 +113,9 @@ func _on_answer_result(is_correct: bool) -> void:
 	
 		# 3) verifică final de joc
 	if correct_count >= target_correct:
+		GlobalState_dino.trophy_unlocked = true
+		GlobalState_dino.save_data()
+		print("🏆 Trophy unlocked!")
 		get_tree().change_scene_to_packed(win_scene)
 		return
 
