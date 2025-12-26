@@ -1,0 +1,104 @@
+{
+  "questions": [
+	{
+
+	  "text": "Din care judet izvoraste raul care formeaza granita dintre Romania si Ungaria?",
+	  "answer_county": "HR",
+	},
+	{
+
+	  "text": "Care este judetul in care se afla punctul de varsare al raului care formeaza granita dintre Romania si Republica Moldova?",
+	  "answer_county": "GL",
+	},
+	{
+
+	  "text": "In care judet se inregistreaza cele mai ridicate temperaturi din Romania?",
+	  "answer_county": "TL",
+	},
+	{
+
+	  "text": "Care judet din Romania este afectat de brizele maritime?",
+	  "answer_county": "CT",
+	},
+	{
+
+	  "text": "Care dintre vecinii judetului Maramures are campia ca forma de relief predominanta?",
+	  "answer_county": "SM",
+	},
+		{
+
+	  "text": "Care este vecinul judetului Bacau in care rocile de constructie sunt resursa principala a subsolului?",
+	  "answer_county": "NT",
+	},
+		{
+
+	  "text": "Care este vecinul judetului Hunedoara in care petrolul este o resursa importanta a subsolului?",
+	  "answer_county": "TM",
+	},
+		{
+
+	  "text": "Care judet din Podisul Getic are carbunele ca resursa principala a subsolului?",
+	  "answer_county": "GJ",
+	},
+		{
+
+	  "text": "In ce judet se afla orasul in care Dunarea se varsa in Marea Neagra?",
+	  "answer_county": "TL",
+	},
+		{
+
+	  "text": "Care este judetul din Podisul Transilvaniei, in care exista aeroport, si este invecinat cu judetul Salaj?",
+	  "answer_county": "CJ",
+	},
+			{
+
+	  "text": "Care dintre vecinii judetului Mehedinti are cele mai ridicate temperaturi medii anuale? Indiciu: Ce forma de relief are cele mai mari temperaturi?",
+	  "answer_county": "DJ",
+	},
+		{
+
+	  "text": "In ce judet se varsa raul Bistrita ca afluent in Siret?",
+	  "answer_county": "BC",
+	},
+		{
+
+	  "text": "Care este cel mai nordic judet din Romania, vecin cu Carpatii Orientali?",
+	  "answer_county": "BT",
+	},
+		{
+
+	  "text": "In care judet se afla cea mai mare depresiune din Carpatii Romanesti ?",
+	  "answer_county": "BV",
+	},
+		{
+
+	  "text": "Care judet are pe teritoriul sau atat Carpati Orientalu, cat si Carpati Meridionali?",
+	  "answer_county": "BV",
+	},
+		{
+
+	  "text": "In care judet se afla cel mai inalt varf din Romania?",
+	  "answer_county": "AG",
+	},
+		{
+
+	  "text": "Care este judetul din cea mai joasa grupa a Carpatilor, aflat cel mai la sud?",
+	  "answer_county": "CS",
+	},
+		{
+
+	  "text": "Care este judetul aflat in Carpatii Occidentali care este traversat de Dunare?",
+	  "answer_county": "CS",
+	},
+		{
+
+	  "text": "In care judet izvoraste raul care traverseaza atat Carpatii Occidentali, cat si Carpatii Orientali?",
+	  "answer_county": "HR",
+	},
+		{
+
+	  "text": "Ce judet are acelasi nume cu cea mai mica unitate geografica din Romania? Indiciu: Este un podis care seamana cu muntii prin modul de formare",
+	  "answer_county": "MH",
+	}
+  ]
+}

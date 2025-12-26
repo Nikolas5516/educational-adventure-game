@@ -45,7 +45,17 @@ const LEVEL_SCENES := {
 
 # --- REFERINȚE NODURI ---
 
-@onready var settings_button = get_node("TopBar_HUD/SettingsButton")
+
+
+# --- REFERINȚE NODURI ȘI SCROLLING ---
+
+# ATENTIE: Ajusteaza path-urile nodurilor de mai jos daca sunt diferite!
+# Poti obtine calea (path) dand click dreapta pe nod in panoul Scena -> Copy Node Path.
+
+
+
+@onready var settings_button = get_node("TopBar_HUD/SettingsButton")  
+
 var settings_popup_scene = preload("res://scenes/SettingsPopup.tscn")
 
 @onready var level_map_node = get_node("LevelMap")
