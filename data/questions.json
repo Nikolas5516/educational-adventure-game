@@ -1,18 +1,5 @@
 [
   {
-	"id": 1,
-	"level_id": 1,
-	"question_type": "multiple_choice",
-	"question_text": "Care este capitala României?",
-	"option_a": "București",
-	"option_b": "Cluj-Napoca",
-	"option_c": "Iași",
-	"option_d": "Timișoara",
-	"correct_option": "A",
-	"attempts_allowed": 3,
-	"points": 10
-  },
-  {
 	"id": 7,
 	"level_id": 7,
 	"question_type": "flashcard",
