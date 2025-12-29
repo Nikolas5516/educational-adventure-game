@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ccvxnf01gtrbp" path="res://assets/sprites/podisul_moldovei.png" id="15_0khnx"]
 [ext_resource type="Texture2D" uid="uid://cwsta2gdphipy" path="res://assets/sprites/podisul_dobrogei.png" id="16_eotyu"]
 [ext_resource type="Texture2D" uid="uid://c8v3agm8u81ob" path="res://assets/sprites/delta_dunarii.png" id="17_wwken"]
-[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/components/TopBar.tscn" id="18_rj1bf"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="18_rj1bf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fhqj"]
 size = Vector2(302, 189)
