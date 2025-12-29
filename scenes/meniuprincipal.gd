@@ -26,7 +26,7 @@ const LEVEL_SCENES := {
 	DIFF_EASY: {
 		1: "res://scenes/levels/EasyLevel/MainLevel.tscn",
 		2: "res://scenes/UI/lvl_background/lvl_easy/2_easy.tscn",
-		3: "res://scenes/UI/lvl_background/lvl_easy/3_easy.tscn",
+		3: "res://scenes/levels/EasyLevel3/EasyLevel3.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_easy/4_easy.tscn",
 	},
 	DIFF_MEDIUM: {

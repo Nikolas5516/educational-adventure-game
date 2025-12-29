@@ -28,7 +28,7 @@ func _on_piece_dropped(piece):
 					break
 	
 	if not found_correct_slot:
-		pass
+		piece.position = piece.original_position
 
 func snap_piece_to_slot(piece, slot):
 	# 1. Mutăm piesa vizual fix peste slot
