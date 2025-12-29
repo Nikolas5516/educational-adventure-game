@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://boxskehwsfqk6"]
+
+[ext_resource type="Texture2D" uid="uid://fk2x45xwdu8u" path="res://assets/sprites/Alba.png" id="2_b7cpo"]
+
+[sub_resource type="GDScript" id="GDScript_ujhkf"]
+script/source = "extends Area2D
+
+@export var county_id: String = \"AB\"
+@onready var fill := $fill
+
+func _ready() -> void:
+	input_pickable = true
+	fill.visible = false
+
+func _input_event(viewport, event, shape_idx) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print(\"CLICK pe: \", county_id)
+		
+"
+
+[node name="Country" type="Area2D"]
+script = SubResource("GDScript_ujhkf")
+
+[node name="alba" type="Sprite2D" parent="."]
+position = Vector2(271, -178)
+texture = ExtResource("2_b7cpo")
+centered = false
+
+[node name="hitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, -1)
+polygon = PackedVector2Array(639, 240, 677, 248, 707, 246, 731, 265, 754, 256, 771, 264, 782, 279, 796, 283, 790, 296, 773, 311, 742, 333, 741, 350, 727, 358, 720, 375, 717, 388, 721, 407, 703, 390, 700, 363, 694, 339, 677, 315, 665, 290, 652, 269, 624, 255, 622, 238)
+
+[node name="fill" type="Polygon2D" parent="."]
+color = Color(0, 0.85490197, 0.2784314, 0.3529412)
+polygon = PackedVector2Array(639, 240, 677, 248, 707, 246, 731, 265, 754, 256, 771, 264, 782, 279, 796, 283, 790, 296, 773, 311, 742, 333, 741, 350, 727, 358, 720, 375, 717, 388, 721, 407, 703, 390, 700, 363, 694, 339, 677, 315, 665, 290, 652, 269, 624, 255, 622, 238)

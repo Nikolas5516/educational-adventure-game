@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://clfli6limxt4w"]
+
+[ext_resource type="Script" uid="uid://d4ax5pkt384yr" path="res://scenes/UI/Evil_Dino/evil_dino_success.gd" id="1_ynxme"]
+[ext_resource type="PackedScene" uid="uid://ckr87i2k70qr2" path="res://scenes/UI/Evil_Dino/Evil_dino_fericit.tscn" id="2_1pnp7"]
+[ext_resource type="PackedScene" uid="uid://dbo5gl0o6vcqh" path="res://scenes/UI/Evil_Dino/Evil_Dino_run.tscn" id="3_0l3fe"]
+
+[node name="EvilDinoSuccess" type="Node2D"]
+script = ExtResource("1_ynxme")
+happy_scene = ExtResource("2_1pnp7")
+run_scene = ExtResource("3_0l3fe")

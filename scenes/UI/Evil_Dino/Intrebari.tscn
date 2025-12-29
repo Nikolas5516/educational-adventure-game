@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl7x1s75o550a"]
+
+[ext_resource type="Script" uid="uid://bjwi8vk4nq843" path="res://scenes/UI/Evil_Dino/Intrebari.gd" id="1_y6msu"]
+[ext_resource type="PackedScene" uid="uid://bix1pefw8qvf5" path="res://scenes/UI/Evil_Dino/Mapa_Country.tscn" id="2_ljnfm"]
+[ext_resource type="Texture2D" uid="uid://pqyf0iutdnr8" path="res://assets/sprites/Evil_Dino/intrebari_fundal_evil.png" id="3_ljnfm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiim5"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_ljnfm"]
+variation_transform = Transform2D(1.3, 0.2, 0, 1.3, 0, 3)
+spacing_glyph = 3
+spacing_space = 2
+
+[node name="Intrebari" type="Node2D"]
+script = ExtResource("1_y6msu")
+
+[node name="MapaCountry" parent="." instance=ExtResource("2_ljnfm")]
+position = Vector2(157, -88)
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(350, 410)
+offset_left = 9.0
+offset_top = 54.0
+offset_right = 359.0
+offset_bottom = 94.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tiim5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 9.0
+offset_right = 1024.0
+offset_bottom = 1545.0
+scale = Vector2(0.35868108, 0.3114568)
+texture = ExtResource("3_ljnfm")
+
+[node name="lbl_question" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = -50.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ljnfm")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckr87i2k70qr2"]
+
+[ext_resource type="Script" uid="uid://c6ja7yde0yyro" path="res://scenes/UI/Evil_Dino/evil_dino_fericit.gd" id="1_e181m"]
+[ext_resource type="Texture2D" uid="uid://belrrkl1wfgvs" path="res://assets/sprites/Evil_Dino/Evil_Dino.png" id="2_sh7xh"]
+[ext_resource type="Texture2D" uid="uid://dbco38v40r1ms" path="res://assets/sprites/Evil_Dino/cerc.png" id="3_sh7xh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_seo78"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sh7xh")
+}],
+"loop": true,
+"name": &"ras",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_seo78"]
+offsets = PackedFloat32Array(0, 0.1875, 0.32738096, 0.65178573, 0.8507463)
+colors = PackedColorArray(0.4745098, 0.5137255, 0.56078434, 0.60784316, 1, 1, 1, 0.5647059, 0.45490196, 0.45490196, 0.45490196, 0.5529412, 0.54901963, 0.54901963, 0.54901963, 0.5372549, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qaeu"]
+gradient = SubResource("Gradient_seo78")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_di5ex"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.29999998
+scale_max = 0.29999998
+scale_over_velocity_min = 0.5
+scale_over_velocity_max = 0.5
+color = Color(1, 1, 1, 0.28235295)
+color_ramp = SubResource("GradientTexture1D_4qaeu")
+
+[node name="EvilDinoFericit" type="Node2D"]
+script = ExtResource("1_e181m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 400)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_seo78")
+animation = &"ras"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(595, 373)
+emitting = false
+amount = 40
+texture = ExtResource("3_sh7xh")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_di5ex")
