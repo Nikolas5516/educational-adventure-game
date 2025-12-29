@@ -158,5 +158,135 @@
 	"correct_statement": "București este orașul cu cea mai mare populație din România",
 	"false_statement": "Clujul este orașul cu cea mai mare populație din România",
 	"points": 15
+  },
+{
+	"id": 101,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce țară vecină cu România se află la Sud (Marcat cu albastru închis)?",
+	"image_path": "res://assets/sprites/harta_vecini.png",
+	"options": ["Ungaria", "Bulgaria", "Ucraina"],
+	"correct_option": "BULGARIA",
+	"points": 10
+  },
+  {
+	"id": 102,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Care este fluviul care curge în sudul țării și se varsă în Marea Neagră?",
+	"image_path": "res://assets/sprites/dunarea.jpg",
+	"options": ["Olt", "Mureș", "Dunărea"],
+	"correct_option": "DUNĂREA",
+	"points": 10
+  },
+  {
+	"id": 103,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Acest județ din nordul Moldovei este renumit pentru mănăstirile pictate (Voroneț, Putna).",
+	"image_path": "res://assets/sprites/voronet.jpg",
+	"options": ["Iași", "Suceava", "Botoșani"],
+	"correct_option": "SUCEAVA",
+	"points": 10
+  },
+  {
+	"id": 104,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce formă de relief este reprezentată cu verde pe harta fizică?",
+	"image_path": "res://assets/sprites/hartarelief.jpg",
+	"options": ["Munte", "Podiș", "Câmpie"],
+	"correct_option": "CÂMPIE",
+	"points": 10
+  },
+  {
+	"id": 105,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce unitate de relief, situată în estul țării, este reprezentată în imagine?",
+	"image_path": "res://assets/sprites/deltadunarii.jpg",
+	"options": ["Delta Dunării", "Câmpia de Vest", "Podișul Dobrogei"],
+	"correct_option": "DELTA DUNĂRII",
+	"points": 10
+  },
+  {
+	"id": 106,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Identifică județul din centrul țării, cunoscut pentru orașul de sub Tâmpa.",
+	"image_path": "res://assets/sprites/brasov2.jpg",
+	"options": ["Sibiu", "Brașov", "Cluj"],
+	"correct_option": "BRAȘOV",
+	"points": 10
+  },
+  {
+	"id": 107,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Care este țara vecină situată la granița de Vest a României (Marcat cu roșu)",
+	"image_path": "res://assets/sprites/harta_vecini.png",
+	"options": ["Slovacia", "Ungaria", "Ucraina"],
+	"correct_option": "UNGARIA",
+	"points": 10
+  },
+  {
+	"id": 108,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce râu formează granița naturală de Est a României (marcat pe hartă)?",
+	"image_path": "res://assets/sprites/prut.png",
+	"options": ["Olt", "Prut", "Mureș"],
+	"correct_option": "PRUT",
+	"points": 10
+  },
+  {
+	"id": 109,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "La Sud-Est, România are ieșire la o apă importantă. Care este aceasta?",
+	"image_path": "res://assets/sprites/mareaneagra1.png",
+	"options": ["Marea Mediterană", "Oceanul Atlantic", "Marea Neagră"],
+	"correct_option": "MAREA NEAGRĂ",
+	"points": 10
+  },
+  {
+	"id": 110,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Teritoriul României este împărțit administrativ în unități numite:",
+	"image_path": "res://assets/sprites/hartajudete.png",
+	"options": ["Județe", "Regiuni", "Sectoare"],
+	"correct_option": "JUDEȚE",
+	"points": 10
+  },
+  {
+	"id": 111,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce țară vecină cu România se află la Sud-Vest (Marcat cu roz)?",
+	"image_path": "res://assets/sprites/harta_vecini.png",
+	"options": ["Serbia", "Bulgaria", "Croația"],
+	"correct_option": "SERBIA",
+	"points": 10
+  },
+  {
+	"id": 112,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Care este țara vecină situată la granița de Est a României (Marcat cu albastru deschis)",
+	"image_path": "res://assets/sprites/harta_vecini.png",
+	"options": ["Republica Moldova", "Turcia", "Ucraina"],
+	"correct_option": "REPUBLICA MOLDOVA",
+	"points": 10
+  },
+  {
+	"id": 113,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce țară vecină cu România se află la Nord (Marcat cu verde deschis)?",
+	"image_path": "res://assets/sprites/harta_vecini.png",
+	"options": ["Polonia", "Republica Moldova", "Ucraina"],
+	"correct_option": "UCRAINA",
+	"points": 10
   }
 ]
