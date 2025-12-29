@@ -177,6 +177,7 @@ func handle_final_chest():
 		# Aici poți adăuga animația de deschidere sau un popup de victorie
 		
 		# Luăm dicționarul de scene pentru dificultatea curentă
+		#Am adaugat pentru a putea sa imi leg jocul de cufar la level Easy (Diana)
 		var diff_map = LEVEL_SCENES.get(current_difficulty, null)
 		if diff_map and diff_map.has(FINAL_CHEST_INDEX):
 			var chest_scene_path: String = diff_map[FINAL_CHEST_INDEX]
