@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dh450dawqg14p"]
+[gd_scene load_steps=32 format=3 uid="uid://dh450dawqg14p"]
 
 [ext_resource type="Script" uid="uid://7y2ph7f4qclo" path="res://scenes/levels/LevelNormalR/LevelNormalR.gd" id="1_8r7tv"]
 [ext_resource type="Texture2D" uid="uid://daibdetp1ahgm" path="res://assets/sprites/harta_relief_cerculete.png" id="1_ejg6g"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cwsta2gdphipy" path="res://assets/sprites/podisul_dobrogei.png" id="16_eotyu"]
 [ext_resource type="Texture2D" uid="uid://c8v3agm8u81ob" path="res://assets/sprites/delta_dunarii.png" id="17_wwken"]
 [ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="18_rj1bf"]
+[ext_resource type="AudioStream" uid="uid://d20dpsq65jlkh" path="res://assets/audio/483598__raclure__wrong.mp3" id="19_deptc"]
+[ext_resource type="AudioStream" uid="uid://cv0h67ye517gc" path="res://assets/audio/607926__robinhood76__10661-bonus-correct-answer.wav" id="20_w70kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fhqj"]
 size = Vector2(302, 189)
@@ -48,6 +50,10 @@ size = Vector2(328.33337, 211.66669)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kt388"]
 size = Vector2(297.77777, 155.11111)
+
+[sub_resource type="LabelSettings" id="LabelSettings_deptc"]
+font_size = 40
+font_color = Color(0, 2.5210483, 0, 1)
 
 [node name="LevelNormalR" type="Node2D"]
 script = ExtResource("1_8r7tv")
@@ -298,6 +304,39 @@ texture = ExtResource("17_wwken")
 [node name="CollisionShape2D" parent="PiecesContainer/Piece13" index="1"]
 position = Vector2(-71.11112, -46.444447)
 shape = SubResource("RectangleShape2D_kt388")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WinPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -38.625
+offset_right = 114.5
+offset_bottom = 30.625
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/WinPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Felicitări!"
+label_settings = SubResource("LabelSettings_deptc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_deptc")
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_w70kt")
 
 [editable path="PiecesContainer/Piece1"]
 [editable path="PiecesContainer/Piece2"]
