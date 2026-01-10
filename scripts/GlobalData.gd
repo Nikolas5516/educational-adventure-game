@@ -38,34 +38,10 @@ const ITEMS_DATA = {
 # Semnal la care se conectează HUD-ul (și orice altceva care trebuie să știe că scorul s-a schimbat)
 signal score_updated(new_score)
 
-# Variabila pentru scorul nivelului curent (necomis încă la global)
-var level_score: int = 0
+# Semnal la care se conectează HUD-ul (și orice altceva care trebuie să știe că scorul s-a schimbat)
+signal score_updated(new_score)
 
-# Inițializează urmărirea scorului pentru un nivel nou
-func start_level_tracking():
-	level_score = 0
-	print("🎯 Level tracking started. Level Score: 0")
-
-# Adaugă puncte la scorul nivelului curent
-func add_level_points(amount: int):
-	level_score += amount
-	print("➕ Level points added: ", amount, " | Current Level Score: ", level_score)
-
-# Comite scorul nivelului la scorul global și salvează
-func commit_level_score():
-	if level_score > 0:
-		add_score(level_score)
-		print("✅ Level score committed: ", level_score, " | New Global Score: ", current_score)
-		level_score = 0
-		save_game()
-	else:
-		print("ℹ️ No level score to commit.")
-
-# Returnează scorul nivelului curent
-func get_level_score() -> int:
-	return level_score
-
-# Funcție apelată de Butonul de Test sau de joc pentru a adăuga/scădea puncte DIRECT la global
+# Funcție apelată de Butonul de Test sau de joc pentru a adăuga/scădea puncte
 func add_score(amount: int):
 	current_score += amount
 	score_updated.emit(current_score) # Emite semnalul pentru a actualiza HUD-ul

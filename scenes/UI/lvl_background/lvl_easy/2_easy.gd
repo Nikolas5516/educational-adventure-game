@@ -47,6 +47,10 @@ var este_inversat = false
 func _ready():
 	randomize() # Asigură-te că numerele aleatorii sunt diferite la fiecare joc
 	baza_date.shuffle()
+	
+	# Start level tracking
+	DataManager.start_level_tracking()
+	
 	afiseaza_intrebare()
 
 func afiseaza_intrebare():
@@ -97,6 +101,7 @@ func valideaza_raspuns(a_apasat_stanga: bool):
 	
 	if e_corect:
 		scor += 1
+		DataManager.add_level_points(5) # Puncte per răspuns corect
 	
 	index_curent += 1
 	afiseaza_intrebare()
@@ -104,6 +109,11 @@ func valideaza_raspuns(a_apasat_stanga: bool):
 func final_joc():
 	gata.text = "Gata! Scor: " + str(scor) + "/" + str(baza_date.size())
 	gata.show()
+	
+	# Commit score to global
+	DataManager.commit_level_score()
+	
+	# Ascundem elementele folosind numele corecte din ierarhia ta
 	# Ascundem elementele folosind numele corecte din ierarhia ta
 	$chenarIntrebari.hide()
 	$intrebare.hide()
