@@ -7,6 +7,10 @@ const INTREBARE_POPUP = preload("res://scenes/UI/lvl_background/lvl_easy/intreba
 func _ready():
 	# Căutăm nodul care conține toate regiunile (ex: Bucovina, Moldova)
 	print("--- SCRIPTUL LEVEL EASY A PORNIT ---")
+	
+	# Start tracking points
+	DataManager.start_level_tracking()
+	
 	if has_node("Regiuni"):
 		for regiune in $Regiuni.get_children():
 			# Verificăm dacă nodul are semnalul definit în RegiuneBase.gd
@@ -40,4 +44,6 @@ func verifica_final_joc():
 	
 	if toate_gata:
 		print("Joc Finalizat!")
+		# Commit points
+		DataManager.commit_level_score()
 		ecran_final.visible = true

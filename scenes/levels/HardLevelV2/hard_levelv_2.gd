@@ -58,6 +58,9 @@ func start_game(count: int):
 	questions_to_win = count
 	questions_solved = 0
 	
+	# Start level tracking
+	DataManager.start_level_tracking()
+	
 	# Ascundem setările și arătăm jocul
 	setup_panel.visible = false
 	
@@ -108,7 +111,7 @@ func _on_answer_selected(clicked_button: Button):
 		feedback_lbl.visible = true
 		
 		# Dăm puncte și avansăm
-		DataManager.add_score(current_challenge["points"])
+		DataManager.add_level_points(current_challenge["points"])
 		questions_solved += 1
 		
 		# Așteptăm 1.5 secunde
@@ -135,6 +138,9 @@ func level_completed():
 	feedback_lbl.text = "Scor total salvat."
 	feedback_lbl.modulate = Color.WHITE
 	feedback_lbl.visible = true
+	
+	# Commit score
+	DataManager.commit_level_score()
 	
 	# Arătăm butonul de ieșire
 	btn_back_to_menu.visible = true
