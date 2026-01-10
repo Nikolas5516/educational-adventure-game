@@ -6,6 +6,7 @@ signal raspuns_corect_dat
 func verifica_raspuns(ales):
 	if ales == raspuns_corect:
 		print("Corect!")
+		DataManager.add_level_points(5)
 		raspuns_corect_dat.emit() 
 		await get_tree().create_timer(0.5).timeout # Lansează semnalul către regiune
 		queue_free()
