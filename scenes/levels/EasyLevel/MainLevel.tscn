@@ -40,10 +40,10 @@ flip_h = true
 flip_v = true
 
 [node name="TopBar" parent="Bg_Lvl_usor" index="1"]
-offset_left = -636.0
-offset_top = -319.0
-offset_right = -636.0
-offset_bottom = -319.0
+offset_left = -618.0
+offset_top = -348.0
+offset_right = -618.0
+offset_bottom = -348.0
 mouse_filter = 2
 
 [node name="Panel" parent="Bg_Lvl_usor" index="2"]

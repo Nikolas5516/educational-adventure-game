@@ -11,9 +11,9 @@ script = ExtResource("1_fnivp")
 position = Vector2(638, 355)
 
 [node name="Bg_Lvl_usor" parent="." instance=ExtResource("1_5gcoo")]
-offset_left = 26.0
-offset_top = 58.0
-offset_right = 26.0
-offset_bottom = 58.0
+offset_left = -3.0
+offset_top = 8.0
+offset_right = -3.0
+offset_bottom = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="."]

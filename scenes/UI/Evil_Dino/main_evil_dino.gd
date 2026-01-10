@@ -29,6 +29,12 @@ var dino_success_scene := preload("res://scenes/UI/Evil_Dino/Evil_dino_success.t
 
 var _playing := false
 
+func _enter_tree() -> void:
+	# ascunde cât mai devreme (înainte de _ready)
+	if fail_svc: fail_svc.visible = false
+	if success_svc: success_svc.visible = false
+
+
 func _ready():
 
 	# layout/UI
@@ -45,10 +51,27 @@ func _ready():
 	get_viewport().size_changed.connect(_resize_all_viewports)
 
 	intrebari.answer_result.connect(_on_answer_result)
-		# ascunde dino la start (varianta 2)
+	# ascunde dino la start (varianta 2)
 	fail_svc.visible = false
 	success_svc.visible = false
+	
+	# ascunde + curăță imediat (dacă în editor au rămas copii)
+	fail_svc.visible = false
+	success_svc.visible = false
+	_clear_viewport(fail_sv)
+	_clear_viewport(success_sv)
 
+	# (opțional) fă subviewport-urile să nu mai “updateze” când nu-s vizibile
+	fail_sv.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+	success_sv.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+
+	# IMPORTANT: conectează semnalul după 1 frame, ca să nu prinzi emisii din init
+	await get_tree().process_frame
+	if not intrebari.answer_result.is_connected(_on_answer_result):
+		intrebari.answer_result.connect(_on_answer_result)
+
+	
+	
 	
 
 func _resize_all_viewports():

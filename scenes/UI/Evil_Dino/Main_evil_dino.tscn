@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bow86yo1kxjly"]
+[gd_scene load_steps=4 format=3 uid="uid://bow86yo1kxjly"]
 
 [ext_resource type="PackedScene" uid="uid://qm2yqa8mcd5y" path="res://scenes/UI/backgrounds/Bg_lvl_greu.tscn" id="1_8w3of"]
 [ext_resource type="Script" uid="uid://pc7b8c73hp7l" path="res://scenes/UI/Evil_Dino/main_evil_dino.gd" id="1_j1jqa"]
 [ext_resource type="PackedScene" uid="uid://dl7x1s75o550a" path="res://scenes/UI/Evil_Dino/Intrebari.tscn" id="2_j1jqa"]
-[ext_resource type="PackedScene" uid="uid://clfli6limxt4w" path="res://scenes/UI/Evil_Dino/Evil_dino_success.tscn" id="4_xpq6o"]
-[ext_resource type="PackedScene" uid="uid://bo2ytwhtfckls" path="res://scenes/UI/Evil_Dino/Evil_dino_fail.tscn" id="5_pjy2c"]
 
 [node name="MainEvilDino" type="Control"]
 layout_mode = 3
@@ -55,8 +53,6 @@ transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="EvilDinoSuccess" parent="DinoFailViewportContainer2/DinoViewport" instance=ExtResource("4_xpq6o")]
-
 [node name="DinoSuccessViewportContainer2" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -70,5 +66,3 @@ mouse_filter = 2
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 4
-
-[node name="EvilDinoFail" parent="DinoSuccessViewportContainer2/DinoSuccessViewport" instance=ExtResource("5_pjy2c")]

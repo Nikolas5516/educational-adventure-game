@@ -215,3 +215,7 @@ func _on_hard_mode_button_pressed() -> void:
 	current_difficulty=2
 	label_mod.text="MOD SELECTAT: HARD"
 	
+
+
+func _on_exit_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/intro.tscn")
