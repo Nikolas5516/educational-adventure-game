@@ -88,7 +88,11 @@ func _input(event):
 
 # --- FUNCȚII DE BAZĂ ---
 
+
+
 func _ready():
+	
+
 	
 	# 🦖 Dacă jucătorul a mai apăsat OK vreodată, nu mai afișăm deloc dino + text + buton
 	if GlobalState_dino.has_seen_intro:

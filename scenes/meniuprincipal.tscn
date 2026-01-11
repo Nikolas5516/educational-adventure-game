@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://c13ueo0g36oox"]
+[gd_scene load_steps=20 format=3 uid="uid://c13ueo0g36oox"]
 
 [ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
+[ext_resource type="Texture2D" uid="uid://jckdbxd12ax0" path="res://assets/sprites/fundalmeniu.png" id="2_swdcf"]
 [ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
 [ext_resource type="Texture2D" uid="uid://bh4pxu8qysu2d" path="res://assets/sprites/lvl1.png" id="3_ru4ck"]
 [ext_resource type="Texture2D" uid="uid://yh85ehma7sg1" path="res://assets/sprites/lvl2.png" id="4_r21ka"]
@@ -33,13 +34,22 @@ script = ExtResource("1_r75mj")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -250.00002
+offset_top = -3.999999
+offset_right = 1428.0
+offset_bottom = 1020.0
+scale = Vector2(1.0365884, 0.7149368)
+texture = ExtResource("2_swdcf")
+
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(650, 400)
+position = Vector2(645.00006, 363.00003)
 rotation = -3.1415927
 scale = Vector2(1.2827034, -0.5508779)
 texture = ExtResource("2_utjw1")
 
 [node name="LevelMap" type="Node2D" parent="."]
+position = Vector2(-9, -47)
 
 [node name="Path2D" type="Path2D" parent="LevelMap"]
 position = Vector2(900, 400)

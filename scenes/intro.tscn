@@ -26,17 +26,17 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.62197244
-anchor_top = 1.9579724
-anchor_right = 2.2066894
-anchor_bottom = 3.812289
-offset_left = -600.0
-offset_top = -846.0
-offset_right = 648.0
-offset_bottom = -14.0
+anchor_left = -0.17124864
+anchor_top = -0.09003976
+anchor_right = 3.0060787
+anchor_bottom = 4.0248337
+offset_right = -32.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_t1qkj")
+expand_mode = 3
+stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
