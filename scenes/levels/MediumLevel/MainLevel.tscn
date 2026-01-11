@@ -1,7 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://nk2ko4xcjk0v"]
 
 [ext_resource type="PackedScene" uid="uid://c6lcawntq0fpp" path="res://scenes/UI/backgrounds/Bg_lvl_mediu.tscn" id="1_k2pcy"]
-[ext_resource type="Shader" uid="uid://bpdhsf1nlym06" path="res://scenes/levels/MediumLevel/MainLevel.gdshader" id="2_ri6rb"]
+
+[ext_resource type="Shader" uid="uid://bpdhsf1nlym06" path="res://scenes/UI/MainLevel.gdshader" id="2_ri6rb"]
+
 [ext_resource type="Texture2D" uid="uid://cmy1lvcwx8rjw" path="res://assets/sprites/harta_baza.png" id="2_rlx2o"]
 [ext_resource type="PackedScene" uid="uid://y568rjt3p4ub" path="res://scenes/levels/MediumLevel/Judete.tscn" id="3_ri6rb"]
 
