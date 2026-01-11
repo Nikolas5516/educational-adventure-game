@@ -39,6 +39,9 @@ func _ready():
 	central_image.visible = false # Nu arătăm prima imagine încă
 	left_button.disabled = true  # Dezactivăm butoanele de joc
 	right_button.disabled = true
+	
+	# Start level tracking
+	DataManager.start_level_tracking()
 
 # Funcția care va porni efectiv jocul
 func _on_start_button_pressed():
@@ -69,6 +72,7 @@ func check_answer(player_choice):
 	
 	if player_choice == correct_answer:
 		score += 10
+		DataManager.add_level_points(10) # 10 puncte per raspuns corect
 		feedback_label.text = "Corect!"
 		feedback_label.modulate = Color.GREEN
 	else:
@@ -94,6 +98,9 @@ func show_victory_screen():
 	left_button.disabled = true # Dezactivăm butoanele de joc
 	right_button.disabled = true
 	victory_panel.visible = true # Afișăm panoul de victorie
+	
+	# Commit points to Global Score
+	DataManager.commit_level_score()
 
 # Funcția pentru butonul de Home
 func _on_home_button_pressed():

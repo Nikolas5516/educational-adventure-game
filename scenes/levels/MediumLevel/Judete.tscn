@@ -1,6 +1,7 @@
 [gd_scene load_steps=45 format=3 uid="uid://y568rjt3p4ub"]
 
 [ext_resource type="Script" uid="uid://dm7d7qh01iuq0" path="res://objects/piesa_puzzle.gd" id="1_r48ki"]
+[ext_resource type="Script" path="res://scenes/levels/MediumLevel/JudeteManager.gd" id="1_manager"]
 [ext_resource type="Texture2D" uid="uid://dy10dhpreldhg" path="res://assets/sprites/Arges.png" id="3_ptx1g"]
 [ext_resource type="Texture2D" uid="uid://dnmi33lxqgnl1" path="res://assets/sprites/Bihor.png" id="4_3anky"]
 [ext_resource type="Texture2D" uid="uid://bd4hiwambie67" path="res://assets/sprites/Timis.png" id="5_wgvib"]
@@ -46,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://d20dpsq65jlkh" path="res://assets/audio/483598__raclure__wrong.mp3" id="44_bmdc1"]
 
 [node name="Judete" type="Node2D"]
+script = ExtResource("1_manager")
 position = Vector2(32, 16)
 scale = Vector2(0.52, 0.515)
 
