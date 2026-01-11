@@ -10,6 +10,7 @@ var pozitie_corecta_globala = Vector2.ZERO
 var pozitie_start_globala = Vector2.ZERO
 var este_blocata = false
 
+
 # Setări dimensiuni
 var scara_normala = Vector2.ONE
 var scara_mica = Vector2.ONE 
@@ -159,6 +160,11 @@ func verifica_pozitia():
 			sunet.play()
 		else:
 			print("EROARE: Nu am găsit niciun nod în grupul 'sunet_corect'")
+		
+		# Notifică părintele (JudeteManager)
+		if get_parent().has_method("on_piece_placed"):
+			get_parent().on_piece_placed()
+			
 	else:
 		var tween = create_tween()
 		tween.set_parallel(true)
