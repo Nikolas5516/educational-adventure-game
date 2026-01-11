@@ -13,6 +13,23 @@ extends Control
 
 var selected_item_id: String = ""
 var selected_item_data: Dictionary = {}
+var exit_button: Button
+const EXIT_MARGIN := Vector2(20, 20)  # distanța față de colț
+
+func _on_viewport_resized() -> void:
+	_check_and_fix_background()
+	_position_exit_button()
+
+func _position_exit_button() -> void:
+	if exit_button == null:
+		return
+
+	var screen_size := get_viewport().get_visible_rect().size
+	exit_button.position = Vector2(
+		screen_size.x - exit_button.size.x - EXIT_MARGIN.x,
+		screen_size.y - exit_button.size.y - EXIT_MARGIN.y
+	)
+
 
 func _ready():
 	print("=== CUSTOMIZATION START ===")
@@ -48,6 +65,9 @@ func _ready():
 	
 	#lock_all_items()
 	_create_exit_button()
+	_position_exit_button()
+	get_viewport().size_changed.connect(_on_viewport_resized)
+
 	await get_tree().process_frame
 	
 	_update_score_display(DataManager.get_score())
@@ -197,10 +217,19 @@ func _create_exit_button():
 	# Conectează semnalul
 	exit_button.pressed.connect(_on_exit_button_pressed)
 	
-	# Adaugă butonul la scenă
-	add_child(exit_button)
-	
+		# IMPORTANT: îl punem într-un CanvasLayer de overlay (dacă există)
+	var overlay = get_node_or_null("Overlay")
+	if overlay:
+		overlay.add_child(exit_button)
+	else:
+		add_child(exit_button)
+		
+	# poziționează corect acum
+	_position_exit_button()
 	print("✅ Buton exit creat")
+	
+
+	
 
 func _create_test_points_button():
 	"""Creează un buton pentru a adăuga puncte de test"""

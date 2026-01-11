@@ -93,3 +93,6 @@ size_flags_stretch_ratio = 10.0
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 2
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = 1000
