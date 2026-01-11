@@ -6,6 +6,7 @@ const SAVE_FILE_PATH = "user://game_data.json"
 # Variabilele principale
 var levels: Array = []
 var questions: Array = []
+var hard_questions: Array = [] # Variabilă nouă pentru întrebările de la Hard Level
 var current_level_id: int = -1
 var current_score: int = 0
 
@@ -51,6 +52,7 @@ const ITEMS_DATA = {
 func _ready():
 	load_levels()
 	load_questions()
+	load_hard_questions() # Încărcare întrebări hard
 	load_game() # Încărcare date salvate la pornirea jocului
 	# test_data_manager()
 
@@ -83,6 +85,18 @@ func load_questions():
 			push_error("Failed to parse questions.json")
 	else:
 		push_error("Failed to open questions.json")
+
+func load_hard_questions():
+	var file := FileAccess.open("res://data/hard_questions.json", FileAccess.READ)
+	if file:
+		var json_text = file.get_as_text()
+		file.close()
+		hard_questions = JSON.parse_string(json_text)
+		if hard_questions == null:
+			hard_questions = []
+			push_error("Failed to parse hard_questions.json")
+	else:
+		push_error("Failed to open hard_questions.json")
 
 
 # ======================================================================
@@ -459,10 +473,35 @@ func get_dino_correction_challenge(level_id: int) -> Dictionary:
 	# 5. Amestecăm opțiunile ca răspunsul corect să nu fie mereu primul
 	options.shuffle()
 	
+	options.shuffle()
+	
 	return {
 		"id": target_question["id"],
 		"false_text": target_question["false_statement"],
 		"correct_text": target_question["correct_statement"],
 		"options": options,
 		"points": target_question["points"]
+	}
+
+# Funcție NOUĂ pentru Hard Level V2 care folosește fișierul separat
+func get_random_hard_question() -> Dictionary:
+	# Lazy Load: Dacă lista e goală (ex: după hot-reload), o încărcăm acum
+	if hard_questions.is_empty():
+		load_hard_questions()
+		
+	if hard_questions.is_empty():
+		return {}
+	
+	var q = hard_questions.pick_random()
+	
+	# Amestecăm opțiunile ca să nu fie mereu în aceeași ordine
+	var opts = q["options"].duplicate()
+	opts.shuffle()
+	
+	return {
+		"id": q["id"],
+		"false_text": q["false_text"],
+		"correct_text": q["correct_text"],
+		"options": opts,
+		"points": q["points"]
 	}

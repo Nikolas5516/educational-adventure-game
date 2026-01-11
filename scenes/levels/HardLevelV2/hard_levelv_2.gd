@@ -81,8 +81,8 @@ func load_new_challenge(level_id: int):
 		level_completed()
 		return
 
-	# Luăm o întrebare nouă din DataManager
-	current_challenge = DataManager.get_dino_correction_challenge(level_id)
+	# Luăm o întrebare nouă din DataManager (din setul special Hard)
+	current_challenge = DataManager.get_random_hard_question()
 	
 	if current_challenge.is_empty():
 		print("Nu mai sunt întrebări!")
