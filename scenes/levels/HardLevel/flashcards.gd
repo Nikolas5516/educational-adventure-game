@@ -8,27 +8,20 @@ var points_this_level: int = 0
 const GOAL_POINTS: int = 70
 
 func _ready():
-	load_questions_from_json()
+	load_questions_from_data_manager()
 	show_new_card()
 	
-func load_questions_from_json():
-	var file = FileAccess.open("res://data/questions.json", FileAccess.READ)
-	if file == null:
-		push_error("Cannot open res://data/questions.json")
-		return
+func load_questions_from_data_manager():
 	
-	var content = file.get_as_text()
-	var result = JSON.parse_string(content)
+	var raw_questions = DataManager.get_all_questions() 
 
-	if result == null:
-		push_error("Invalid JSON inside flashcards_data.json")
+	if raw_questions.is_empty():
+		push_error("DataManager returned no questions!")
 		return
-	
-	if not result is Array:
-		push_error("JSON is not an array!")
-		return
+	questions = raw_questions.filter(
+		func(q): return q.get("question_type", "") == "flashcard"
+	)
 		
-
 func add_points_and_check_progress(amount: int):
 	points_this_level += amount
 	
@@ -36,7 +29,6 @@ func add_points_and_check_progress(amount: int):
 	if points_this_level >= GOAL_POINTS:
 		print("Level Finished succesfully!")
 		DataManager.add_score(amount)
-
 
 
 func show_new_card():
@@ -50,18 +42,10 @@ func show_new_card():
 
 	is_true_statement = randf() < 0.5
 
-		# Luăm textele cu fallback pe string gol (nu lăsăm niciodată null)
-	var correct_text = q.get("correct", "")
-	var false_text = q.get("false", "")
-	
 	if is_true_statement:
-		current_text = q["correct"]
+		current_text = q["correct_statement"]
 	else:
-		current_text = q["false"]
-		
-	# Protecție finală – dacă tot e null sau gol, punem un mesaj default
-	if current_text == null or current_text == "":
-		current_text = "No text for this question."
+		current_text = q["false_statement"]
 	
 	$CenterCard/CardMargin/MarginContainer/VBoxContainer/CardLabel.text = current_text
 	
@@ -78,13 +62,11 @@ func check_answer(choice: bool):
 	if choice == is_true_statement:
 		$CenterCard/CardMargin/MarginContainer/VBoxContainer/Feedback.text = "Corect!"
 		$CorrectSound.play()
-
 		var points_to_add = current_question.get("points", 10)
 		add_points_and_check_progress(points_to_add)
 		
 		if points_this_level >= GOAL_POINTS:
 			goto_scene(BACK_TO_MAIN)
-
 			return
 		
 	else:

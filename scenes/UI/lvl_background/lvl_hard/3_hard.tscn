@@ -15,5 +15,5 @@ grow_vertical = 2
 layout_mode = 1
 
 [node name="LevelHard" parent="." instance=ExtResource("2_uidml")]
-position = Vector2(-108, 124.99999)
-scale = Vector2(1.3093628, 0.8799997)
+position = Vector2(66, 123)
+scale = Vector2(1.0113566, 0.88326764)

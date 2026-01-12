@@ -36,7 +36,7 @@ const LEVEL_SCENES := {
 		4: "res://scenes/UI/lvl_background/lvl_mediu/4_mediu.tscn",
 	},
 	DIFF_HARD: {
-		1: "res://scenes/UI/lvl_background/lvl_hard/1_hard.tscn",
+		1: "res://scenes/levels/HardLevel/MapGame2.tscn",
 		2: "res://scenes/levels/HardLevelV2/hard_levelv_2.tscn",
 		3: "res://scenes/UI/lvl_background/lvl_hard/3_hard.tscn",
 		4: "res://scenes/UI/Evil_Dino/Start_menu.tscn",
@@ -224,4 +224,3 @@ func _on_hard_mode_button_pressed() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/intro.tscn")
-

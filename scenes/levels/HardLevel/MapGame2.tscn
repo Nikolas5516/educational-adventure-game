@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1k46jhsceet4"]
+[gd_scene load_steps=18 format=3 uid="uid://d1k46jhsceet4"]
 
 [ext_resource type="Texture2D" uid="uid://b7fucr10sgydg" path="res://assets/sprites/harta_muta_lvl2.png" id="1_c8s3a"]
 [ext_resource type="Script" uid="uid://bib4rcpkiyyo7" path="res://scenes/levels/HardLevel/map_game_lvl2.gd" id="1_nf1fi"]
+[ext_resource type="Texture2D" uid="uid://b1cje48fkpqin" path="res://assets/sprites/lvl_greu.png" id="2_wttm7"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="4_wttm7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y1icr"]
 radius = 36.05551
@@ -45,9 +47,19 @@ size = Vector2(182, 43.5)
 [node name="MapGame2" type="Node2D"]
 script = ExtResource("1_nf1fi")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -78.0
+offset_top = -92.0
+offset_right = 1458.0
+offset_bottom = 932.0
+texture = ExtResource("2_wttm7")
+
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1111.0
-offset_bottom = 726.05
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 1203.0
+offset_bottom = 823.14996
+scale = Vector2(1, 0.868246)
 texture = ExtResource("1_c8s3a")
 expand_mode = 5
 
@@ -211,6 +223,8 @@ position = Vector2(353, 500)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/AreaE"]
 position = Vector2(23, -9)
 shape = SubResource("RectangleShape2D_l0ehn")
+
+[node name="TopBar" parent="." instance=ExtResource("4_wttm7")]
 
 [connection signal="input_event" from="TextureRect/Area1" to="." method="_on_map_area_clicked" binds= ["A"]]
 [connection signal="pressed" from="TextureRect/Answers_List/Button1" to="." method="_on_answer_button_pressed" binds= ["Siret"]]
