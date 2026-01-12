@@ -113,7 +113,7 @@ func _on_home_pressed():
 		correct_sound.play()
 	
 	# 3. FEEDBACK VIZUAL (Text Plutitor)
-	show_floating_text(piece.global_position, "+10")
+	show_floating_text(self.global_position, "+10")
 	
 	# 5. Adăugare scor
 	DataManager.add_score(points_per_piece)
