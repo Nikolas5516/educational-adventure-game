@@ -164,7 +164,6 @@ layout_mode = 2
 texture_normal = ExtResource("15_mhfbr")
 metadata/_edit_lock_ = true
 
-
 [node name="Dino" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -83.0
@@ -220,7 +219,6 @@ texture_hover = ExtResource("17_a61ng")
 [connection signal="pressed" from="TopBar_HUD/EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/MediumModeButton" to="." method="_on_medium_mode_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/HardModeButton" to="." method="_on_hard_mode_button_pressed"]
-
 [connection signal="pressed" from="TopBar_HUD/CustomizeButton" to="." method="_on_customize_button_pressed"]
 [connection signal="pressed" from="TopBar_HUD/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
