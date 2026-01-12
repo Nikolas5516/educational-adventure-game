@@ -494,7 +494,7 @@ func _update_item_button(container: VBoxContainer, item_id: String):
 
 
 func _update_score_display(new_score: int):
-	#Silvia code:if score_label: score_label.text = "Puncte: %d" % new_score
+	if score_label: score_label.text = "Puncte: %d" % new_score
 	
 	if score_label:
 		score_label.text = "Puncte: %d" % new_score
