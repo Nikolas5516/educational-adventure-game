@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d16v12236fsg4"]
+[gd_scene load_steps=12 format=3 uid="uid://d16v12236fsg4"]
 
 [ext_resource type="Texture2D" uid="uid://co4xn81i3e4e" path="res://assets/sprites/harta_muta2.png" id="1_7q0l7"]
 [ext_resource type="Script" uid="uid://ddl35ray25lqw" path="res://scenes/levels/HardLevel/map_game.gd" id="1_dmib1"]
+[ext_resource type="Texture2D" uid="uid://8u36mc5y0tp5" path="res://assets/sprites/lvl_mediu.png" id="2_h2euh"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="3_j6fee"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhtaw"]
 radius = 30.265491
@@ -27,9 +29,21 @@ radius = 31.04835
 [node name="MapGame" type="Node2D"]
 script = ExtResource("1_dmib1")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -102.0
+offset_top = -91.0
+offset_right = 1434.0
+offset_bottom = 933.0
+texture = ExtResource("2_h2euh")
+
+[node name="TopBar" parent="." instance=ExtResource("3_j6fee")]
+
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 755.0
+offset_left = 110.0
+offset_top = 95.99999
+offset_right = 1262.0
+offset_bottom = 851.0
+scale = Vector2(0.9312371, 0.8787618)
 mouse_filter = 2
 texture = ExtResource("1_7q0l7")
 
@@ -126,7 +140,6 @@ autowrap_mode = 2
 [node name="Button_W1" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-
 text = "Muntii Carpati "
 
 [node name="Button_Timis" type="Button" parent="TextureRect/Answer_List"]
@@ -144,7 +157,6 @@ text = "Raul Jiu"
 [node name="Button_Olt" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 text = "Raul Olt"
-
 
 [node name="Feedback_Label" type="Label" parent="TextureRect"]
 visible = false

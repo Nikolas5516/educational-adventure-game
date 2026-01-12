@@ -32,7 +32,7 @@ const LEVEL_SCENES := {
 	DIFF_MEDIUM: {
 		1: "res://scenes/levels/LevelNormalR/LevelNormalR.tscn",
 		2: "res://scenes/levels/MediumLevel/MainLevel.tscn",
-		3: "res://scenes/UI/lvl_background/lvl_mediu/3_mediu.tscn",
+		3: "res://scenes/levels/HardLevel/MapGame.tscn",
 		4: "res://scenes/UI/lvl_background/lvl_mediu/4_mediu.tscn",
 	},
 	DIFF_HARD: {
