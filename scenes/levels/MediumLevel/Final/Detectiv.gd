@@ -73,7 +73,10 @@ func _on_gata_pressed() -> void:
 	poza_instructiuni.visible = false
 	buton_gata.visible = false
 	intrebare1.visible = true
-	print("Am apăsat Gata, a apărut întrebarea 1!")
+	
+	# Start score tracking
+	DataManager.start_level_tracking()
+	print("🎯 Detectiv: Level tracking started. Score: 0")
 
 
 # Variabila care ține minte la ce întrebare ești (1, 2, 3, 4 sau 5)
@@ -144,7 +147,10 @@ func _raspuns_corect_ales():
 	s_corect.play()
 	corect.visible = true
 	gresit.visible = false
-	print("Bravo! Ai ghicit.")
+	
+	# Adăugăm puncte pentru răspuns corect
+	DataManager.add_level_points(5)
+	print("✅ Detectiv: +5 puncte | Total nivel: ", DataManager.get_level_score())
 	
 	# Așteptăm 2 secunde
 	await get_tree().create_timer(2.0).timeout
@@ -194,7 +200,12 @@ func _schimba_intrebarea_vizibila():
 	elif numar_intrebare_activa == 7:
 		$Intrebare7.visible = true
 	else:
-		print("Jocul s-a terminat, ai găsit toate indiciile!")
+		print("🏆 Detectiv: Jocul s-a terminat!")
+		
+		# Commit score la finalul jocului
+		DataManager.commit_level_score()
+		print("💰 Detectiv: Scor comis la global. Total: ", DataManager.get_score())
+		
 		succes.play()
 		dino.visible = true
 		felicitari.visible = true
