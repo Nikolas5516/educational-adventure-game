@@ -69,6 +69,10 @@ func _ready():
 	await get_tree().process_frame
 	if not intrebari.answer_result.is_connected(_on_answer_result):
 		intrebari.answer_result.connect(_on_answer_result)
+	
+	# Start score tracking pentru acest nivel
+	DataManager.start_level_tracking()
+	print("🎯 Evil Dino: Level tracking started. Score: 0")
 
 	
 	
@@ -104,6 +108,8 @@ func _on_answer_result(is_correct: bool) -> void:
 		# 1) actualizează scorul
 	if is_correct:
 		correct_count += 1
+		DataManager.add_level_points(10)
+		print("✅ Evil Dino: +10 puncte | Total nivel: ", DataManager.get_level_score())
 	else:
 		wrong_count += 1
 	print("CORECTE:", correct_count, "  GRESITE:", wrong_count)
@@ -138,7 +144,9 @@ func _on_answer_result(is_correct: bool) -> void:
 	if correct_count >= target_correct:
 		GlobalState_dino.trophy_unlocked = true
 		GlobalState_dino.save_data()
-		print("🏆 Trophy unlocked!")
+		print("🏆 Evil Dino: Nivel câștigat!")
+		DataManager.commit_level_score()
+		print("💰 Evil Dino: Scor comis la global. Total: ", DataManager.get_score())
 		get_tree().change_scene_to_packed(win_scene)
 		return
 
