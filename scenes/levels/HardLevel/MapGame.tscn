@@ -102,39 +102,39 @@ offset_bottom = 396.0
 [node name="Button_A" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button A - Cluj Napoca "
+text = "Cluj Napoca "
 autowrap_mode = 2
 icon_alignment = 1
 
 [node name="Button_B" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button B - Bucuresti"
+text = "Bucuresti"
 
 [node name="Button_C" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button C - Iasi"
+text = "Iasi"
 
 [node name="Button_D" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button D - Timisoara"
+text = "Timisoara"
 
 [node name="Button_E" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button E - Podisul Dobrogei "
+text = "Podisul Dobrogei "
 
 [node name="Button_F" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button F - Podisul Moldovei "
+text = "Podisul Moldovei "
 
 [node name="Button_H" type="Button" parent="TextureRect/Answer_List"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Button H - Muntii Maramuresului "
+text = "Muntii Maramuresului "
 autowrap_mode = 2
 
 [node name="Button_W1" type="Button" parent="TextureRect/Answer_List"]
