@@ -404,7 +404,7 @@
 	"level_id": 3,
 	"question_type": "image_quiz",
 	"question_text": "Recunoaște fosta reședință regală de vară situat în stațiunea Sinaia.",
-	"image_path": "res://assets/sprites/castelul_peles.png",
+	"image_path": "res://assets/sprites/castelul_peles.jpg",
 	"options": ["Castelul Corvinilor", "Castelul Peleș", "Palatul Parlamentului"],
 	"correct_option": "CASTELUL PELEȘ",
 	"points": 10
