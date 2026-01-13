@@ -140,7 +140,6 @@ metadata/_edit_lock_ = true
 [node name="ScoreButton" type="TextureButton" parent="TopBar_HUD"]
 layout_mode = 2
 texture_normal = ExtResource("10_jmxhm")
-metadata/_edit_lock_ = true
 
 [node name="EasyModeButton" type="TextureButton" parent="TopBar_HUD"]
 layout_mode = 2
@@ -207,10 +206,10 @@ texture = ExtResource("16_i36jf")
 
 [node name="ExitBtn" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 695.0
-offset_top = 123.0
-offset_right = 1719.0
-offset_bottom = 1147.0
+offset_left = 777.99994
+offset_top = 122.0
+offset_right = 1802.0
+offset_bottom = 1146.0
 scale = Vector2(0.082771145, 0.07116377)
 texture_normal = ExtResource("17_a61ng")
 texture_pressed = ExtResource("17_a61ng")
