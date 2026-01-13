@@ -1,0 +1,229 @@
+[gd_scene load_steps=24 format=3 uid="uid://dxho8yw51ygbl"]
+
+[ext_resource type="Texture2D" uid="uid://cjmer76dekks" path="res://assets/sprites/detectiv/Romania_judete.png" id="1_7v3so"]
+[ext_resource type="Script" uid="uid://85xnflksffb3" path="res://scenes/levels/MediumLevel/Final/Detectiv.gd" id="1_psmi6"]
+[ext_resource type="Texture2D" uid="uid://bu6kcpq5mpdca" path="res://assets/sprites/pin_negru-removebg-preview.png" id="2_nud7h"]
+[ext_resource type="Texture2D" uid="uid://i1ict64pjf7e" path="res://assets/sprites/pins_rosu-removebg-preview.png" id="3_plf31"]
+[ext_resource type="Texture2D" uid="uid://dsvdqrdsksvaj" path="res://assets/sprites/instructiuni.png" id="4_tue28"]
+[ext_resource type="Texture2D" uid="uid://bf4jo6xls5wdq" path="res://assets/sprites/gata.png" id="5_1kas2"]
+[ext_resource type="Texture2D" uid="uid://eo5dhylpoihq" path="res://assets/sprites/intrebare_1.png" id="6_1kas2"]
+[ext_resource type="Texture2D" uid="uid://bsmljfhavdml6" path="res://assets/sprites/ceva.png" id="7_1yyst"]
+[ext_resource type="Texture2D" uid="uid://0iulyg0l5nwt" path="res://assets/sprites/corect.png" id="8_6dr0g"]
+[ext_resource type="Texture2D" uid="uid://cr1qkbhwu8hos" path="res://assets/sprites/gresit.png" id="9_1yyst"]
+[ext_resource type="Texture2D" uid="uid://cfjklbmlsuafd" path="res://assets/sprites/intrebare_2.png" id="10_8y72h"]
+[ext_resource type="Texture2D" uid="uid://crwou2lhipx6h" path="res://assets/sprites/intrebarea_3.png" id="11_cpke3"]
+[ext_resource type="Texture2D" uid="uid://c3j50marxbcds" path="res://assets/sprites/bifat.png" id="12_6dr0g"]
+[ext_resource type="Texture2D" uid="uid://ch5chfqialtp3" path="res://assets/sprites/intrebare_4.png" id="14_8y72h"]
+[ext_resource type="Texture2D" uid="uid://ipiua43bk0l7" path="res://assets/sprites/intrebare_5.png" id="15_cpke3"]
+[ext_resource type="Texture2D" uid="uid://dog0tk1wxn0fr" path="res://assets/sprites/intrebare_6.png" id="16_f3cmr"]
+[ext_resource type="Texture2D" uid="uid://dfij5mt82sxrw" path="res://assets/sprites/intrebare_7.png" id="17_ws0jm"]
+[ext_resource type="Texture2D" uid="uid://dbaswfnffqbaa" path="res://assets/sprites/felicitari.png" id="18_agsxc"]
+[ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="19_3ffcm"]
+[ext_resource type="AudioStream" uid="uid://dw0l7mysy761e" path="res://assets/sprites/c-371145.mp3" id="20_al0wi"]
+[ext_resource type="AudioStream" uid="uid://cisrpjrftoj6n" path="res://assets/sprites/error-08-206492.mp3" id="21_pkv0h"]
+[ext_resource type="AudioStream" uid="uid://dp6icr0nwwlfn" path="res://assets/sprites/button-press-382713.mp3" id="22_wogqx"]
+[ext_resource type="AudioStream" uid="uid://dqut8o75psxcw" path="res://assets/sprites/success-fanfare-trumpets-6185.mp3" id="23_2yt45"]
+
+[node name="Detectiv" type="Node2D"]
+script = ExtResource("1_psmi6")
+
+[node name="RomaniaJudete" type="Sprite2D" parent="."]
+position = Vector2(656, 332.00003)
+scale = Vector2(0.5169472, 0.5129688)
+texture = ExtResource("1_7v3so")
+metadata/_edit_lock_ = true
+
+[node name="Brasov" type="TextureButton" parent="."]
+offset_left = 657.0
+offset_top = 361.99997
+offset_right = 1146.0
+offset_bottom = 873.0
+scale = Vector2(0.051636025, 0.04881581)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Cluj_Napoca" type="TextureButton" parent="."]
+offset_left = 538.0
+offset_top = 243.0
+offset_right = 538.0
+offset_bottom = 243.0
+scale = Vector2(0.048824146, 0.048824154)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Constanta" type="TextureButton" parent="."]
+offset_left = 929.0
+offset_top = 541.0
+offset_right = 1418.0
+offset_bottom = 1052.0
+scale = Vector2(0.051380504, 0.051380504)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Iasi" type="TextureButton" parent="."]
+offset_left = 840.00006
+offset_top = 191.0
+offset_right = 1329.0
+offset_bottom = 702.0
+scale = Vector2(0.05265845, 0.05265846)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Timisoara" type="TextureButton" parent="."]
+offset_left = 331.93753
+offset_top = 326.11978
+offset_right = 820.9375
+offset_bottom = 837.11975
+scale = Vector2(0.05342535, 0.058239635)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Tg_Jiu" type="TextureButton" parent="."]
+offset_left = 495.6701
+offset_top = 426.61017
+offset_right = 495.6701
+offset_bottom = 426.61017
+scale = Vector2(0.054518964, 0.05451898)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Bucuresti" type="TextureButton" parent="."]
+offset_left = 728.0
+offset_top = 496.00003
+offset_right = 1217.0
+offset_bottom = 1007.0
+scale = Vector2(0.051763833, 0.04901454)
+texture_normal = ExtResource("2_nud7h")
+texture_pressed = ExtResource("3_plf31")
+texture_hover = ExtResource("3_plf31")
+
+[node name="Instructiuni" type="Sprite2D" parent="."]
+position = Vector2(616, 340)
+scale = Vector2(1.1238096, 1.0471381)
+texture = ExtResource("4_tue28")
+
+[node name="Gata" type="TextureButton" parent="."]
+offset_left = 515.0
+offset_top = 303.0
+offset_right = 935.0
+offset_bottom = 897.0
+scale = Vector2(0.5214286, 0.6296296)
+toggle_mode = true
+texture_normal = ExtResource("5_1kas2")
+texture_hover = ExtResource("7_1yyst")
+
+[node name="Intrebare1" type="Sprite2D" parent="."]
+position = Vector2(977.5625, 160.4375)
+scale = Vector2(0.65446436, 0.5406145)
+texture = ExtResource("6_1kas2")
+
+[node name="Corect" type="Sprite2D" parent="."]
+position = Vector2(1003, 281)
+scale = Vector2(0.41428563, 0.584175)
+texture = ExtResource("8_6dr0g")
+
+[node name="Gresit" type="Sprite2D" parent="."]
+position = Vector2(1003.2501, 279.12494)
+scale = Vector2(0.4226185, 0.7100169)
+texture = ExtResource("9_1yyst")
+
+[node name="Intrebare2" type="Sprite2D" parent="."]
+position = Vector2(977.50006, 162.49998)
+scale = Vector2(0.65476197, 0.5740741)
+texture = ExtResource("10_8y72h")
+
+[node name="Intrebare3" type="Sprite2D" parent="."]
+position = Vector2(977.9999, 164.13573)
+scale = Vector2(0.6619049, 0.5896825)
+texture = ExtResource("11_cpke3")
+
+[node name="Bifat1" type="Sprite2D" parent="."]
+position = Vector2(348.00003, 338)
+scale = Vector2(0.24285714, 0.18602693)
+texture = ExtResource("12_6dr0g")
+
+[node name="Bifat2" type="Sprite2D" parent="."]
+position = Vector2(742, 504.00006)
+scale = Vector2(0.19285712, 0.19285709)
+texture = ExtResource("12_6dr0g")
+
+[node name="Bifat3" type="Sprite2D" parent="."]
+position = Vector2(858, 204)
+scale = Vector2(0.21547608, 0.16203704)
+texture = ExtResource("12_6dr0g")
+
+[node name="Intrebare4" type="Sprite2D" parent="."]
+position = Vector2(980.5, 160.00002)
+scale = Vector2(0.67857146, 0.62626266)
+texture = ExtResource("14_8y72h")
+
+[node name="Bifat4" type="Sprite2D" parent="."]
+position = Vector2(948.00006, 554.00006)
+scale = Vector2(0.2535714, 0.15572388)
+texture = ExtResource("12_6dr0g")
+
+[node name="Intrebare5" type="Sprite2D" parent="."]
+position = Vector2(980.5, 158.50002)
+scale = Vector2(0.6833332, 0.6346802)
+texture = ExtResource("15_cpke3")
+
+[node name="Bifat5" type="Sprite2D" parent="."]
+position = Vector2(675, 373)
+scale = Vector2(0.2857144, 0.22811443)
+texture = ExtResource("12_6dr0g")
+
+[node name="Bifat6" type="Sprite2D" parent="."]
+position = Vector2(514, 441)
+scale = Vector2(0.30119032, 0.22306395)
+texture = ExtResource("12_6dr0g")
+
+[node name="Bifat7" type="Sprite2D" parent="."]
+position = Vector2(555, 251.00003)
+scale = Vector2(0.20833322, 0.17760947)
+texture = ExtResource("12_6dr0g")
+
+[node name="Intrebare6" type="Sprite2D" parent="."]
+position = Vector2(980.99994, 158.75)
+scale = Vector2(0.6857143, 0.64057237)
+texture = ExtResource("16_f3cmr")
+
+[node name="Intrebare7" type="Sprite2D" parent="."]
+position = Vector2(980.87506, 158.375)
+scale = Vector2(0.6863092, 0.6384681)
+texture = ExtResource("17_ws0jm")
+
+[node name="Felicitari" type="Sprite2D" parent="."]
+position = Vector2(637, 319)
+texture = ExtResource("18_agsxc")
+
+[node name="dino" type="Sprite2D" parent="."]
+position = Vector2(581, 250.00002)
+scale = Vector2(0.12649994, 0.12100005)
+texture = ExtResource("19_3ffcm")
+
+[node name="SunetCorect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_al0wi")
+
+[node name="SunetGresit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_pkv0h")
+
+[node name="gata_sunet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_wogqx")
+
+[node name="succes" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_2yt45")
+
+[connection signal="pressed" from="Brasov" to="." method="_on_brasov_pressed"]
+[connection signal="pressed" from="Cluj_Napoca" to="." method="_on_cluj_pressed"]
+[connection signal="pressed" from="Constanta" to="." method="_on_constanta_pressed"]
+[connection signal="pressed" from="Iasi" to="." method="_on_iasi_pressed"]
+[connection signal="pressed" from="Timisoara" to="." method="_on_timisoara_pressed"]
+[connection signal="pressed" from="Tg_Jiu" to="." method="_on_tg_jiu_pressed"]
+[connection signal="pressed" from="Bucuresti" to="." method="_on_bucuresti_pressed"]
+[connection signal="pressed" from="Gata" to="." method="_on_gata_pressed"]
