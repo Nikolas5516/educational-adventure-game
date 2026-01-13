@@ -288,5 +288,135 @@
 	"options": ["Polonia", "Republica Moldova", "Ucraina"],
 	"correct_option": "UCRAINA",
 	"points": 10
+  },
+{
+	"id": 114,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Acest județ are ieșire la Marea Neagră și găzduiește cel mai mare port al țării.",
+	"image_path": "res://assets/sprites/constanta1.png",
+	"options": ["Tulcea", "Constanța", "Galați"],
+	"correct_option": "CONSTANȚA",
+	"points": 10
+  },
+{
+	"id": 115,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Aici se află capitala culturală a Moldovei și Palatul Culturii.",
+	"image_path": "res://assets/sprites/iasi1.png",
+	"options": ["Suceava", "Botoșani", "Iași"],
+	"correct_option": "IAȘI",
+	"points": 10
+  },
+{
+	"id": 116,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Recunoaște construcția celebră din imagine (Castelul Bran), situată la trecătoarea dintre Transilvania și Muntenia.",
+	"image_path": "res://assets/sprites/castelul_bran.png",
+	"options": ["Castelul Peleș", "Cetatea de Scaun", "Castelul Bran"],
+	"correct_option": "CASTELUL BRAN",
+	"points": 10
+  },
+{
+	"id": 117,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Această formațiune stâncoasă naturală, numită „Sfinxul”, se află în Munții:",
+	"image_path": "res://assets/sprites/sfinxul_bucegi.png",
+	"options": ["Munții Apuseni", "Munții Bucegi", "Munții Retezat"],
+	"correct_option": "MUNȚII BUCEGI",
+	"points": 10
+  },
+{
+	"id": 118,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce resursă de subsol importantă se extrage din locul reprezentat în imagine (Salină)?",
+	"image_path": "res://assets/sprites/salina.png",
+	"options": ["Cărbune", "Sare", "Aur"],
+	"correct_option": "SARE",
+	"points": 10
+  },
+{
+	"id": 119,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "În imagine este Lacul Sfânta Ana. Este singurul lac din România format într-un:",
+	"image_path": "res://assets/sprites/lacul_sfanta_ana.png",
+	"options": ["Crater Vulcanic", "Ghețar", "Litoral"],
+	"correct_option": "CRATER VULCANIC",
+	"points": 10
+  },
+{
+	"id": 120,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce tip de vegetație este specific Câmpiilor (ierburi mărunte și puțini copaci), reprezentat în imagine?",
+	"image_path": "res://assets/sprites/zona_stepa.png",
+	"options": ["Pădure de foioase", "Stepă", "Tundră"],
+	"correct_option": "STEPĂ",
+	"points": 10
+  },
+{
+	"id": 121,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Identifică orașul din vestul țării, unde a început Revoluția din 1989.",
+	"image_path": "res://assets/sprites/timisoara1.png",
+	"options": ["Arad", "Oradea", "Timișoara"],
+	"correct_option": "TIMIȘOARA",
+	"points": 10
+  },
+{
+	"id": 122,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce pasăre, simbol al Deltei Dunării, este reprezentată în fotografie?",
+	"image_path": "res://assets/sprites/pelican.png",
+	"options": ["Vulturul", "Pelicanul", "Barza"],
+	"correct_option": "PELICANUL",
+	"points": 10
+  },
+{
+	"id": 123,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Ce tip de vegetație este specific zonelor înalte de munte?",
+	"image_path": "res://assets/sprites/padure_conifere.png",
+	"options": ["Pădurea de stejar", "Pădurea de conifere", "Stepa"],
+	"correct_option": "PĂDUREA DE CONIFERE",
+	"points": 10
+  },
+{
+	"id": 124,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Acest animal agil este protejat de lege și trăiește pe stâncile abrupte ale munților înalți.",
+	"image_path": "res://assets/sprites/capra_neagra.png",
+	"options": ["Lupul", "Capra Neagră", "Vulpea"],
+	"correct_option": "CAPRA NEAGRĂ",
+	"points": 10
+  },
+{
+	"id": 125,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Recunoaște fosta reședință regală de vară situat în stațiunea Sinaia.",
+	"image_path": "res://assets/sprites/castelul_peles.png",
+	"options": ["Castelul Corvinilor", "Castelul Peleș", "Palatul Parlamentului"],
+	"correct_option": "CASTELUL PELEȘ",
+	"points": 10
+  },
+{
+	"id": 126,
+	"level_id": 3,
+	"question_type": "image_quiz",
+	"question_text": "Imaginea arată unul dintre cele mai spectaculoase drumuri care traversează:",
+	"image_path": "res://assets/sprites/transfagarasan.png",
+	"options": ["Carpații Occidentali", "Munții Făgăraș (Carpații Meridionali)", "Podișul Moldovei"],
+	"correct_option": "MUNȚII FĂGĂRAȘ (CARPAȚII MERIDIONALI)",
+	"points": 10
   }
 ]
