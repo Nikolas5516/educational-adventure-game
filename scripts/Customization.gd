@@ -13,22 +13,6 @@ extends Control
 
 var selected_item_id: String = ""
 var selected_item_data: Dictionary = {}
-var exit_button: Button
-const EXIT_MARGIN := Vector2(20, 20)  # distanța față de colț
-
-func _on_viewport_resized() -> void:
-	_check_and_fix_background()
-	_position_exit_button()
-
-func _position_exit_button() -> void:
-	if exit_button == null:
-		return
-
-	var screen_size := get_viewport().get_visible_rect().size
-	exit_button.position = Vector2(
-		screen_size.x - exit_button.size.x - EXIT_MARGIN.x,
-		screen_size.y - exit_button.size.y - EXIT_MARGIN.y
-	)
 
 
 func _ready():
@@ -58,15 +42,11 @@ func _ready():
 	else:
 		print("❌ DataManager nu este încărcat!")
 	
-	_create_test_points_button()
-	_create_test_points_button2()
+
 	
 	_create_simple_dino_title()
 	
 	#lock_all_items()
-	_create_exit_button()
-	_position_exit_button()
-	get_viewport().size_changed.connect(_on_viewport_resized)
 
 	await get_tree().process_frame
 	
@@ -176,60 +156,7 @@ func lock_all_items():
 	_refresh_shop()
 
 
-func _create_exit_button():
-	"""Creează butonul de exit în dreapta jos"""
-	var exit_button = Button.new()
-	exit_button.name = "ExitButton"
-	exit_button.text = "🚪 ÎNAPOI"
-	exit_button.custom_minimum_size = Vector2(150, 50)
-	
-	# Stil roșu pentru exit
-	var normal_style = StyleBoxFlat.new()
-	normal_style.bg_color = Color(0.8, 0.2, 0.2, 1.0)
-	normal_style.border_color = Color(0.9, 0.9, 0.9, 1.0)
-	normal_style.border_width_left = 2
-	normal_style.border_width_top = 2
-	normal_style.border_width_right = 2
-	normal_style.border_width_bottom = 2
-	normal_style.corner_radius_top_left = 8
-	normal_style.corner_radius_top_right = 8
-	normal_style.corner_radius_bottom_right = 8
-	normal_style.corner_radius_bottom_left = 8
-	
-	var hover_style = normal_style.duplicate()
-	hover_style.bg_color = Color(0.9, 0.3, 0.3, 1.0)
-	
-	var pressed_style = normal_style.duplicate()
-	pressed_style.bg_color = Color(0.7, 0.1, 0.1, 1.0)
-	
-	exit_button.add_theme_stylebox_override("normal", normal_style)
-	exit_button.add_theme_stylebox_override("hover", hover_style)
-	exit_button.add_theme_stylebox_override("pressed", pressed_style)
-	
-	exit_button.add_theme_font_size_override("font_size", 16)
-	exit_button.add_theme_color_override("font_color", Color(1, 1, 1))
-	exit_button.focus_mode = Control.FOCUS_NONE
-	
-	# Poziționează în dreapta jos
-	var screen_size = get_viewport().size
-	exit_button.position = Vector2(screen_size.x - 170, screen_size.y - 70)
-	
-	# Conectează semnalul
-	exit_button.pressed.connect(_on_exit_button_pressed)
-	
-		# IMPORTANT: îl punem într-un CanvasLayer de overlay (dacă există)
-	var overlay = get_node_or_null("Overlay")
-	if overlay:
-		overlay.add_child(exit_button)
-	else:
-		add_child(exit_button)
-		
-	# poziționează corect acum
-	_position_exit_button()
-	print("✅ Buton exit creat")
-	
 
-	
 
 func _create_test_points_button():
 	"""Creează un buton pentru a adăuga puncte de test"""
@@ -1193,3 +1120,7 @@ func _on_close_confirmation_message():
 		var tween = create_tween()
 		tween.tween_property(container, "modulate", Color(1, 1, 1, 0), 0.3)
 		tween.tween_callback(func(): container.visible = false)
+
+
+func _on_exit_pressed() -> void:
+	pass # Replace with function body.
