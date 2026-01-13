@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cwf2dp3urymms" path="res://assets/sprites/subtle-beige-gradient-background-rough-600nw-2653098969.webp" id="2_jhi71"]
 [ext_resource type="Texture2D" uid="uid://bcbjux6wkpn3s" path="res://assets/clothes/hat_cowboy.png" id="3_ebdm7"]
 [ext_resource type="Texture2D" uid="uid://5j788jgnwmtn" path="res://assets/clothes/scarf_red.png" id="4_jhi71"]
-[ext_resource type="Texture2D" uid="uid://2a0vpchauxka" path="res://assets/sprites/Exit-Button-PNG-Clipart-Background-removebg-preview.png" id="6_uolrx"]
+[ext_resource type="Texture2D" uid="uid://cntnyor231enu" path="res://assets/sprites/ExitBtn.jpeg" id="6_uolrx"]
 
 [node name="Customization" type="Control"]
 layout_mode = 3
@@ -102,5 +102,7 @@ offset_right = 1600.0
 offset_bottom = 804.0
 scale = Vector2(0.3458335, 0.33072948)
 texture_normal = ExtResource("6_uolrx")
+texture_pressed = ExtResource("6_uolrx")
+texture_hover = ExtResource("6_uolrx")
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_button_pressed"]
