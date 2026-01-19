@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo2ytwhtfckls"]
+
+[ext_resource type="Script" uid="uid://b8polmpa641rb" path="res://scenes/UI/Evil_Dino/evil_dino_fail.gd" id="1_cfrho"]
+[ext_resource type="PackedScene" uid="uid://dxgj8c5du4suo" path="res://scenes/UI/Evil_Dino/Evil_dino_speriat.tscn" id="2_m1yis"]
+[ext_resource type="PackedScene" uid="uid://dbo5gl0o6vcqh" path="res://scenes/UI/Evil_Dino/Evil_Dino_run.tscn" id="3_w5o6c"]
+
+[node name="EvilDinoFail" type="Node2D"]
+script = ExtResource("1_cfrho")
+scared_scene = ExtResource("2_m1yis")
+run_scene = ExtResource("3_w5o6c")

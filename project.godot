@@ -15,6 +15,29 @@ run/main_scene="uid://cciyskle4w08c"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DataManager="*res://scripts/managers/data_manager.gd"
+GlobalState_dino="*res://scripts/GlobalState_dino.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=723
+window/stretch/mode="canvas_items"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[input]
+
+ui_debug_reset={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+]
+}
+
 [rendering]
 
 renderer/rendering_method="mobile"

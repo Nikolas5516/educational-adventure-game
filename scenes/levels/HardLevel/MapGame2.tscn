@@ -1,0 +1,254 @@
+[gd_scene load_steps=18 format=3 uid="uid://d1k46jhsceet4"]
+
+[ext_resource type="Texture2D" uid="uid://b7fucr10sgydg" path="res://assets/sprites/harta_muta_lvl2.png" id="1_c8s3a"]
+[ext_resource type="Script" uid="uid://bib4rcpkiyyo7" path="res://scenes/levels/HardLevel/map_game_lvl2.gd" id="1_nf1fi"]
+[ext_resource type="Texture2D" uid="uid://b1cje48fkpqin" path="res://assets/sprites/lvl_greu.png" id="2_wttm7"]
+[ext_resource type="PackedScene" uid="uid://bv7qrbffhrink" path="res://scenes/UI/backgrounds/components/TopBar.tscn" id="4_wttm7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y1icr"]
+radius = 36.05551
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nf1fi"]
+radius = 34.234486
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wttm7"]
+radius = 39.319206
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_on12s"]
+radius = 31.04835
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0ehn"]
+radius = 37.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crtph"]
+radius = 24.083189
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6f2u4"]
+radius = 24.020824
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5gh7"]
+radius = 22.022715
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf1fi"]
+size = Vector2(197, 118.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1icr"]
+size = Vector2(128, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wttm7"]
+size = Vector2(158.5, 56.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on12s"]
+size = Vector2(86, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0ehn"]
+size = Vector2(182, 43.5)
+
+[node name="MapGame2" type="Node2D"]
+script = ExtResource("1_nf1fi")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -78.0
+offset_top = -92.0
+offset_right = 1458.0
+offset_bottom = 932.0
+texture = ExtResource("2_wttm7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 1203.0
+offset_bottom = 823.14996
+scale = Vector2(1, 0.868246)
+texture = ExtResource("1_c8s3a")
+expand_mode = 5
+
+[node name="Area1" type="Area2D" parent="TextureRect"]
+position = Vector2(676, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area1"]
+position = Vector2(3, -1)
+shape = SubResource("CircleShape2D_y1icr")
+
+[node name="Answers_List" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 13.0
+offset_right = 1090.0
+offset_bottom = 464.0
+
+[node name="Button1" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Siret"
+
+[node name="Button2" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buzau"
+
+[node name="Button3" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dunare"
+
+[node name="Button4" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Ialomita"
+
+[node name="Button5" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Somes"
+
+[node name="Button6" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Crisul Repede"
+
+[node name="Button7" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Crisul Negru"
+
+[node name="Button8" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+text = "Crisul Alb"
+
+[node name="ButtonA" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+text = "Campia Olt-Arges"
+
+[node name="ButtonB" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Podisul Tarnavelor"
+
+[node name="ButtonC" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Parang-Retezat"
+
+[node name="ButtonD" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+text = "Muntii Banatului"
+
+[node name="ButtonE" type="Button" parent="TextureRect/Answers_List"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Subcarpatii Getici"
+
+[node name="Feedback_Label" type="Label" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "\" \""
+
+[node name="Area2" type="Area2D" parent="TextureRect"]
+position = Vector2(703, 473)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2"]
+shape = SubResource("CircleShape2D_nf1fi")
+
+[node name="Area3" type="Area2D" parent="TextureRect"]
+position = Vector2(842, 484)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area3"]
+shape = SubResource("CircleShape2D_wttm7")
+
+[node name="Area4" type="Area2D" parent="TextureRect"]
+position = Vector2(664, 534)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area4"]
+shape = SubResource("CircleShape2D_on12s")
+
+[node name="Area5" type="Area2D" parent="TextureRect"]
+position = Vector2(410, 182)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area5"]
+shape = SubResource("CircleShape2D_l0ehn")
+
+[node name="Area6" type="Area2D" parent="TextureRect"]
+position = Vector2(240, 226)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area6"]
+shape = SubResource("CircleShape2D_crtph")
+
+[node name="Area7" type="Area2D" parent="TextureRect"]
+position = Vector2(271, 273)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area7"]
+shape = SubResource("CircleShape2D_6f2u4")
+
+[node name="Area8" type="Area2D" parent="TextureRect"]
+position = Vector2(280, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area8"]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_u5gh7")
+
+[node name="AreaA2" type="Area2D" parent="TextureRect"]
+position = Vector2(561, 629)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/AreaA2"]
+position = Vector2(-27.5, -6.75)
+shape = SubResource("RectangleShape2D_nf1fi")
+
+[node name="AreaB2" type="Area2D" parent="TextureRect"]
+position = Vector2(448, 363)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/AreaB2"]
+position = Vector2(-11, -17)
+shape = SubResource("RectangleShape2D_y1icr")
+
+[node name="AreaC2" type="Area2D" parent="TextureRect"]
+position = Vector2(350, 418)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/AreaC2"]
+position = Vector2(-5.25, 11.75)
+shape = SubResource("RectangleShape2D_wttm7")
+
+[node name="AreaD" type="Area2D" parent="TextureRect"]
+position = Vector2(196, 481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/AreaD"]
+position = Vector2(-9, 4)
+shape = SubResource("RectangleShape2D_on12s")
+
+[node name="AreaE" type="Area2D" parent="TextureRect"]
+position = Vector2(353, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/AreaE"]
+position = Vector2(23, -9)
+shape = SubResource("RectangleShape2D_l0ehn")
+
+[node name="TopBar" parent="." instance=ExtResource("4_wttm7")]
+
+[connection signal="input_event" from="TextureRect/Area1" to="." method="_on_map_area_clicked" binds= ["A"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button1" to="." method="_on_answer_button_pressed" binds= ["Siret"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button2" to="." method="_on_answer_button_pressed" binds= ["Buzau"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button3" to="." method="_on_answer_button_pressed" binds= ["Dunare"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button4" to="." method="_on_answer_button_pressed" binds= ["Ialomita"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button5" to="." method="_on_answer_button_pressed" binds= ["Somes"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button6" to="." method="_on_answer_button_pressed" binds= ["Crisul Repede"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button7" to="." method="_on_answer_button_pressed" binds= ["Crisul Negru"]]
+[connection signal="pressed" from="TextureRect/Answers_List/Button8" to="." method="_on_answer_button_pressed" binds= ["Crisul Alb"]]
+[connection signal="pressed" from="TextureRect/Answers_List/ButtonA" to="." method="_on_answer_button_pressed" binds= ["Olt-Arges"]]
+[connection signal="pressed" from="TextureRect/Answers_List/ButtonB" to="." method="_on_answer_button_pressed" binds= ["Tarnavelor"]]
+[connection signal="pressed" from="TextureRect/Answers_List/ButtonC" to="." method="_on_answer_button_pressed" binds= ["Parang-Retezat"]]
+[connection signal="pressed" from="TextureRect/Answers_List/ButtonD" to="." method="_on_answer_button_pressed" binds= ["Muntii Banatului"]]
+[connection signal="pressed" from="TextureRect/Answers_List/ButtonE" to="." method="_on_answer_button_pressed" binds= ["Subcarpatii Getici"]]
+[connection signal="input_event" from="TextureRect/Area2" to="." method="_on_map_area_clicked" binds= ["B"]]
+[connection signal="input_event" from="TextureRect/Area3" to="." method="_on_map_area_clicked" binds= ["C"]]
+[connection signal="input_event" from="TextureRect/Area4" to="." method="_on_map_area_clicked" binds= ["D"]]
+[connection signal="input_event" from="TextureRect/Area5" to="." method="_on_map_area_clicked" binds= ["E"]]
+[connection signal="input_event" from="TextureRect/Area6" to="." method="_on_map_area_clicked" binds= ["F"]]
+[connection signal="input_event" from="TextureRect/Area7" to="." method="_on_map_area_clicked" binds= ["G"]]
+[connection signal="input_event" from="TextureRect/Area8" to="." method="_on_map_area_clicked" binds= ["H"]]
+[connection signal="input_event" from="TextureRect/AreaA2" to="." method="_on_map_area_clicked" binds= ["I"]]
+[connection signal="input_event" from="TextureRect/AreaB2" to="." method="_on_map_area_clicked" binds= ["J"]]
+[connection signal="input_event" from="TextureRect/AreaC2" to="." method="_on_map_area_clicked" binds= ["K"]]
+[connection signal="input_event" from="TextureRect/AreaD" to="." method="_on_map_area_clicked" binds= ["L"]]
+[connection signal="input_event" from="TextureRect/AreaE" to="." method="_on_map_area_clicked" binds= ["M"]]

@@ -1,0 +1,223 @@
+[gd_scene load_steps=20 format=3 uid="uid://c13ueo0g36oox"]
+
+[ext_resource type="Script" uid="uid://dfbxso7m0nrnu" path="res://scenes/meniuprincipal.gd" id="1_r75mj"]
+[ext_resource type="Texture2D" uid="uid://jckdbxd12ax0" path="res://assets/sprites/fundalmeniu.png" id="2_swdcf"]
+[ext_resource type="Texture2D" uid="uid://q4ro38hddox2" path="res://assets/sprites/Gemini_Generated_Image_mk4fp5mk4fp5mk4f.png" id="2_utjw1"]
+[ext_resource type="Texture2D" uid="uid://bh4pxu8qysu2d" path="res://assets/sprites/lvl1.png" id="3_ru4ck"]
+[ext_resource type="Texture2D" uid="uid://yh85ehma7sg1" path="res://assets/sprites/lvl2.png" id="4_r21ka"]
+[ext_resource type="Texture2D" uid="uid://b3kjv746ymob0" path="res://assets/sprites/lvl3.png" id="5_gdhvy"]
+[ext_resource type="Texture2D" uid="uid://brb6cagjmrlvy" path="res://assets/sprites/cufar.png" id="6_r21ka"]
+[ext_resource type="PackedScene" uid="uid://b4qa5upc5qico" path="res://scenes/DinoTextBox.tscn" id="9_6kjbh"]
+[ext_resource type="Texture2D" uid="uid://b7fklcwnh7ia2" path="res://assets/sprites/Gemini_Generated_Image_jztwxtjztwxtjztw-removebg-preview.png" id="10_jmxhm"]
+[ext_resource type="Texture2D" uid="uid://caxsayni05c0c" path="res://assets/sprites/Gemini_Generated_Image_puhdmjpuhdmjpuhd-removebg-preview.png" id="11_i36jf"]
+[ext_resource type="Texture2D" uid="uid://dn47nfripasdx" path="res://assets/sprites/Gemini_Generated_Image_i4suzii4suzii4su-removebg-preview.png" id="12_a61ng"]
+[ext_resource type="Texture2D" uid="uid://dtt5bs7w17hdm" path="res://assets/sprites/Gemini_Generated_Image_wblzccwblzccwblz-removebg-preview.png" id="13_swdcf"]
+[ext_resource type="Texture2D" uid="uid://cxhs8gaakf0b6" path="res://assets/sprites/Gemini_Generated_Image_vviqhpvviqhpvviq-removebg-preview.png" id="14_gdhvy"]
+[ext_resource type="Texture2D" uid="uid://dfcq3f2e4u2pd" path="res://assets/sprites/Gemini_Generated_Image_kj6l0ikj6l0ikj6l-removebg-preview.png" id="14_l6dl7"]
+[ext_resource type="Texture2D" uid="uid://bpf58cqscqbfo" path="res://assets/sprites/chenarTextMod.png" id="15_jmxhm"]
+[ext_resource type="Texture2D" uid="uid://dvykr522nj7ih" path="res://assets/sprites/Gemini_Generated_Image_my27zvmy27zvmy27-removebg-preview.png" id="15_mhfbr"]
+[ext_resource type="Texture2D" uid="uid://qc2w7ruexdsv" path="res://assets/sprites/Evil_Dino/dino_la_inchisoare.png" id="16_i36jf"]
+[ext_resource type="Texture2D" uid="uid://b0m4dys5pib7q" path="res://assets/sprites/ExitBtn.png" id="17_a61ng"]
+
+[sub_resource type="Curve2D" id="Curve2D_a62jb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 35.351624, 371.8108, 0, 0, 0, 0, -19.885254, 371.8108, 0, 0, 0, 0, -69.59845, 363.32202, 0, 0, 0, 0, -131.46368, 351.43762, 0, 0, 0, 0, -202.16687, 339.55328, 0, 0, 0, 0, -259.61322, 339.55328, 0, 0, 0, 0, -317.0595, 339.55328, 0, 0, 0, 0, -366.77264, 300.50464, 0, 0, 0, 0, -410.96216, 288.6203, 0, 0, 0, 0, -457.36108, 271.64264, 0, 0, 0, 0, -517.0169, 259.75824, 0, 0, 0, 0, -626.38586, 244.4784, 0, 0, 0, 0, -535.7974, 183.35876, 0, 0, 0, 0, -478.35107, 132.42578, 0, 0, 0, 0, -294.96478, -16.977661)
+}
+point_count = 15
+
+[node name="Meniuprincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r75mj")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -250.00002
+offset_top = -3.999999
+offset_right = 1428.0
+offset_bottom = 1020.0
+scale = Vector2(1.0365884, 0.7149368)
+texture = ExtResource("2_swdcf")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(645.00006, 363.00003)
+rotation = -3.1415927
+scale = Vector2(1.2827034, -0.5508779)
+texture = ExtResource("2_utjw1")
+
+[node name="LevelMap" type="Node2D" parent="."]
+position = Vector2(-9, -47)
+
+[node name="Path2D" type="Path2D" parent="LevelMap"]
+position = Vector2(900, 400)
+scale = Vector2(0.90519285, 0.58900917)
+curve = SubResource("Curve2D_a62jb")
+
+[node name="lvl1" type="PathFollow2D" parent="LevelMap/Path2D"]
+position = Vector2(35.351624, 371.8108)
+rotation = 3.1415927
+scale = Vector2(0.99999994, 1)
+metadata/_edit_lock_ = true
+
+[node name="Level 1" type="TextureButton" parent="LevelMap/Path2D/lvl1"]
+offset_left = 275.0796
+offset_top = 42.44413
+offset_right = 903.32837
+offset_bottom = 692.389
+scale = Vector2(-0.2774579, -0.19892998)
+texture_normal = ExtResource("3_ru4ck")
+metadata/_edit_lock_ = true
+
+[node name="lvl2" type="PathFollow2D" parent="LevelMap/Path2D"]
+position = Vector2(-261.78964, 339.55328)
+rotation = 3.1415927
+progress = 300.0
+metadata/_edit_lock_ = true
+
+[node name="Level 2" type="TextureButton" parent="LevelMap/Path2D/lvl2"]
+offset_left = 188.94305
+offset_top = 84.888306
+offset_right = 688.94305
+offset_bottom = 584.8883
+scale = Vector2(-0.30944866, -0.24915837)
+texture_normal = ExtResource("4_r21ka")
+metadata/_edit_lock_ = true
+
+[node name="lvl3" type="PathFollow2D" parent="LevelMap/Path2D"]
+position = Vector2(-444.59705, 276.31308)
+rotation = -2.7908182
+progress = 500.0
+metadata/_edit_lock_ = true
+
+[node name="Level 3" type="TextureButton" parent="LevelMap/Path2D/lvl3"]
+offset_left = 164.91231
+offset_top = 143.49452
+offset_right = 717.05927
+offset_bottom = 643.4945
+scale = Vector2(-0.26215538, -0.28559908)
+texture_normal = ExtResource("5_gdhvy")
+metadata/_edit_lock_ = true
+
+[node name="final" type="PathFollow2D" parent="LevelMap/Path2D"]
+position = Vector2(-377.90457, 50.592793)
+rotation = -0.68363583
+progress = 1000.51
+metadata/_edit_lock_ = true
+
+[node name="Final" type="TextureButton" parent="LevelMap/Path2D/final"]
+offset_left = 127.1319
+offset_top = -14.240822
+offset_right = 628.0662
+offset_bottom = 567.6456
+rotation = -2.4836035
+scale = Vector2(0.26593298, -0.26478663)
+texture_normal = ExtResource("6_r21ka")
+metadata/_edit_lock_ = true
+
+[node name="DinoTextBox" parent="." instance=ExtResource("9_6kjbh")]
+layout_mode = 0
+offset_left = -39.0
+offset_top = 138.0
+offset_right = -39.0
+offset_bottom = 138.0
+scale = Vector2(1.1262268, 0.9885769)
+
+[node name="TopBar_HUD" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 778.99994
+offset_top = 123.0
+offset_right = 3799.0
+offset_bottom = 753.6976
+grow_horizontal = 2
+scale = Vector2(0.16558547, 0.14587022)
+metadata/_edit_lock_ = true
+
+[node name="ScoreButton" type="TextureButton" parent="TopBar_HUD"]
+layout_mode = 2
+texture_normal = ExtResource("10_jmxhm")
+
+[node name="EasyModeButton" type="TextureButton" parent="TopBar_HUD"]
+layout_mode = 2
+texture_normal = ExtResource("11_i36jf")
+
+[node name="MediumModeButton" type="TextureButton" parent="TopBar_HUD"]
+layout_mode = 2
+texture_normal = ExtResource("12_a61ng")
+
+[node name="HardModeButton" type="TextureButton" parent="TopBar_HUD"]
+layout_mode = 2
+texture_normal = ExtResource("13_swdcf")
+
+[node name="CustomizeButton" type="TextureButton" parent="TopBar_HUD"]
+layout_mode = 2
+texture_normal = ExtResource("14_l6dl7")
+metadata/_edit_lock_ = true
+
+[node name="SettingsButton" type="TextureButton" parent="TopBar_HUD"]
+layout_mode = 2
+texture_normal = ExtResource("15_mhfbr")
+metadata/_edit_lock_ = true
+
+[node name="Dino" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -83.0
+offset_top = 217.0
+offset_right = 417.0
+offset_bottom = 717.0
+texture = ExtResource("14_gdhvy")
+metadata/_edit_lock_ = true
+
+[node name="chenarMod" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 170.0
+offset_right = 1402.6262
+offset_bottom = 670.0
+scale = Vector2(0.68092936, 0.45813337)
+texture = ExtResource("15_jmxhm")
+metadata/_edit_lock_ = true
+
+[node name="ModSelectat" type="Label" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 276.0
+offset_right = 1184.0
+offset_bottom = 311.0
+theme_override_font_sizes/font_size = 20
+text = "MOD SELECTAT: EASY"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Dino_inchis" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 127.0
+offset_right = 1030.0
+offset_bottom = 1151.0
+scale = Vector2(0.13756554, 0.13155861)
+texture = ExtResource("16_i36jf")
+
+[node name="ExitBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 777.99994
+offset_top = 122.0
+offset_right = 1802.0
+offset_bottom = 1146.0
+scale = Vector2(0.082771145, 0.07116377)
+texture_normal = ExtResource("17_a61ng")
+texture_pressed = ExtResource("17_a61ng")
+texture_hover = ExtResource("17_a61ng")
+
+[connection signal="pressed" from="TopBar_HUD/EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/MediumModeButton" to="." method="_on_medium_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/HardModeButton" to="." method="_on_hard_mode_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/CustomizeButton" to="." method="_on_customize_button_pressed"]
+[connection signal="pressed" from="TopBar_HUD/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]

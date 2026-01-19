@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs7d3obvwu1fk"]
+
+[ext_resource type="Script" uid="uid://c3afpjlh5c0q7" path="res://scenes/UI/Evil_Dino/evil_dino_escape_end.gd" id="1_fy8xd"]
+[ext_resource type="Texture2D" uid="uid://b6mxrmudwg27v" path="res://assets/sprites/evil_dino_escaped.png" id="1_gl0lk"]
+[ext_resource type="Texture2D" uid="uid://bw8kwlhhhnjrf" path="res://assets/sprites/home_.png" id="3_a866q"]
+[ext_resource type="Texture2D" uid="uid://buwefxcx42olm" path="res://assets/sprites/Evil_Dino/retry_buton.png" id="4_a866q"]
+[ext_resource type="AudioStream" uid="uid://j8sighmtvs3o" path="res://assets/audio/Caribbean Beach Music.wav" id="5_pvpdk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvpdk"]
+bg_color = Color(0, 0, 0, 0.67058825)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+shadow_color = Color(0.7552807, 0.6342944, 0.20251366, 0.4862745)
+shadow_size = 30
+
+[sub_resource type="FontVariation" id="FontVariation_a866q"]
+variation_transform = Transform2D(1, 0.2, 0, 1.2, 0, 0)
+spacing_glyph = 3
+spacing_space = 2
+
+[node name="EvilDinoEscapeEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fy8xd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -38.0
+offset_right = 217.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8882065, 0.79999995)
+texture = ExtResource("1_gl0lk")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(900, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -167.5
+offset_right = 455.0
+offset_bottom = 232.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvpdk")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_a866q")
+theme_override_font_sizes/font_size = 40
+text = "NU!
+Fratele geaman malefic 
+al lui Dino a scapat! 
+Ce ne facem?
+
+Incercam din nou?     Ne mai antrenam? "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnHome" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -444.0
+offset_top = 601.0
+offset_right = 580.0
+offset_bottom = 1625.0
+grow_horizontal = 0
+scale = Vector2(0.100612596, 0.104000434)
+texture_normal = ExtResource("3_a866q")
+texture_pressed = ExtResource("3_a866q")
+texture_hover = ExtResource("3_a866q")
+stretch_mode = 0
+
+[node name="BtnRetry" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 320.00003
+offset_top = 589.00006
+offset_right = 1344.0
+offset_bottom = 1613.0
+scale = Vector2(0.10506801, 0.111082286)
+texture_normal = ExtResource("4_a866q")
+texture_pressed = ExtResource("4_a866q")
+texture_hover = ExtResource("4_a866q")
+
+[node name="SFX_beach" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pvpdk")
+
+[connection signal="pressed" from="BtnHome" to="." method="_on_btn_home_pressed"]
+[connection signal="pressed" from="BtnRetry" to="." method="_on_btn_retry_pressed"]

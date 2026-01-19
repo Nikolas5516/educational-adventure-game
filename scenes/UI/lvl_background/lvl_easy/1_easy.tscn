@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy5bgdh70qm2a"]
+
+[ext_resource type="PackedScene" uid="uid://d1nan8gno2brf" path="res://scenes/UI/backgrounds/Bg_lvl_usor.tscn" id="1_5gcoo"]
+[ext_resource type="Script" uid="uid://bp7mjbwomrky" path="res://scenes/UI/lvl_background/lvl_easy/1_easy.gd" id="1_fnivp"]
+[ext_resource type="PackedScene" uid="uid://dyv8kinim5k01" path="res://scenes/levels/EasyLevel/LevelEasy.tscn" id="2_fnivp"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_fnivp")
+
+[node name="LevelEasy" parent="." instance=ExtResource("2_fnivp")]
+position = Vector2(638, 355)
+
+[node name="Bg_Lvl_usor" parent="." instance=ExtResource("1_5gcoo")]
+offset_left = -3.0
+offset_top = 8.0
+offset_right = -3.0
+offset_bottom = 8.0
+
+[node name="Camera2D" type="Camera2D" parent="."]

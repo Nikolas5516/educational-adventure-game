@@ -1,0 +1,112 @@
+[
+	{
+		"id": 1,
+		"false_text": "Dunărea este un râu care izvorăște din Munții Carpați.",
+		"correct_text": "Fluviul Dunărea izvorăște din Munții Pădurea Neagră.",
+		"options": [
+			"Fluviul Dunărea izvorăște din Munții Pădurea Neagră.",
+			"Fluviul Dunărea izvorăște din Munții Alpi.",
+            "Fluviul Dunărea izvorăște din Munții Himalaya."
+		],
+		"points": 10
+	},
+	{
+		"id": 2,
+		"false_text": "Singura formă de apă pe uscat este reprezentată de oceane.",
+		"correct_text": "Apele stătătoare și cele curgătoare sunt forme de apă.",
+		"options": [
+			"Apele stătătoare și cele curgătoare sunt forme de apă.",
+			"Singura formă de apă pe uscat sunt ghețarii.",
+            "Doar ploile sunt considerate forme de apă."
+		],
+		"points": 10
+	},
+	{
+		"id": 3,
+		"false_text": "România are ieșire la Marea Mediterană.",
+		"correct_text": "România are ieșire la Marea Neagră.",
+		"options": [
+			"România are ieșire la Marea Neagră.",
+			"România are ieșire la Marea Roșie.",
+            "România are ieșire la Oceanul Atlantic."
+		],
+		"points": 10
+	},
+	{
+		"id": 4,
+		"false_text": "Lacurile sunt întotdeauna sărate.",
+		"correct_text": "Lacurile se formează în adâncituri și sunt de obicei dulci.",
+		"options": [
+			"Lacurile se formează în adâncituri și sunt de obicei dulci.",
+			"Lacurile sunt întotdeauna foarte fierbinți.",
+            "Lacurile sunt mereu secate vara."
+		],
+		"points": 10
+	},
+	{
+		"id": 5,
+		"false_text": "Apa de ploaie se pierde complet după ce ajunge pe sol.",
+		"correct_text": "Apa intră în circuitul naturii (evaporare, condensare).",
+		"options": [
+			"Apa intră în circuitul naturii (evaporare, condensare).",
+			"Apa de ploaie dispare definitiv în spațiu.",
+            "Apa de ploaie rămâne blocată în nori pentru totdeauna."
+		],
+		"points": 10
+	},
+	{
+		"id": 6,
+		"false_text": "Delta Dunării este o zonă muntoasă, cu piscuri înalte.",
+		"correct_text": "Delta Dunării este cea mai joasă unitate de relief.",
+		"options": [
+			"Delta Dunării este cea mai joasă unitate de relief.",
+			"Delta Dunării este un podiș înalt și arid.",
+            "Delta Dunării este o câmpie deșertică."
+		],
+		"points": 10
+	},
+	{
+		"id": 7,
+		"false_text": "Lacurile de acumulare create de om sunt considerate lacuri vulcanice.",
+		"correct_text": "Lacurile glaciare sunt formate natural, cele de acumulare de om.",
+		"options": [
+			"Lacurile glaciare sunt formate natural, cele de acumulare de om.",
+			"Lacurile de acumulare sunt formate de meteoriți.",
+            "Lacurile de acumulare sunt considerate mări."
+		],
+		"points": 10
+	},
+	{
+		"id": 8,
+		"false_text": "Apele subterane nu au nicio legătură cu râurile de la suprafață.",
+		"correct_text": "Apele subterane sunt o sursă importantă de apă potabilă.",
+		"options": [
+			"Apele subterane sunt o sursă importantă de apă potabilă.",
+			"Apele subterane sunt toxice și nefolositoare.",
+            "Apele subterane există doar sub oceane."
+		],
+		"points": 10
+	},
+	{
+		"id": 9,
+		"false_text": "Un râu include doar zona sa de vărsare.",
+		"correct_text": "Un afluent este un râu care se varsă într-un râu mai mare.",
+		"options": [
+			"Un afluent este un râu care se varsă într-un râu mai mare.",
+			"Un râu include doar izvorul său.",
+            "Un râu este o apă care nu curge niciodată."
+		],
+		"points": 10
+	},
+	{
+		"id": 10,
+		"false_text": "Marea Neagră este cel mai mare lac de pe Pământ.",
+		"correct_text": "Marea Neagră este o mare interioară legată de ocean.",
+		"options": [
+			"Marea Neagră este o mare interioară legată de ocean.",
+			"Marea Neagră este un fluviu gigantic.",
+            "Marea Neagră este un ocean complet izolat."
+		],
+		"points": 10
+	}
+]

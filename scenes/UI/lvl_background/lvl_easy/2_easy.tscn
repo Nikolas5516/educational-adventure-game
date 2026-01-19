@@ -1,0 +1,117 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgxh7eqsig4q2"]
+
+[ext_resource type="PackedScene" uid="uid://d1nan8gno2brf" path="res://scenes/UI/backgrounds/Bg_lvl_usor.tscn" id="1_npgqh"]
+[ext_resource type="Script" uid="uid://qpxfdc14cmrd" path="res://scenes/UI/lvl_background/lvl_easy/2_easy.gd" id="1_qofnr"]
+[ext_resource type="Texture2D" uid="uid://cy77w7gytgqb8" path="res://assets/sprites/chenarIntrebari.png" id="3_q0sly"]
+[ext_resource type="Texture2D" uid="uid://dpeqbgaj074cr" path="res://assets/sprites/textpoze.png" id="4_bsqql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6415q"]
+
+[node name="2Easy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qofnr")
+
+[node name="Bg_Lvl_usor" parent="." instance=ExtResource("1_npgqh")]
+layout_mode = 1
+
+[node name="chenarIntrebari" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 149.00002
+offset_top = 84.0
+offset_right = 1163.0
+offset_bottom = 584.0
+scale = Vector2(1.0317259, 0.78498846)
+texture = ExtResource("3_q0sly")
+metadata/_edit_lock_ = true
+
+[node name="intrebare" type="Label" parent="."]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 239.0
+offset_right = 985.0
+offset_bottom = 337.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Dreapta" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 423.0
+offset_right = 1016.0
+offset_bottom = 585.0
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="Stanga" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 424.0
+offset_right = 511.0
+offset_bottom = 593.0
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="TextureButton1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 387.0
+offset_right = 650.0
+offset_bottom = 891.0
+texture_normal = ExtResource("4_bsqql")
+metadata/_edit_lock_ = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 387.0
+offset_right = 1143.0
+offset_bottom = 891.0
+texture_normal = ExtResource("4_bsqql")
+metadata/_edit_lock_ = true
+
+[node name="Nume1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 613.0
+offset_right = 490.0
+offset_bottom = 678.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6415q")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Nume2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 614.0
+offset_right = 985.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="final" type="Label" parent="."]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 188.0
+offset_right = 1169.0
+offset_bottom = 620.0
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="TextureButton1" to="." method="_on_texture_button_1_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_2_pressed"]

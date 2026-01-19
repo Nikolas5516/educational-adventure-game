@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b85wkuqyp2tbw"]
+
+[ext_resource type="Texture2D" uid="uid://k7ru624pqjsh" path="res://assets/sprites/Gemini_Generated_Image_lk47nklk47nklk47.png" id="1_kbp60"]
+
+[node name="BgMeniuintro" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 183.99998
+offset_top = 17.0
+offset_right = 1432.0
+offset_bottom = 849.0
+scale = Vector2(0.8610648, 0.8126097)
+texture = ExtResource("1_kbp60")
+stretch_mode = 6

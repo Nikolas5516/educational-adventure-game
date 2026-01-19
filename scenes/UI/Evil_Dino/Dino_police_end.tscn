@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw1fhlx0k11th"]
+
+[ext_resource type="Texture2D" uid="uid://ctrld1qtiax80" path="res://assets/sprites/evil_dino_prins.png" id="1_idm41"]
+[ext_resource type="Script" uid="uid://cl3yu3x0pkmr5" path="res://scenes/UI/Evil_Dino/dino_police_end.gd" id="1_krs4x"]
+[ext_resource type="Texture2D" uid="uid://bw8kwlhhhnjrf" path="res://assets/sprites/home_.png" id="3_6but7"]
+[ext_resource type="AudioStream" uid="uid://cfva7ltgir7mr" path="res://assets/audio/police-siren-cinematic-hd-371856.ogg" id="4_6but7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idm41"]
+bg_color = Color(0, 0, 0, 0.6666667)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+shadow_color = Color(0, 0.3372549, 0.6509804, 0.3254902)
+shadow_size = 30
+
+[sub_resource type="FontVariation" id="FontVariation_krs4x"]
+variation_transform = Transform2D(1, 0.2, 0, 1.2, 0, 0)
+spacing_glyph = 3
+spacing_space = 2
+
+[node name="DinoPoliceEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_krs4x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.00001
+offset_top = -55.0
+offset_right = 192.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9399256, 0.81481934)
+texture = ExtResource("1_idm41")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.0
+offset_top = -179.5
+offset_right = 423.0
+offset_bottom = 220.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_idm41")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -182.0
+offset_right = 308.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_krs4x")
+theme_override_font_sizes/font_size = 40
+text = "BRAVO! 
+Fratele geaman malefic al lui 
+Dino a fost prins! Iti multumim
+micule detectiv pentru ajutor!
+
+Inapoi la meniu?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnHome" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -664.0
+offset_top = 597.0
+offset_right = 360.0
+offset_bottom = 1621.0
+grow_horizontal = 0
+scale = Vector2(0.100612596, 0.104000434)
+texture_normal = ExtResource("3_6but7")
+texture_pressed = ExtResource("3_6but7")
+texture_hover = ExtResource("3_6but7")
+stretch_mode = 0
+
+[node name="SFX_police" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6but7")
+
+[connection signal="pressed" from="BtnHome" to="." method="_on_btn_home_pressed"]
