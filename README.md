@@ -23,7 +23,7 @@ Traditional geography lessons in Romanian primary schools often rely on blackboa
 *Medium Level 2: pupils drag Romanian counties into their correct positions on the map.*
 
 ![Blank map matching exercise (hartă mută)](screenshots/harta-muta.png)
-*"Hartă mută" (blank map): pupils match numbered waters and cities and crosshatched geographical regions with their names. Immediate feedback on each match.*
+*Hard Level 1: "Hartă mută" (blank map) — pupils match numbered waters and cities and crosshatched geographical regions with their names. Immediate feedback on each match.*
 
 ## Features
 
